@@ -1,0 +1,60 @@
+/* ====== Variables y reset básico ====== */
+:root{
+  --bg:#f4f4f9;
+  --text:#333;
+  --muted:#6b7280;
+  --primary:#2c3e50;
+  --primary-contrast:#fff;
+  --card:#fff;
+  --ring:rgba(0,0,0,.06);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+}
+
+/* ====== Layout ====== */
+.container{max-width:1000px; margin:0 auto; padding:1.25rem}
+
+/* ====== Header/Nav ====== */
+header{
+  background:var(--primary); color:var(--primary-contrast);
+  position:sticky; top:0; z-index:10; box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+.brand{display:flex; align-items:center; justify-content:space-between; gap:1rem}
+.brand h1{font-size:1.25rem; margin:.25rem 0}
+nav a{
+  color:var(--primary-contrast); text-decoration:none; font-weight:600;
+  margin:0 .75rem; padding:.25rem .35rem; border-radius:8px; transition:background .2s;
+}
+nav a:hover{background:rgba(255,255,255,.12)}
+nav a.active{background:rgba(255,255,255,.22)}
+
+/* ====== Hero ====== */
+.hero{padding:3rem 0; text-align:center}
+.hero h2{margin:0 0 .5rem}
+.hero p{color:var(--muted); margin:0 auto 1.25rem; max-width:700px}
+.btn{
+  display:inline-block; padding:.75rem 1rem; border-radius:999px;
+  background:var(--primary); color:#fff; text-decoration:none; font-weight:700;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+}
+.btn:hover{filter:brightness(1.05)}
+
+/* ====== Cards / utilidades ====== */
+.card{
+  background:var(--card); border-radius:var(--radius);
+  padding:1.25rem; box-shadow:0 4px 16px var(--ring);
+}
+.grid{display:grid; gap:1rem}
+@media(min-width:760px){ .grid-2{grid-template-columns:1fr 1fr} }
+
+/* ====== Footer ====== */
+footer{background:var(--primary); color:#fff; text-align:center; padding:1rem; margin-top:2rem}
+
+/* ====== Tipografía ====== */
+h2{letter-spacing:.2px}
+small, .muted{color:var(--muted)}
