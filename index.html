@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>José Castro Castillo — Sitio Personal</title>
-  <meta name="description" content="José Castro Castillo — Estudiante full-time de Business Information Technology en la University of Salford. Con experiencia emprendiendo (alquiler de herramientas y limpieza; proyectos de construcción en verano). Conóceme, revisa mis habilidades y contáctame." />
+  <title>José Castro Castillo — Home</title>
+  <meta name="description"
+    content="Home page of José Castro Castillo — Business Information Technology student at the University of Salford. Explore my background, skills, business projects, and problem-solving work for Best Krazy Chicken (BKC)." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
 
+<body>
   <header>
     <div class="container brand">
       <h1>José Castro Castillo</h1>
-      <p class="muted">Estudiante de Business Information Technology — University of Salford</p>
+      <p class="muted">Business Information Technology Student — University of Salford</p>
       <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="skills.html">Skills</a>
@@ -27,33 +29,50 @@
   <main class="container">
     <!-- HERO -->
     <section class="hero card">
-      <h2>Hola, soy José 👋</h2>
-      <p>
-        Soy estudiante full-time de <strong>Business Information Technology</strong> en la University of Salford.
-        Además, gestiono un pequeño negocio de <strong>alquiler de herramientas y limpieza</strong> y, en verano,
-        dirijo una pequeña compañía de <strong>proyectos de construcción</strong>.
-        Me gustan el <strong>gym</strong>, la <strong>jardinería</strong> y las <strong>flores</strong>.
-      </p>
-      <a class="btn" href="contact.html">Contáctame</a>
+      <figure class="hero-figure">
+        <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" />
+        <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+      </figure>
+
+      <div class="hero-grid">
+        <div>
+          <h2>Welcome</h2>
+          <p>
+            I am a Business Information Technology student focused on building practical web solutions.
+            My work combines technology and entrepreneurship, from small business operations to a digital
+            transformation case study for a restaurant brand (BKC). Explore my background, skills, and projects below.
+          </p>
+          <div class="actions">
+            <a class="btn" href="about.html">About Me</a>
+            <a class="btn" href="business.html">Business Showcase</a>
+            <a class="btn" href="problem.html">Problem-Solving</a>
+            <a class="btn btn-secondary" href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="profile-container">
+          <img src="img/profile-jose.jpg" alt="Profile photo of José Castro Castillo" class="profile-pic" />
+        </div>
+      </div>
     </section>
 
-    <!-- TARJETAS DE ACCESO RÁPIDO -->
-    <section class="grid grid-3" style="margin-top:1rem">
-      <div class="card">
-        <h3>Sobre mí</h3>
-        <p class="muted">Un vistazo a mis intereses, motivaciones y objetivos.</p>
-        <a class="btn" href="about.html">Leer más</a>
-      </div>
-      <div class="card">
-        <h3>Habilidades</h3>
-        <p class="muted">Tecnologías, herramientas y fortalezas clave.</p>
-        <a class="btn" href="skills.html">Ver habilidades</a>
-      </div>
-      <div class="card">
-        <h3>Proyectos / Negocio</h3>
-        <p class="muted">Muestras de trabajo y actividad emprendedora.</p>
-        <a class="btn" href="business.html">Explorar</a>
-      </div>
+    <!-- QUICK LINKS -->
+    <section class="grid grid-3 quick-links">
+      <article class="card">
+        <h3>About</h3>
+        <p class="muted">Who I am, what I study, and my motivation.</p>
+        <a class="btn" href="about.html">Read more</a>
+      </article>
+      <article class="card">
+        <h3>Skills</h3>
+        <p class="muted">Technical, business, and practical competencies.</p>
+        <a class="btn" href="skills.html">View skills</a>
+      </article>
+      <article class="card">
+        <h3>Problem-Solving</h3>
+        <p class="muted">Restaurant case study (BKC): branding, links, and contact form.</p>
+        <a class="btn" href="problem.html">Open project</a>
+      </article>
     </section>
   </main>
 
@@ -61,12 +80,14 @@
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
-        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">J.E.CastroCastillo@edu.salford.ac.uk</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
+        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
+          rel="noopener">LinkedIn</a>
       </small>
     </div>
   </footer>
 
   <script src="js/script.js"></script>
 </body>
+
 </html>
