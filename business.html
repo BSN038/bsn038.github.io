@@ -2,89 +2,122 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>José Castro Castillo — Business Showcase</title>
   <meta name="description"
-    content="Business showcase of José Castro Castillo — projects including tool rental, summer construction, and the Best Krazy Chicken (BKC) restaurant concept." />
-  <link rel="stylesheet" href="css/styles.css" />
+    content="Business showcase of José Castro Castillo — entrepreneurship in tool rental, construction projects, and the Best Krazy Chicken (BKC) restaurant concept.">
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+  <!-- Header: name, subtitle, and simple site navigation -->
   <header>
     <div class="container brand">
       <h1>José Castro Castillo</h1>
       <p class="muted">Business Information Technology Student — University of Salford</p>
+
+      <!-- Top navigation. 'Business' is marked as current page -->
       <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="skills.html">Skills</a>
-        <a href="business.html" class="active">Business</a>
+        <a href="business.html" class="active" aria-current="page">Business</a>
         <a href="problem.html">Problem-Solving</a>
       </nav>
     </div>
   </header>
 
+  <!-- Main page content: title, intro, and two sections -->
   <main class="container">
+    <!-- Page heading and short intro about the businesses and BKC -->
     <h2>Business Showcase</h2>
     <p>
-      Alongside my academic studies, I have developed small businesses that reflect my
-      entrepreneurial mindset and ability to balance professional and academic responsibilities.
+      Alongside my studies, I manage small businesses and develop a restaurant concept called
+      <strong>Best Krazy Chicken (BKC)</strong>, inspired by Colombian wood-fired rotisserie chicken.
+      Below are highlights of both my current activities and the BKC concept visuals.
     </p>
 
-    <section class="card">
-      <h3>Tool & Equipment Rental</h3>
-      <p><strong>Role:</strong> Owner and service manager.</p>
-      <p><strong>Problem:</strong> Local homeowners and small companies needed access to construction and cleaning tools
-        without high purchase costs.</p>
-      <p><strong>Outcome:</strong> I created a rental service offering cement mixers, compactors, and carpet cleaning
-        machines, helping customers complete projects more affordably.</p>
-      <ul>
-        <li><strong>Skills gained:</strong> Customer service, budgeting, logistics</li>
-        <li><strong>Tools/Tech:</strong> Inventory management, local advertising</li>
-      </ul>
+    <!-- Grid of cards: quick overview of current business activities -->
+    <section class="grid grid-2 business-grid">
+      <!-- Card 1: tool and equipment rental -->
+      <article class="card">
+        <h3>Tool &amp; Equipment Rental</h3>
+        <p>
+          I run a small rental service providing construction tools and cleaning equipment:
+          cement mixers, driveway compactors, carpet cleaning machines, and more.
+          This supports individuals and local businesses with the right equipment at the right time.
+        </p>
+      </article>
+
+      <!-- Card 2: small construction projects in summer -->
+      <article class="card">
+        <h3>Summer Construction Projects</h3>
+        <p>
+          I lead small construction projects focused on driveway renovations and related improvements.
+          This has strengthened my planning, teamwork, and client delivery skills.
+        </p>
+      </article>
     </section>
 
+    <!-- BKC visuals: concept images shown inside a card -->
     <section class="card">
-      <h3>Summer Construction Projects</h3>
-      <p><strong>Role:</strong> Project lead and supervisor.</p>
-      <p><strong>Problem:</strong> Clients required small-scale driveway and renovation projects to be completed
-        efficiently during summer periods.</p>
-      <p><strong>Outcome:</strong> Delivered successful projects with a focus on teamwork, planning, and time
-        management, improving customer satisfaction.</p>
-      <ul>
-        <li><strong>Skills gained:</strong> Leadership, scheduling, teamwork</li>
-        <li><strong>Tools/Tech:</strong> Practical use of construction tools, project planning</li>
-      </ul>
-    </section>
+      <h3>Best Krazy Chicken (BKC) — Visual Concept</h3>
+      <p class="muted">
+        Wood-fired rotisserie chicken with Colombian flavours and sides: roasted potatoes, ripe plantain, yuca,
+        and chimichurri. These visuals will be used across web and social to communicate the concept clearly.
+      </p>
 
-    <section class="card">
-      <h3>Best Krazy Chicken (BKC)</h3>
-      <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" />
-      <p><strong>Role:</strong> Founder and brand creator.</p>
-      <p><strong>Problem:</strong> The UK restaurant market lacked authentic Colombian wood-fired rotisserie chicken
-        with traditional sides and sauces.</p>
-      <p><strong>Outcome:</strong> Designed a concept restaurant with clear branding (BKC), a strong online presence,
-        and unique offerings such as wood-roasted potatoes, plantain, cassava, ají, and chimichurri.</p>
-      <ul>
-        <li><strong>Skills gained:</strong> Branding, digital design, entrepreneurship</li>
-        <li><strong>Tools/Tech:</strong> HTML, CSS, web design, logo development</li>
-      </ul>
+      <!-- Rotisserie visual: base photo + heat shimmer + flame canvas (animated by JS) -->
+      <!-- This block relies on CSS (.rotisserie-visual, .rotisserie-img, .flame-layer)
+           and on JS in js/script.js to draw flames and animate heat. -->
+      <figure class="rotisserie-visual">
+        <!-- Base image of the rotisserie (no inline styles; CSS controls size) -->
+        <img src="img/bkc-rotisserie.png" alt="BKC rotisserie with chickens and potatoes" class="rotisserie-img" />
+
+        <!-- Canvas overlay where flame particles are drawn by JavaScript -->
+        <canvas class="flame-layer" aria-hidden="true"></canvas>
+
+        <figcaption class="muted" style="text-align:center;">
+          Traditional wood-fired rotisserie — BKC branding.
+        </figcaption>
+
+        <!-- Hidden SVG filter: creates the heat distortion effect on the image -->
+        <svg class="visually-hidden" width="0" height="0" aria-hidden="true" focusable="false">
+          <filter id="heat-wobble">
+            <feTurbulence id="heatNoise" type="fractalNoise" baseFrequency="0.012 0.022" numOctaves="2" seed="2"
+              result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+      </figure>
+
+      <!-- Plated dish visual: simple image without animation (keeps natural proportions) -->
+      <figure style="margin:1rem 0;">
+        <img src="img/bkc-plated-dish.png"
+          alt="BKC plated dish: roasted chicken with roasted potatoes, ripe plantain, yuca, and chimichurri">
+        <figcaption class="muted" style="text-align:center;">
+          Signature plate with Colombian sides; cutlery colours arranged as the Colombian flag (yellow, blue, red).
+        </figcaption>
+      </figure>
     </section>
   </main>
 
+  <!-- Footer: small print and external links -->
   <footer>
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
         <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-          rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
       </small>
     </div>
   </footer>
 
+  <!-- Site scripts: your main JS file animates the rotisserie if present -->
   <script src="js/script.js"></script>
 </body>
 

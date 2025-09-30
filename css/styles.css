@@ -1,8 +1,7 @@
-/* ================================
-   Global Reset and Page Basics
-   These rules set a clean start: remove default margins
-   and apply a consistent font and background.
-   ================================ */
+/* =======================================
+   Base / Reset
+   Clean starting point for all browsers.
+   ======================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +17,7 @@ body {
 
 a {
   color: #cc0000;
-  /* Red as the main brand color */
+  /* Brand red */
   text-decoration: none;
 }
 
@@ -26,16 +25,37 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ================================
-   Layout Containers and Cards
-   Used to keep content centered and grouped.
-   ================================ */
+/* =======================================
+   Layout / Utilities
+   Reusable containers and grid helpers.
+   ======================================= */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Responsive grid that adapts to screen size */
+.grid-2,
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Smaller spacing for business cards grid */
+.business-grid {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* =======================================
+   Card
+   White box used for content or images.
+   ======================================= */
 .card {
   background: #fff;
   padding: 1.5rem;
@@ -44,19 +64,10 @@ a:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-/* ================================
-   Header and Navigation
-   The top area with my name and the page links.
-   ================================ */
+/* =======================================
+   Header & Navigation
+   Top bar with site name and links.
+   ======================================= */
 header {
   background: #f5f5f5;
   padding: 1rem 0;
@@ -81,18 +92,20 @@ nav a.active {
   /* Highlight current page */
 }
 
-/* ================================
-   Hero Section
-   Main introduction with logo and profile photo.
-   ================================ */
+/* =======================================
+   Hero (used in other pages)
+   Area for intro text + image.
+   ======================================= */
 .hero-figure {
   text-align: center;
   margin-bottom: 1rem;
 }
 
 .logo-bkc {
-  max-width: 600px;
+  max-width: 190px;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .hero-grid {
@@ -102,17 +115,20 @@ nav a.active {
   align-items: center;
 }
 
+/* =======================================
+   Profile (used in About/Skills pages)
+   Avatar and quick action buttons.
+   ======================================= */
 .profile-container {
   text-align: center;
 }
 
 .profile-pic {
-  width: 220px;
-  height: 220px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  /* Makes the photo circular */
   object-fit: cover;
-  border: 3px solid #ccc;
+  object-position: 35% 20%;
 }
 
 .actions {
@@ -122,10 +138,36 @@ nav a.active {
   margin-top: 1rem;
 }
 
-/* ================================
+/* =======================================
+   Figures / Images
+   Keep logos and photos rectangular,
+   show them fully (no cropping).
+   ======================================= */
+.card figure img {
+  width: 100%;
+  /* responsive width */
+  max-width: 350px;
+  /* limit image size */
+  height: auto;
+  /* keep natural proportions */
+  display: block;
+  margin-inline: auto;
+  /* center image */
+  border-radius: 12px;
+  /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card figure img:hover {
+  transform: scale(1.02);
+  /* small zoom on hover */
+}
+
+/* =======================================
    Lists
-   Used in About, Skills, and Contact pages.
-   ================================ */
+   Simple styling for bullet lists.
+   ======================================= */
 ul {
   list-style-type: disc;
   padding-left: 1.5rem;
@@ -137,11 +179,10 @@ ul {
   margin-bottom: 0.5rem;
 }
 
-/* ================================
+/* =======================================
    Buttons
-   Red button is the primary action,
-   gray button is the secondary.
-   ================================ */
+   Primary (red) and secondary (gray).
+   ======================================= */
 .btn {
   background: #cc0000;
   color: #fff;
@@ -165,10 +206,72 @@ ul {
   background: #333;
 }
 
-/* ================================
+/* =======================================
+   Rotisserie animation
+   Container for image + flames; centers content.
+   ======================================= */
+.rotisserie-visual {
+  margin: 1rem 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* Base image with subtle heat distortion */
+.rotisserie-img {
+  width: 100%;
+  max-width: 420px;
+  /* adjust if you want larger/smaller */
+  height: auto;
+  display: block;
+  filter: url(#heat-wobble);
+  /* heat shimmer from hidden SVG */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Canvas overlay where flames are drawn */
+.flame-layer {
+  position: absolute;
+  inset: auto 0 6% 0;
+  /* stick to bottom area of the image */
+  width: 100%;
+  max-width: 420px;
+  height: 38%;
+  /* flame area height */
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  pointer-events: none;
+  /* ignore mouse */
+  mix-blend-mode: screen;
+  /* fire glow blends over the photo */
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .rotisserie-img {
+    filter: none;
+  }
+
+  .flame-layer {
+    display: none;
+  }
+}
+
+/* Keep filter SVG out of layout but available to CSS */
+.visually-hidden {
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* =======================================
    Forms
-   Styles for the input fields and the submit button.
-   ================================ */
+   Inputs, labels, and submit button.
+   ======================================= */
 form {
   display: flex;
   flex-direction: column;
@@ -203,10 +306,10 @@ form button:hover {
   background: #a30000;
 }
 
-/* ================================
+/* =======================================
    Footer
-   The bottom section of each page.
-   ================================ */
+   Small bar at the bottom with links.
+   ======================================= */
 footer {
   background: #f5f5f5;
   text-align: center;
