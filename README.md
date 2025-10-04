@@ -45,3 +45,57 @@ I used OpenAI’s ChatGPT as a support tool during development.
 
 All content was reviewed, adapted, and finalised by me.  
 The project reflects my own understanding, combining experience from my first year at Edge Hill with current learning at Salford.
+
+# WAD Personal Website — José Castro Castillo
+
+This repository contains the personal website of **José Castro Castillo**,  
+a _Business Information Technology student at the University of Salford (UK)_.
+
+The project demonstrates a multi-page responsive site including:
+
+- **Home** (`index.html`)
+- **Contact**
+- **Skills**
+- **Business Showcase**
+- **Problem-Solving Case Study**
+
+Each page is semantically structured, accessible, and styled using modular CSS.
+
+---
+
+## 🔧 Technical Overview
+
+**Languages & Technologies:**
+
+- HTML5 (semantic structure, W3C validated)
+- CSS3 (responsive design, accessibility-friendly)
+- JavaScript (interactive animations & dynamic behaviors)
+
+**Key features:**
+
+- Responsive layout built with CSS Grid and Flexbox
+- Accessibility improvements (ARIA, focus styles, alt text)
+- Interactive canvas animation for BKC visual branding
+- Form validation and mailto functionality in JavaScript
+- Clean folder structure and commented source code
+
+---
+
+## 🧠 Code Review and Improvements
+
+During development, various **code refinement tools** were used to:
+
+- Improve code readability and professional commenting.
+- Ensure WCAG and W3C HTML/CSS compliance.
+- Simplify and optimize the JavaScript animation logic.
+- Standardize file organization, indentation, and semantics.
+
+The code has been **validated** using:
+
+- [W3C HTML Validator](https://validator.w3.org/)
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+- [JSHint](https://jshint.com/) for JavaScript linting.
+
+---
+
+## 📁 Folder Structure
