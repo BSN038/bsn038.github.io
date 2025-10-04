@@ -1,22 +1,38 @@
 <!DOCTYPE html>
+<!-- Declares HTML5 document type so browsers render in standards mode -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Ensures responsive layout on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Home</title>
+
+  <!-- Short, SEO-friendly description (kept under ~160 chars) -->
   <meta name="description"
-    content="Home page of José Castro Castillo — Business Information Technology student at the University of Salford. Explore my profile, skills, business projects, and problem-solving work for Best Krazy Chicken (BKC)." />
+    content="Portfolio of José Castro Castillo — Business IT student at the University of Salford. Explore my skills, business work, and projects." />
+
+  <!-- Main site stylesheet (keep CSS modular and cacheable) -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
+  <!-- =========================
+         SITE HEADER / BRAND BAR
+         Contains site title, subtitle, and primary navigation
+    ========================== -->
   <header>
     <div class="container brand">
+      <!-- Personal brand (use H1 once per page) -->
       <h1>José Castro Castillo</h1>
+      <!-- Short role/affiliation line -->
       <p class="muted">Business Information Technology Student — University of Salford</p>
-      <nav>
-        <a href="index.html" class="active">Home</a>
+
+      <!-- Primary navigation (highlight current page with .active; use aria-current for accessibility) -->
+      <nav aria-label="Primary">
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="contact.html">Contact</a>
         <a href="skills.html">Skills</a>
         <a href="business.html">Business</a>
@@ -25,17 +41,27 @@
     </div>
   </header>
 
+  <!-- =========================
+         MAIN CONTENT WRAPPER
+         Holds all page sections inside a centered container
+    ========================== -->
   <main class="container">
-    <!-- HERO -->
+    <!-- =========================
+           HERO SECTION
+           Quick intro with brand case-study image and profile photo
+      ========================== -->
     <section class="hero card">
+      <!-- Brand/case-study visual with accessible alt text -->
       <figure class="hero-figure">
         <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" />
         <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
       </figure>
 
+      <!-- Two-column grid: intro text (left) + profile image (right) -->
       <div class="hero-grid">
         <div>
           <h2>Welcome</h2>
+          <!-- Short value proposition for visitors -->
           <p>
             I am a Business Information Technology student focused on building practical web solutions.
             My work combines technology and entrepreneurship, from small business operations to a digital
@@ -43,13 +69,17 @@
           </p>
         </div>
 
+        <!-- Profile photo (use class for sizing and shape in CSS) -->
         <div class="profile-container">
           <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" />
         </div>
       </div>
     </section>
 
-    <!-- BIO (merged from About page) -->
+    <!-- =========================
+           ABOUT / BIO SECTION
+           Brief background, interests, and motivation
+      ========================== -->
     <section class="card">
       <h2>About Me</h2>
       <p>
@@ -67,18 +97,26 @@
       </p>
     </section>
 
-    <!-- QUICK LINKS -->
+    <!-- =========================
+           QUICK LINKS / CTA CARDS
+           Three cards directing to key subpages
+      ========================== -->
     <section class="grid grid-3 quick-links">
+      <!-- Skills card -->
       <article class="card">
         <h3>Skills</h3>
         <p class="muted">Technical, business, and practical competencies.</p>
         <a class="btn" href="skills.html">View skills</a>
       </article>
+
+      <!-- Business showcase card -->
       <article class="card">
         <h3>Business Showcase</h3>
         <p class="muted">Entrepreneurship, tool rental, and construction projects.</p>
         <a class="btn" href="business.html">Explore</a>
       </article>
+
+      <!-- Problem-solving project card -->
       <article class="card">
         <h3>Problem-Solving</h3>
         <p class="muted">Restaurant case study (BKC): branding, links, and contact form.</p>
@@ -87,17 +125,30 @@
     </section>
   </main>
 
+  <!-- =========================
+         FOOTER
+         Copyright + direct contact links
+         Use <address> for contact details for better semantics
+    ========================== -->
   <footer>
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
-        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-          rel="noopener">LinkedIn</a>
+        <address style="display:inline">
+          <!-- Mailto link for quick email contact -->
+          <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
+          <!-- External link opens in new tab; rel="noopener" for security -->
+          <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
+            rel="noopener">LinkedIn</a>
+        </address>
       </small>
     </div>
   </footer>
 
+  <!-- =========================
+         SCRIPTS
+         Place JavaScript at the end for faster initial render
+    ========================== -->
   <script src="js/script.js"></script>
 </body>
 

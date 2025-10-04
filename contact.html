@@ -2,12 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>José Castro Castillo — Contact</title>
+
   <meta name="description"
-    content="Contact page of José Castro Castillo — Business Information Technology student at the University of Salford. Get in touch via email or LinkedIn." />
-  <link rel="stylesheet" href="css/styles.css" />
+    content="Contact page for José Castro Castillo — Business IT student at the University of Salford. Get in touch via email, phone, or the simple enquiry form.">
+
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -15,9 +18,9 @@
     <div class="container brand">
       <h1>José Castro Castillo</h1>
       <p class="muted">Business Information Technology Student — University of Salford</p>
-      <nav>
+      <nav aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
         <a href="skills.html">Skills</a>
         <a href="business.html">Business</a>
         <a href="problem.html">Problem-Solving</a>
@@ -28,36 +31,81 @@
   <main class="container">
     <h2>Contact</h2>
 
-    <section class="card profile">
-      <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" />
-      <p>If you would like to get in touch, you can reach me through the following:</p>
-      <ul class="contact-list">
-        <li>Email: <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">J.E.CastroCastillo@edu.salford.ac.uk</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-            rel="noopener">linkedin.com/in/jose-efrain-castro-castillo-a09b41312</a></li>
-      </ul>
+    <section class="card">
+      <h3>Get in Touch</h3>
+      <address>
+        <p>Email: <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">J.E.CastroCastillo@edu.salford.ac.uk</a></p>
+        <p>Phone: <a href="tel:+441234567890">+44 1234 567890</a></p>
+        <p>
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312/" target="_blank"
+            rel="noopener noreferrer">jose-efrain-castro-castillo</a>
+        </p>
+      </address>
     </section>
 
     <section class="card">
-      <h3>Alternative Contact</h3>
-      <p>
-        You can also use the contact form available on the
-        <a href="problem.html">Problem-Solving page</a>.
-      </p>
+      <h3>Enquiry Form</h3>
+      <!-- Sin action mailto; lo generamos por JS para evitar warnings -->
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name">
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" required autocomplete="off">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required autocomplete="off"></textarea>
+
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <small>
-        © 2025 José Castro Castillo ·
+      <address class="footer-address">
         <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
         <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-          rel="noopener">LinkedIn</a>
-      </small>
+          rel="noopener noreferrer">LinkedIn</a>
+      </address>
+      <small>© 2025 José Castro Castillo</small>
     </div>
   </footer>
 
+  <!-- JS mínimo para construir el mailto dinámico sin warnings del linter -->
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        if (!form.checkValidity()) return; // deja que el navegador valide
+        e.preventDefault();
+
+        const to = 'J.E.CastroCastillo@edu.salford.ac.uk';
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        const body = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          '',
+          message
+        ].join('\n');
+
+        const mailto =
+          `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailto;
+      });
+    })();
+  </script>
   <script src="js/script.js"></script>
 </body>
 

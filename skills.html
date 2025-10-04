@@ -1,12 +1,20 @@
 <!DOCTYPE html>
+<!-- Declares HTML5 document type so browsers render in standards mode -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Ensures responsive layout on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Skills</title>
+
+  <!-- Short, SEO-friendly description -->
   <meta name="description"
     content="Skills page of José Castro Castillo — Business Information Technology student at the University of Salford. Includes technical, business, and personal competencies." />
+
+  <!-- Main site stylesheet (keep CSS modular and cacheable) -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -15,10 +23,12 @@
     <div class="container brand">
       <h1>José Castro Castillo</h1>
       <p class="muted">Business Information Technology Student — University of Salford</p>
-      <nav>
+
+      <!-- Primary nav with aria-current for accessibility -->
+      <nav aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact</a>
-        <a href="skills.html" class="active">Skills</a>
+        <a href="skills.html" class="active" aria-current="page">Skills</a>
         <a href="business.html">Business</a>
         <a href="problem.html">Problem-Solving</a>
       </nav>
@@ -27,6 +37,9 @@
 
   <main class="container">
     <h2>Skills</h2>
+
+    <!-- Skill list: grouped by domain (technical, business, and practical)
+           Using <ul> ensures screen readers announce it as a structured list. -->
     <section class="card">
       <ul class="skills-list">
         <li><strong>Programming:</strong> Python, Java, HTML, CSS</li>
@@ -36,8 +49,11 @@
         <li><strong>CRM:</strong> customer relationship management</li>
         <li><strong>Problem-Solving:</strong> adaptability and creative thinking</li>
         <li><strong>Entrepreneurship:</strong> small business operations</li>
-        <li><strong>Practical Skills:</strong> handling tools and equipment (cement mixers, compactors, carpet cleaning
-          machines, driveway renovation projects)</li>
+        <!-- The final item highlights hands-on, practical competencies -->
+        <li>
+          <strong>Practical Skills:</strong> handling tools and equipment (cement mixers, compactors,
+          carpet cleaning machines, driveway renovation projects)
+        </li>
       </ul>
     </section>
   </main>
@@ -46,13 +62,17 @@
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
-        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-          rel="noopener">LinkedIn</a>
+        <!-- Use <address> for contact semantics, inline to stay compact -->
+        <address style="display:inline">
+          <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
+          <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
+            rel="noopener">LinkedIn</a>
+        </address>
       </small>
     </div>
   </footer>
 
+  <!-- JS included for consistency across all pages -->
   <script src="js/script.js"></script>
 </body>
 

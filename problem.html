@@ -1,12 +1,20 @@
 <!DOCTYPE html>
+<!-- Declares HTML5 document type so browsers render in standards mode -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Ensures responsive layout on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Problem-Solving Case Study</title>
+
+  <!-- Short, SEO-friendly description -->
   <meta name="description"
     content="Problem-solving case study: Best Krazy Chicken (BKC). A concept introducing Colombian wood-fired rotisserie chicken to the UK with branding, opportunities, and a simple digital presence." />
+
+  <!-- Main site stylesheet (keep CSS modular and cacheable) -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -15,12 +23,13 @@
     <div class="container brand">
       <h1>José Castro Castillo</h1>
       <p class="muted">Business Information Technology Student — University of Salford</p>
-      <nav>
+      <!-- Primary nav; use aria-current on the active item for screen readers -->
+      <nav aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact</a>
         <a href="skills.html">Skills</a>
         <a href="business.html">Business</a>
-        <a href="problem.html" class="active">Problem-Solving</a>
+        <a href="problem.html" class="active" aria-current="page">Problem-Solving</a>
       </nav>
     </div>
   </header>
@@ -28,16 +37,17 @@
   <main class="container">
     <h2>Problem-Solving Case Study — Best Krazy Chicken (BKC)</h2>
 
+    <!-- Case-study intro: logo acts as a quick visual "hero" -->
     <section class="card">
       <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" />
       <p>
         <strong>Best Krazy Chicken (BKC)</strong> is a restaurant concept designed to compete with established UK chains
-        by offering
-        Colombian-style wood-fired rotisserie chicken with authentic flavours and traditional side dishes.
+        by offering Colombian-style wood-fired rotisserie chicken with authentic flavours and traditional side dishes.
         The goal is to pair strong product quality with a clear, modern digital presence.
       </p>
     </section>
 
+    <!-- Context explains the product and market gap in simple terms -->
     <section class="card">
       <h3>Context</h3>
       <p>
@@ -48,6 +58,7 @@
       </p>
     </section>
 
+    <!-- Challenges & Opportunities: bullets make it scannable for stakeholders -->
     <section class="card">
       <h3>Challenges & Opportunities</h3>
       <ul>
@@ -61,6 +72,7 @@
       </ul>
     </section>
 
+    <!-- Design rationale: ties UI choices (logo, colours, nav) to business goals -->
     <section class="card">
       <h3>Design Choices</h3>
       <p>
@@ -71,6 +83,10 @@
       </p>
     </section>
 
+    <!-- Social/contact links:
+           - target="_blank" opens new tab; rel="noopener" for security
+           - tel: enables click-to-call on mobile
+           - mailto: opens the default email client -->
     <section class="card">
       <h3>Social Media & Contact Links</h3>
       <ul>
@@ -83,20 +99,27 @@
       </ul>
     </section>
 
+    <!-- Contact form notes:
+           - This uses mailto:, which depends on the user's local email client (not reliable on all devices).
+           - method="post" + enctype="text/plain" sends plain text fields to the email draft.
+           - Keep labels tied to inputs via for/id for accessibility.
+           - Add autocomplete to improve UX; name attributes map to the email body. -->
     <section class="card">
       <h3>Contact Form</h3>
       <form action="mailto:J.E.CastroCastillo@edu.salford.ac.uk" method="post" enctype="text/plain">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required autocomplete="name" />
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required autocomplete="email" />
 
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="5" required autocomplete="off"></textarea>
 
+        <!-- Consider progressive enhancement: if JS is available, you could validate and/or send via a service -->
         <button type="submit">Send</button>
       </form>
+      <!-- Optional tip (non-blocking): for production, a server endpoint or a form service (e.g., Netlify Forms) is more reliable than mailto:. -->
     </section>
   </main>
 
@@ -104,13 +127,17 @@
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
-        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
-          rel="noopener">LinkedIn</a>
+        <!-- Use <address> to wrap contact methods semantically; inline to keep the line compact -->
+        <address style="display:inline">
+          <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
+          <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
+            rel="noopener">LinkedIn</a>
+        </address>
       </small>
     </div>
   </footer>
 
+  <!-- Scripts: kept at the end; no page-specific JS required here, but this keeps parity with other pages -->
   <script src="js/script.js"></script>
 </body>
 

@@ -25,6 +25,16 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Visible focus for keyboard users (WCAG-friendly) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #cc0000;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* =======================================
    Layout / Utilities
    Reusable containers and grid helpers.
@@ -115,6 +125,20 @@ nav a.active {
   align-items: center;
 }
 
+/* Mobile-first hero: stack to one column on small screens */
+@media (max-width: 720px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    /* from 2 columns to 1 column */
+    gap: 1rem;
+  }
+
+  .profile-container {
+    order: 2;
+    /* optional: text first, photo second */
+  }
+}
+
 /* =======================================
    Profile (used in About/Skills pages)
    Avatar and quick action buttons.
@@ -164,6 +188,14 @@ nav a.active {
   /* small zoom on hover */
 }
 
+/* Optional layout hint to reduce CLS if <img> has no width/height in HTML */
+.logo-bkc,
+.rotisserie-img,
+.card figure img {
+  aspect-ratio: 4 / 3;
+  /* adjust per real image ratio if needed */
+}
+
 /* =======================================
    Lists
    Simple styling for bullet lists.
@@ -206,6 +238,13 @@ ul {
   background: #333;
 }
 
+/* Keep focus states visible on buttons */
+.btn:focus-visible,
+form button:focus-visible {
+  outline: 3px solid #cc0000;
+  outline-offset: 2px;
+}
+
 /* =======================================
    Rotisserie animation
    Container for image + flames; centers content.
@@ -245,6 +284,16 @@ ul {
   /* ignore mouse */
   mix-blend-mode: screen;
   /* fire glow blends over the photo */
+}
+
+/* Fallback if a browser/linter complains about 'inset' or blend mode */
+@supports not (inset: 0) {
+  .flame-layer {
+    top: auto;
+    right: 0;
+    bottom: 6%;
+    left: 0;
+  }
 }
 
 /* Respect reduced motion preferences */
@@ -292,6 +341,15 @@ form textarea {
   font-family: inherit;
 }
 
+/* Accessible focus for form controls */
+form input:focus,
+form textarea:focus {
+  border-color: #cc0000;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
+  outline: none;
+  /* focus-visible outline already defined above */
+}
+
 form button {
   background: #cc0000;
   color: #fff;
@@ -317,6 +375,12 @@ footer {
   margin-top: 2rem;
 }
 
+/* Style footer links in brand color */
+footer a {
+  color: #cc0000;
+}
+
+/* (Legacy rule kept harmlessly if some pages still use links inside <small>) */
 footer small a {
   color: #cc0000;
 }

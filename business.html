@@ -1,25 +1,37 @@
 <!DOCTYPE html>
+<!-- Declares HTML5 document type so browsers render in standards mode -->
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <!-- Ensures responsive layout on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Business Showcase</title>
+
+  <!-- Short, SEO-friendly description (kept under ~160 chars) -->
   <meta name="description"
-    content="Business showcase of José Castro Castillo — entrepreneurship in tool rental, construction projects, and the Best Krazy Chicken (BKC) restaurant concept.">
-  <!-- Main site styles -->
-  <link rel="stylesheet" href="css/styles.css">
+    content="Business showcase of José Castro Castillo — tool rental, summer construction projects, and the Best Krazy Chicken (BKC) restaurant concept." />
+
+  <!-- Main site stylesheet (keep CSS modular and cacheable) -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-  <!-- Header: name, subtitle, and simple site navigation -->
+  <!-- =========================
+         SITE HEADER / BRAND BAR
+         Contains name, subtitle, and primary navigation
+    ========================== -->
   <header>
     <div class="container brand">
+      <!-- Personal brand (use H1 once per page) -->
       <h1>José Castro Castillo</h1>
+      <!-- Short role/affiliation line -->
       <p class="muted">Business Information Technology Student — University of Salford</p>
 
-      <!-- Top navigation. 'Business' is marked as current page -->
-      <nav>
+      <!-- Primary navigation (highlight current page with .active; use aria-current for accessibility) -->
+      <nav aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact</a>
         <a href="skills.html">Skills</a>
@@ -29,7 +41,10 @@
     </div>
   </header>
 
-  <!-- Main page content: title, intro, and two sections -->
+  <!-- =========================
+         MAIN CONTENT WRAPPER
+         Page heading, intro, activity cards, and BKC visuals
+    ========================== -->
   <main class="container">
     <!-- Page heading and short intro about the businesses and BKC -->
     <h2>Business Showcase</h2>
@@ -39,7 +54,10 @@
       Below are highlights of both my current activities and the BKC concept visuals.
     </p>
 
-    <!-- Grid of cards: quick overview of current business activities -->
+    <!-- =========================
+           BUSINESS ACTIVITIES (Cards)
+           Two cards that summarize current work streams
+      ========================== -->
     <section class="grid grid-2 business-grid">
       <!-- Card 1: tool and equipment rental -->
       <article class="card">
@@ -61,7 +79,10 @@
       </article>
     </section>
 
-    <!-- BKC visuals: concept images shown inside a card -->
+    <!-- =========================
+           BKC VISUAL CONCEPT
+           Branded visuals with subtle animation and heat distortion
+      ========================== -->
     <section class="card">
       <h3>Best Krazy Chicken (BKC) — Visual Concept</h3>
       <p class="muted">
@@ -71,7 +92,7 @@
 
       <!-- Rotisserie visual: base photo + heat shimmer + flame canvas (animated by JS) -->
       <!-- This block relies on CSS (.rotisserie-visual, .rotisserie-img, .flame-layer)
-           and on JS in js/script.js to draw flames and animate heat. -->
+             and on JS in js/script.js to draw flames and animate heat. -->
       <figure class="rotisserie-visual">
         <!-- Base image of the rotisserie (no inline styles; CSS controls size) -->
         <img src="img/bkc-rotisserie.png" alt="BKC rotisserie with chickens and potatoes" class="rotisserie-img" />
@@ -96,7 +117,7 @@
       <!-- Plated dish visual: simple image without animation (keeps natural proportions) -->
       <figure style="margin:1rem 0;">
         <img src="img/bkc-plated-dish.png"
-          alt="BKC plated dish: roasted chicken with roasted potatoes, ripe plantain, yuca, and chimichurri">
+          alt="BKC plated dish: roasted chicken with roasted potatoes, ripe plantain, yuca, and chimichurri" />
         <figcaption class="muted" style="text-align:center;">
           Signature plate with Colombian sides; cutlery colours arranged as the Colombian flag (yellow, blue, red).
         </figcaption>
@@ -104,20 +125,31 @@
     </section>
   </main>
 
-  <!-- Footer: small print and external links -->
+  <!-- =========================
+         FOOTER
+         Copyright + direct contact links
+         Use <address> for contact details for better semantics
+    ========================== -->
   <footer>
     <div class="container">
       <small>
         © 2025 José Castro Castillo ·
-        <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
-        <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank" rel="noopener">
-          LinkedIn
-        </a>
+        <address style="display:inline">
+          <!-- Mailto link for quick email contact -->
+          <a href="mailto:J.E.CastroCastillo@edu.salford.ac.uk">Email</a> ·
+          <!-- External link opens in new tab; rel="noopener" for security -->
+          <a href="https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312" target="_blank"
+            rel="noopener">LinkedIn</a>
+        </address>
       </small>
     </div>
   </footer>
 
-  <!-- Site scripts: your main JS file animates the rotisserie if present -->
+  <!-- =========================
+         SCRIPTS
+         Place JavaScript at the end for faster initial render.
+         The main JS animates the rotisserie if present on the page.
+    ========================== -->
   <script src="js/script.js"></script>
 </body>
 
