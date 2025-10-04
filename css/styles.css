@@ -384,3 +384,16 @@ footer a {
 footer small a {
   color: #cc0000;
 }
+
+/* =======================================
+   Footer Enhancements
+   Small spacing and color refinement
+   ======================================= */
+footer address a {
+  margin: 0 0.25rem;
+  /* spacing between links */
+}
+
+footer address a:hover {
+  text-decoration: underline;
+}
