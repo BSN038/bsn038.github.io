@@ -1,3 +1,4 @@
+/* jshint esversion: 11 */
 /* =========================================================
    ACTIVE NAV ITEM
    Highlights the current page link and applies aria-current.
@@ -23,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.querySelector('.flame-layer');
   const heatNoise = document.getElementById('heatNoise');
 
-  if (!rotisserie || !img || !canvas) return; // Not on this page
+  // Stop if this section is not on the current page
+  if (!rotisserie || !img || !canvas) return;
 
   const prefersReduced =
     window.matchMedia &&
@@ -107,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (prefersReduced) return; // skip flames if motion disabled
+  if (prefersReduced) return; // Skip flames if motion disabled
 
   let last = performance.now();
   (function tick(now) {
@@ -125,16 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = particles[i];
       p.life += dt * 0.06;
       const r = p.life / p.maxLife;
-
       p.x += p.vx + Math.sin((p.life + i) * 0.05) * 0.2;
       p.y += p.vy - r * 0.3;
-
       const size = p.size * (1 - r);
       ctx.beginPath();
       ctx.fillStyle = flameColor(r);
       ctx.ellipse(p.x, p.y, size * 0.6, size, 0, 0, Math.PI * 2);
       ctx.fill();
-
       if (p.life >= p.maxLife || p.y + 10 < 0) particles.splice(i, 1);
     }
 
