@@ -99,3 +99,24 @@ The code has been **validated** using:
 ---
 
 ## 📁 Folder Structure
+
+---
+
+## ✅ Validation & Testing
+
+All HTML pages were tested and validated using the official **W3C Markup Validation Service**:
+
+- **Validator:** [https://validator.w3.org/](https://validator.w3.org/)
+- **Result:** No errors or warnings were found on any page.
+- **Validation proof:** Confirmed for [https://bsn038.github.io/](https://bsn038.github.io/)
+
+### Accessibility & Structure Improvements
+
+- Added semantic HTML5 elements (`<main>`, `<header>`, `<section>`, `<article>`, `<footer>`).
+- Used proper heading hierarchy (`<h1>`–`<h3>`).
+- Updated `<address>` placement for valid context.
+- Included ARIA attributes for better navigation (`aria-current="page"`).
+- All images have descriptive `alt` text for accessibility.
+
+**Outcome:**  
+The final version of the website passes all HTML validation tests with no warnings and follows accessibility best practices.
