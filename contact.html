@@ -14,9 +14,10 @@
   <meta property="og:title" content="Contact — José Castro Castillo">
   <meta property="og:description" content="Get in touch via email, phone, or the enquiry form.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tudominio.com/contact.html">
-  <meta property="og:image" content="https://tudominio.com/img/og-cover.jpg">
-  <meta property="og:site_name" content="José Castro Castillo">
+  <meta property="og:url" content="https://bsn038.github.io/contact.html">
+  <meta property="og:image" content="https://bsn038.github.io/img/og-cover.jpg">
+  <meta name="twitter:image" content="https://bsn038.github.io/img/og-cover.jpg">
+
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -94,23 +95,56 @@
 
     <section class="card">
       <h3>Enquiry Form</h3>
-      <!-- Sin action mailto; lo generamos por JS para evitar warnings -->
-      <form id="contact-form">
+    
+      <!--
+        Contact form wired to Formspree (no more "mailto")
+        - Sends submissions to your endpoint: https://formspree.io/f/xdkwlkee
+        - Shows a friendly "sent" message after redirect (?sent=1)
+        - Simple anti-spam honeypot field
+        - Accessible: success note announced to screen readers
+        IMPORTANT: Make sure any old "mailto" JavaScript was removed.
+      -->
+    
+      <!-- Success note (appears after redirect to ?sent=1) -->
+      <div class="card" id="sent-note" hidden aria-live="polite" role="status">
+        ✅ Thanks! Your message was sent. I’ll reply soon.
+      </div>
+    
+      <script>
+        // Show the success note if the URL has ?sent=1 (after Formspree redirect)
+        if (new URLSearchParams(location.search).get('sent') === '1') {
+          document.getElementById('sent-note').hidden = false;
+        }
+      </script>
+    
+      <!-- Actual contact form (posts to your Formspree endpoint) -->
+      <form id="contact-form" action="https://formspree.io/f/xdkwlkee" method="POST">
+        <!-- Email subject for the message you receive (helps inbox filtering) -->
+        <input type="hidden" name="_subject" value="New contact form message">
+    
+        <!-- Simple anti-spam "honeypot" (real users won't fill this) -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    
         <label for="name">Name</label>
         <input id="name" name="name" type="text" required autocomplete="name">
-
+    
         <label for="email">Email</label>
-        <input id="email" name="email" type="email" required autocomplete="email">
-
+        <!-- Formspree expects the email field name to be _replyto -->
+        <input id="email" name="_replyto" type="email" required autocomplete="email">
+    
         <label for="subject">Subject</label>
         <input id="subject" name="subject" type="text" required autocomplete="off">
-
+    
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required autocomplete="off"></textarea>
-
+        <textarea id="message" name="message" rows="6" required></textarea>
+    
+        <!-- Redirect back to Contact with ?sent=1 (adjust to your live URL if it changes) -->
+        <input type="hidden" name="_next" value="https://bsn038.github.io/contact.html?sent=1">
+    
         <button type="submit">Send</button>
       </form>
     </section>
+
   </main>
 
   <footer>
@@ -124,39 +158,6 @@
     </div>
   </footer>
 
-
-
-
-  <!-- JS mínimo para construir el mailto dinámico sin warnings del linter -->
-  <script>
-    (function () {
-      const form = document.getElementById('contact-form');
-      if (!form) return;
-
-      form.addEventListener('submit', function (e) {
-        if (!form.checkValidity()) return; // deja que el navegador valide
-        e.preventDefault();
-
-        const to = 'J.E.CastroCastillo@edu.salford.ac.uk';
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        const body = [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          '',
-          message
-        ].join('\n');
-
-        const mailto =
-          `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        window.location.href = mailto;
-      });
-    })();
-  </script>
   <script src="js/script.js"></script>
 </body>
 
