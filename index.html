@@ -11,14 +11,61 @@
   <title>José Castro Castillo — Home</title>
 
   <!-- Short, SEO-friendly description (kept under ~160 chars) -->
+  <!-- Short, SEO-friendly description (kept under ~160 chars) -->
   <meta name="description"
-    content="Portfolio of José Castro Castillo — Business IT student at the University of Salford. Explore my skills, business work, and projects." >
+    content="Portfolio of José Castro Castillo — Business IT student at the University of Salford. Explore my skills, business work, and projects.">
+  
+  <!-- Short, SEO-friendly description (kept under ~160 chars) -->
+  <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
+  <meta property="og:title" content="José Castro Castillo — Business IT Portfolio">
+  <meta property="og:description" content="Explore my skills, business work, and projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/">
+  <meta property="og:image" content="https://tudominio.com/img/logo-bkc.png">
+  <meta property="og:site_name" content="José Castro Castillo">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="José Castro Castillo — Business IT Portfolio">
+  <meta name="twitter:description" content="Explore my skills, business work, and projects.">
+  <meta name="twitter:image" content="https://tudominio.com/img/logo-bkc.png">
+  
+  <!-- Main site stylesheet (keep CSS modular and cacheable) -->
+  <link rel="stylesheet" href="css/styles.css">
 
   <!-- Main site stylesheet (keep CSS modular and cacheable) -->
-  <link rel="stylesheet" href="css/styles.css" >
+  <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+
+  <!--
+Schema.org (JSON-LD): Person
+Structured data to help search engines understand who the page is about.
+Do not put comments inside the JSON; keep them here above the <script>.
+-->
+
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "José Castro Castillo",
+  "jobTitle": "Business Information Technology Student",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Salford",
+    "url": "https://www.salford.ac.uk/"
+  },
+  "url": "https://tudominio.com/",
+  "image": "https://tudominio.com/img/profile-jose.png",
+  "email": "mailto:J.E.CastroCastillo@edu.salford.ac.uk",
+  "sameAs": [
+    "https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312/"
+  ]
+}
+</script>
+
 </head>
 
-<body>
+<body class="theme-sky">
+
   <!-- =========================
          SITE HEADER / BRAND BAR
          Contains site title, subtitle, and primary navigation
@@ -51,10 +98,10 @@
            Quick intro with brand case-study image and profile photo
       ========================== -->
     <section class="hero card">
-      <!-- Brand/case-study visual with accessible alt text -->
-      <figure class="hero-figure">
-        <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" >
-        <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+      
+      <figure class="hero-figure panel-sky">
+         <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" >
+         <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
       </figure>
 
       <!-- Two-column grid: intro text (left) + profile image (right) -->
@@ -124,6 +171,15 @@
         <p class="muted">Restaurant case study (BKC): branding, links, and contact form.</p>
         <a class="btn" href="problem.html">Open project</a>
       </article>
+
+      <!-- External Resource card (out-of-sector, value-add) -->
+      <article class="card">
+        <h3>Learn Digital Skills</h3>
+        <p class="muted">Free courses to grow your web & business skills.</p>
+        <a class="btn" href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer"
+          aria-label="Open freeCodeCamp in a new tab">Visit freeCodeCamp</a>
+      </article>
+
     </section>
   </main>
 

@@ -9,11 +9,59 @@
 
   <meta name="description"
     content="Contact page for José Castro Castillo — Business IT student at the University of Salford. Get in touch via email, phone, or the simple enquiry form.">
-
+  
+  <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
+  <meta property="og:title" content="Contact — José Castro Castillo">
+  <meta property="og:description" content="Get in touch via email, phone, or the enquiry form.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/contact.html">
+  <meta property="og:image" content="https://tudominio.com/img/og-cover.jpg">
+  <meta property="og:site_name" content="José Castro Castillo">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — José Castro Castillo">
+  <meta name="twitter:description" content="Get in touch via email, phone, or the enquiry form.">
+  <meta name="twitter:image" content="https://tudominio.com/img/og-cover.jpg">
+  
   <link rel="stylesheet" href="css/styles.css">
+
+  <!--
+  Schema.org (JSON-LD): ContactPage
+  Structured data so search engines/AI understand this is your contact page.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact — José Castro Castillo",
+    "url": "https://tudominio.com/contact.html",
+    "about": {
+      "@type": "Person",
+      "name": "José Castro Castillo",
+      "url": "https://tudominio.com/"
+    },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Personal Site of José Castro Castillo",
+      "url": "https://tudominio.com/",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "J.E.CastroCastillo@edu.salford.ac.uk",
+        "telephone": "+44 1234 567890",
+        "availableLanguage": ["en", "es"]
+      }]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/jose-efrain-castro-castillo-a09b41312/"
+    ]
+  }
+  </script>
+
 </head>
 
-<body>
+<body class="theme-sky">
   <header>
     <div class="container brand">
       <h1>José Castro Castillo</h1>

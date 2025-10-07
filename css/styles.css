@@ -397,3 +397,43 @@ footer address a {
 footer address a:hover {
   text-decoration: underline;
 }
+
+:root {
+  --bg-sky: #eef4ff;
+  --bg-sky-soft: #e3edff;
+}
+
+body.theme-sky {
+  background: var(--bg-sky);
+}
+
+body.theme-sky header,
+body.theme-sky footer {
+  background: var(--bg-sky-soft);
+}
+/* Box blue colour for image */
+.panel-sky {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1rem;
+  /* center */
+  background: var(--bg-sky);
+  border: 1px solid rgba(0, 0, 0, .06);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.panel-sky img {
+  display: block;
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+/* avoiding cut 4:3 and be sure it is responsive */
+.storefront-figure img {
+  aspect-ratio: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

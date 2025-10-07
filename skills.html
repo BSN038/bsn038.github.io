@@ -3,19 +3,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" >
   <!-- Ensures responsive layout on mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
 
   <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Skills</title>
 
   <!-- Short, SEO-friendly description -->
   <meta name="description"
-    content="Skills page of José Castro Castillo — Business Information Technology student at the University of Salford. Includes technical, business, and personal competencies." />
-
+    content="Skills page of José Castro Castillo — Business Information Technology student at the University of Salford. Includes technical, business, and personal competencies." >
+  
+  <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
+  <meta property="og:title" content="Skills — José Castro Castillo">
+  <meta property="og:description"
+    content="Technical, business, and practical competencies: Python, Java, HTML, CSS, CRM, entrepreneurship, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/skills.html">
+  <meta property="og:image" content="https://tudominio.com/img/og-cover.jpg">
+  <meta property="og:site_name" content="José Castro Castillo">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skills — José Castro Castillo">
+  <meta name="twitter:description"
+    content="Technical, business, and practical competencies: Python, Java, HTML, CSS, CRM, entrepreneurship, and more.">
+  <meta name="twitter:image" content="https://tudominio.com/img/og-cover.jpg">
+  
   <!-- Main site stylesheet (keep CSS modular and cacheable) -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" >
+
+  <!--
+  Schema.org (JSON-LD): WebPage + ItemList of Skills
+  Helps search/AI understand this is your skills page and what skills you list.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Skills — José Castro Castillo",
+    "url": "https://tudominio.com/skills.html",
+    "about": {
+      "@type": "Person",
+      "name": "José Castro Castillo",
+      "url": "https://tudominio.com/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Skills",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "DefinedTerm", "name": "Python" } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "DefinedTerm", "name": "Java" } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "DefinedTerm", "name": "HTML" } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "DefinedTerm", "name": "CSS" } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "DefinedTerm", "name": "Business Development" } },
+        { "@type": "ListItem", "position": 6, "item": { "@type": "DefinedTerm", "name": "Teamwork & Leadership" } },
+        { "@type": "ListItem", "position": 7, "item": { "@type": "DefinedTerm", "name": "Accounting (Basics)" } },
+        { "@type": "ListItem", "position": 8, "item": { "@type": "DefinedTerm", "name": "CRM" } },
+        { "@type": "ListItem", "position": 9, "item": { "@type": "DefinedTerm", "name": "Problem-Solving" } },
+        { "@type": "ListItem", "position": 10, "item": { "@type": "DefinedTerm", "name": "Entrepreneurship" } },
+        { "@type": "ListItem", "position": 11, "item": { "@type": "DefinedTerm", "name": "Practical Tools & Equipment Handling" } }
+      ]
+    }
+  }
+  </script>
+
 </head>
 
 <body>

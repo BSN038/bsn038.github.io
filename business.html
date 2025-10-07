@@ -3,22 +3,55 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <!-- Ensures responsive layout on mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Page title shown in browser tabs and search results -->
   <title>José Castro Castillo — Business Showcase</title>
 
   <!-- Short, SEO-friendly description (kept under ~160 chars) -->
   <meta name="description"
-    content="Business showcase of José Castro Castillo — tool rental, summer construction projects, and the Best Krazy Chicken (BKC) restaurant concept." />
-
+    content="Business showcase of José Castro Castillo — tool rental, summer construction projects, and the Best Krazy Chicken (BKC) restaurant concept.">
+  
+  <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
+  <meta property="og:title" content="Business — José Castro Castillo">
+  <meta property="og:description" content= "Tool & equipment rental, summer construction projects, and the Best Krazy Chicken (BKC) concept visuals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/business.html">
+  <meta property="og:image" content="https://tudominio.com/img/og-cover.jpg">
+  <meta property="og:site_name" content="José Castro Castillo">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business — José Castro Castillo">
+  <meta name="twitter:description" content= "Tool & equipment rental, summer construction projects, and the BKC concept visuals.">
+  <meta name="twitter:image" content="https://tudominio.com/img/og-cover.jpg">
+  
   <!-- Main site stylesheet (keep CSS modular and cacheable) -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" >
+
+  <!--
+  Schema.org (JSON-LD): Organization (BKC)
+  Structured data so search engines understand the business concept.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Best Krazy Chicken (BKC)",
+    "url": "https://tudominio.com/business.html",
+    "logo": "https://tudominio.com/img/logo-bkc.png",
+    "sameAs": [
+      "https://facebook.com/crazzychicken",
+      "https://instagram.com/crazzychicken"
+    ]
+  }
+  </script>
+
 </head>
 
-<body>
+<body class="theme-sky">
   <!-- =========================
          SITE HEADER / BRAND BAR
          Contains name, subtitle, and primary navigation
@@ -58,7 +91,9 @@
            BUSINESS ACTIVITIES (Cards)
            Two cards that summarize current work streams
       ========================== -->
-    <section class="grid grid-2 business-grid">
+    <section class="grid grid-2 business-grid" aria-labelledby="biz-acts">
+      <h3 id="biz-acts" class="visually-hidden">Business Activities</h3>
+
       <!-- Card 1: tool and equipment rental -->
       <article class="card">
         <h3>Tool &amp; Equipment Rental</h3>
@@ -89,6 +124,16 @@
         Wood-fired rotisserie chicken with Colombian flavours and sides: roasted potatoes, ripe plantain, yuca,
         and chimichurri. These visuals will be used across web and social to communicate the concept clearly.
       </p>
+      <!-- BKC storefront banner -->
+      <!-- BKC storefront banner (solo contenido, no cambia OG/Twitter) -->
+      <figure class="storefront-figure">
+        <img src="img/Front2BKC.png" alt="BKC storefront with chefs and wood-fired rotisserie chickens" width="1280"
+          height="853" loading="lazy" decoding="async">
+        <figcaption class="muted" style="text-align:center;">
+          BKC storefront — wood-fired rotisserie concept.
+        </figcaption>
+      </figure>
+
 
       <!-- Rotisserie visual: base photo + heat shimmer + flame canvas (animated by JS) -->
       <!-- This block relies on CSS (.rotisserie-visual, .rotisserie-img, .flame-layer)
