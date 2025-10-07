@@ -92,15 +92,59 @@ nav {
   margin-top: 0.5rem;
 }
 
-nav a {
-  margin-right: 1rem;
-  font-weight: bold;
+/* === Red pill nav: white text + gray press feedback === */
+/* Brand reds */
+:root {
+  --brand-red: #cc0000;
+  /* normal red */
+  --brand-red-dark: #a30000;
+  /* hover/active red */
 }
 
-nav a.active {
-  color: #cc0000;
-  /* Highlight current page */
+/* Base pill (all links) */
+header nav a {
+  display: inline-block;
+  padding: .48rem 1rem;
+  border-radius: 9999px;
+  background: var(--brand-red);
+  color: #fff;
+  /* white text */
+  border: 1px solid rgba(0, 0, 0, .12);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+  /* subtle depth */
+  transition: background .18s, box-shadow .12s, transform .06s;
 }
+
+/* Hover = darker red */
+header nav a:hover {
+  background: var(--brand-red-dark);
+  text-decoration: none;
+}
+
+/* Keyboard focus ring (visible + accessible) */
+header nav a:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, .25);
+  /* gray ring */
+  outline-offset: 2px;
+}
+
+/* Mouse down / pressed = gray halo + tiny dip */
+header nav a:active {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, .22);
+  /* gray shadow/halo */
+  transform: translateY(1px);
+}
+
+/* Current page = keep it darker so it stands out */
+header nav a.active,
+header nav a[aria-current="page"] {
+  background: var(--brand-red-dark);
+  color: #fff;
+  border-color: var(--brand-red-dark);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}border-color: var(--brand-blue-dark);
 
 /* =======================================
    Hero (used in other pages)
@@ -437,3 +481,292 @@ body.theme-sky footer {
   display: block;
   margin: 0 auto;
 }
+
+/* Footer: layout and space for items with iconos */
+footer address.with-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem 1rem;
+  /* row x column */
+}
+
+footer address.with-icons p {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  /* icono ↔ text */
+  margin: 0;
+}
+
+/* Hard-limit any SVG inside icon rows */
+.with-icons svg,
+.with-icons .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  min-height: 1.1rem;
+  flex: 0 0 auto;
+}
+
+/* If some global rule sets svg { width:100% } somewhere, neutralize it here */
+.with-icons svg {
+  max-width: none;
+}
+
+/* Optional: make contact page address look tidy like footer */
+.card address.with-icons p {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0 0 .35rem 0;
+  /* small vertical spacing between rows */
+}
+
+/* === Brand heading color (dark blue) === */
+/* Global variable for my dark blue brand color */
+:root {
+  --brand-blue-dark: #0b2a4a;
+}
+
+/* Make my name (H1 in the header) dark blue on every page */
+header .brand h1 {
+  color: var(--brand-blue-dark);
+}
+
+/* Optional: small underline on hover for a nicer feel */
+header .brand h1:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Watermark using my BKC logo */
+.hero.card {
+  background:
+    /* thin white film so text stays readable */
+    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+    /* tiled logo behind */
+    url("img/logo-bkc.png");
+  background-repeat: repeat;
+  background-size: 180px auto;
+  background-position: 0 0;
+  animation: heroDrift 18s linear infinite;
+  /* subtle drift */
+}
+
+/* Gentle drift animation for the watermark */
+@keyframes heroDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 200px 120px;
+  }
+}
+
+/* Respect reduced-motion preference: no animation */
+@media (prefers-reduced-motion: reduce) {
+  .hero.card {
+    animation: none;
+  }
+}
+
+/* Inline icons next to links (email/phone/LinkedIn) */
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+  opacity: 0.85;
+}
+
+/* Make link + icon align nicely on one line */
+.with-icons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Slightly stronger icon on hover for feedback */
+.with-icons a:hover .icon {
+  opacity: 1;
+}
+
+/* Watermark using your BKC logo (hero + inner panel) */
+.hero.card,
+.hero.card .panel-sky {
+  background:
+    linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+    url("img/logo-bkc.png");
+  background-repeat: repeat;
+  background-size: 180px auto;   /* adjust 160–220 */
+  background-position: 0 0;
+}
+
+/* gentle drift (optional) */
+.hero.card { animation: heroDrift 18s linear infinite; }
+@keyframes heroDrift {
+  from { background-position: 0 0,    0 0; }
+  to   { background-position: 0 0, 200px 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero.card { animation: none; }
+}
+
+/* === Watermark (chicken silhouette) for the hero (index) === */
+/* Inline SVG pattern as a data URL so you don't need a file */
+:root {
+  /* you can tweak the fill color by changing %239aa3b2 (hex #9aa3b2) */
+  --wm-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
+}
+
+/* TEST MODE: make it obvious first; then we soften it */
+.hero.card,
+.hero.card .panel-sky {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+    /* lighter film so you can SEE it */
+    var(--wm-img);
+  background-repeat: repeat;
+  background-size: 140px auto;
+  /* smaller = more tiles = more visible */
+  background-position: 0 0;
+}
+
+/* Optional subtle drift on the outer hero only */
+.hero.card {
+  animation: heroDrift 18s linear infinite;
+}
+
+@keyframes heroDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 200px 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.card {
+    animation: none;
+  }
+}
+
+/* === Subtle blue frames for cards and hero === */
+/* A friendly, desaturated blue for outlines */
+:root {
+  --line-blue: #a8bff5;
+  /* main outline */
+  --line-blue-strong: #7f9ae6;
+  /* hover/active accent */
+}
+
+/* Apply to all white cards + the hero box + the blue inner panel */
+.card,
+.hero.card,
+.panel-sky {
+  border: 1px solid var(--line-blue);
+  border-radius: 12px;
+  /* keep corners consistent */
+  box-shadow:
+    0 1px 0 rgba(11, 42, 74, .10),
+    0 6px 14px rgba(11, 42, 74, .06);
+  /* very soft depth */
+}
+
+/* The first big hero card puede llevar un pelín más de presencia */
+.hero.card {
+  border-width: 1.5px;
+}
+
+/* Hover: un toque más definido pero sin exagerar */
+.card:hover,
+.panel-sky:hover {
+  border-color: var(--line-blue-strong);
+  box-shadow:
+    0 2px 0 rgba(11, 42, 74, .12),
+    0 10px 22px rgba(11, 42, 74, .08);
+}
+
+/* Watermark behind the BKC visuals card only */
+.wm-bkc {
+  /* 1) thin white film so text stays readable
+     2) tiled image underneath as the watermark */
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)),
+    url("img/logo-bkc.png");
+  /* you can swap to var(--wm-img) if you prefer the silhouette */
+  background-repeat: repeat;
+  background-size: 200px auto;
+  /* try 180–240 to taste */
+  background-position: 0 0;
+}
+
+/* Optional: subtle drift animation (remove if you want it static) */
+.wm-bkc {
+  animation: wmDrift 18s linear infinite;
+}
+
+@keyframes wmDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 200px 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wm-bkc {
+    animation: none;
+  }
+}
+
+/* Watermark behind the BKC visuals card only */
+.card.wm-bkc {
+  /* thin white film so text stays readable + tiled logo underneath */
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    url("img/logo-bkc.png");
+  background-repeat: repeat;
+  background-size: 200px auto;
+  /* tweak 180–240 to taste */
+  background-position: 0 0;
+  animation: wmDrift 18s linear infinite;
+  /* optional gentle drift */
+}
+
+/* gentle drift */
+@keyframes wmDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 200px 120px;
+  }
+}
+
+/* respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .card.wm-bkc {
+    animation: none;
+  }
+}
+
+/* use the inline SVG variable instead of the logo file */
+.card.wm-bkc {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+      /* lighter film so you can SEE it */
+      var(--wm-img);
+  background-repeat: repeat;
+  background-size: 200px auto;
+  background-position: 0 0;
+}
+
