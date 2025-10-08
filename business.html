@@ -121,11 +121,148 @@
            Branded visuals with subtle animation and heat distortion
       ========================== -->
     <section class="card wm-bkc">
-      <h3>Best Krazy Chicken (BKC) — Visual Concept</h3>
+      <h2>Best Krazy Chicken — Our Food & Kitchen</h2>
       <p class="muted">
-        Wood-fired rotisserie chicken with Colombian flavours and sides: roasted potatoes, ripe plantain, yuca,
-        and chimichurri. These visuals will be used across web and social to communicate the concept clearly.
+        Wood-fired rotisserie chicken, roasted potatoes, ripe plantain, and house sauces
+        (BBQ, chimichurri, Colombian ají). Below you can see our kitchen, signature dishes,
+        and family options available every day.
       </p>
+      <h3>Best Krazy Chicken (BKC) — From the Fire to Your Table</h3>
+      <!-- =========================
+           MENU (BKC)
+           Accessible accordion using <details>/<summary>.
+           Summary = red pill (we'll style in CSS next).
+           Expanded content = image + description + price.
+      ========================= -->
+      <section id="menu" class="card">
+        <h3>Menu</h3>
+      
+        <!-- Group: Meals -->
+        <h4>Meals</h4>
+      
+        <!-- 1) Quarter Chicken Meal -->
+        <details class="menu-item">
+          <summary>Quarter Chicken Meal</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-quarter-chicken-meal.png" alt="Quarter chicken meal with sides">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Quarter Chicken Meal</h4>
+              <p class="menu-desc">Quarter chicken. Includes 1 roasted potato, half plantain, a drink, and sauces (BBQ,
+                chimichurri, or Colombian ají).</p>
+              <div class="price">£5.99</div>
+            </div>
+          </div>
+        </details>
+
+              <!-- 2) Kids BKC Box -->
+        <details class="menu-item">
+          <summary>Kids BKC Box</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-kids-bkc-box.png" alt="Kids BKC box with chicken, fries, juice and toy">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Kids BKC Box</h4>
+              <p class="menu-desc">Quarter chicken, fries, half plantain, orange juice box (straw), and a fun toy chick.</p>
+              <div class="price">£6.99</div>
+            </div>
+          </div>
+        </details>
+      
+        <!-- 3) Half Chicken Meal -->
+        <details class="menu-item">
+          <summary>Half Chicken Meal</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-half-chicken-meal.png" alt="Half chicken meal with sides">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Half Chicken Meal</h4>
+              <p class="menu-desc">Half chicken. Includes 1 roasted potato, half plantain, a drink, and sauces (BBQ,
+                chimichurri, or Colombian ají).</p>
+              <div class="price">£12.00</div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Whole Chicken Meal (template structure) -->
+        <details class="menu-item">
+          <summary>Whole Chicken Meal</summary>
+        
+          <!-- Two-column body: image (left) + info (right) -->
+          <div class="menu-body">
+            <!-- Left: dish photo -->
+            <figure>
+              <img src="img/menu-whole-chicken-meal.png" alt="Whole chicken meal in a take-away tray">
+            </figure>
+        
+            <!-- Right: title + blue description + red price -->
+            <div class="menu-info">
+              <h4 class="menu-title">Whole Chicken Meal</h4>
+              <p class="menu-desc">
+                Wood-fired whole chicken. Includes 2 roasted potatoes, 1 ripe plantain, a drink,
+                and your choice of sauce (BBQ, chimichurri, or Colombian ají).
+              </p>
+              <div class="price">£18.99</div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 5) Family Pack -->
+        <details class="menu-item">
+          <summary>Family Pack</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-family-pack.png" alt="Family pack with two chickens and large sides">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Family Pack</h4>
+              <p class="menu-desc">2 whole chickens, 1L drink, tray of roasted potatoes, 3 ripe plantains, and sauces (BBQ,
+                chimichurri, or Colombian ají).</p>
+              <div class="price">£30.99</div>
+            </div>
+          </div>
+        </details>
+
+      
+        <!-- Group: Sides -->
+        <h4>Sides</h4>
+      
+        <!-- Tray of Roasted Potatoes -->
+        <details class="menu-item">
+          <summary>Tray of Roasted Potatoes</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-tray-roasted-potatoes.png" alt="Tray of roasted potatoes">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Tray of Roasted Potatoes</h4>
+              <p class="menu-desc">Generous tray of roasted potatoes. Choice of sauces (BBQ, chimichurri, or Colombian ají).</p>
+              <div class="price">£4.99</div>
+            </div>
+          </div>
+        </details>
+      
+        <!-- Tray of Plantains with Cheese -->
+        <details class="menu-item">
+          <summary>Tray of Plantains with Cheese</summary>
+          <div class="menu-body">
+            <figure>
+              <img src="img/menu-tray-plantains-cheese.png" alt="Tray of ripe plantains with melted cheese">
+            </figure>
+            <div class="menu-info">
+              <h4 class="menu-title">Tray of Plantains with Cheese</h4>
+              <p class="menu-desc">Ripe plantains topped with melted cheese. Choice of sauces (BBQ, chimichurri, or Colombian
+                ají).</p>
+              <div class="price">£4.99</div>
+            </div>
+          </div>
+        </details>
+
+      </section>
+
       <!-- BKC storefront banner -->
       <!-- BKC storefront banner (solo contenido, no cambia OG/Twitter) -->
       <figure class="storefront-figure">
