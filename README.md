@@ -188,3 +188,50 @@ The website highlights key skills, business experience, and a real-world case st
 It was tested across multiple devices, validated using W3C tools, and structured following professional web development standards.
 
 Through this process, I improved my understanding of **responsive design**, **accessibility best practices**, and **front-end optimization** while ensuring a consistent and modern user experience.
+
+# José Castro Castillo — Personal Website
+
+**Live site:** https://bsn038.github.io/
+
+Portfolio + BKC (Best Krazy Chicken) concept. Built for Web Authoring & Design.
+
+## What's inside
+
+- Clean layout with soft sky-blue theme
+- Red pill navigation (accessible focus states)
+- Subtle brand watermark on hero/visuals
+- **Menu** with photos and accordion (image left, info right)
+- Contact form via **Formspree** (no backend)
+- Open Graph/Twitter meta + Schema.org JSON-LD
+- Mobile-first, semantic HTML
+
+## Pages
+
+- `index.html` (Home)
+- `business.html` (BKC visuals + Menu)
+- `skills.html`
+- `problem.html` (case study)
+- `contact.html` (Formspree form)
+
+## Run locally
+
+Open `index.html` in your browser.
+
+> Tip: with VS Code, use “Live Server” for auto-reload.
+
+## Deploy (GitHub Pages)
+
+- Repo name: `bsn038.github.io`
+- Settings → Pages → **Deploy from branch**: `main` / **root**
+- Your site: https://bsn038.github.io/
+
+## Assets
+
+- CSS: `css/styles.css`
+- JS: `js/script.js`
+- Images: `img/*`
+
+## Contact
+
+- Email: J.E.CastroCastillo@edu.salford.ac.uk
+- LinkedIn: jose-efrain-castro-castillo
