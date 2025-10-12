@@ -34,6 +34,24 @@ _All design decisions and code were implemented by me as part of the coursework.
 
 ## License / Notes
 
+## ✅ Standards Validation
+
+All pages and stylesheets were validated with the official W3C tools.
+
+### HTML (W3C Markup Validation)
+
+- Result: **No errors or warnings** (HTML5 compliant).
+- Tool: https://validator.w3.org/
+- Evidence: `HTML_ValidationScreenshotFinal.png`
+
+### CSS (W3C CSS Validation)
+
+- Result: **Congratulations! No Error Found** (CSS Level 3 + SVG).
+- Tool: https://jigsaw.w3.org/css-validator/
+- Evidence: `CSS_ValidationScreenshotFinal.png`
+
+**Why this matters:** Standards compliance improves cross-browser reliability, accessibility, and maintainability.
+
 © 2025 José Efraín Castro Castillo — University of Salford  
 This repository is for academic purposes (prototype).
 
