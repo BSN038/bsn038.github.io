@@ -37,6 +37,121 @@ _All design decisions and code were implemented by me as part of the coursework.
 © 2025 José Efraín Castro Castillo — University of Salford  
 This repository is for academic purposes (prototype).
 
+# 🍗 Best Krazy Chicken (BKC) — Digital Transformation Project
+
+**Student:** José Efraín Castro Castillo  
+**ID:** @00778110  
+**Course:** Web Development — University of Salford  
+**Date:** October 2025
+
+---
+
+## 📖 Overview
+
+This project represents the digital presence of **Best Krazy Chicken (BKC)** — a restaurant concept focused on quality, accessibility, and engaging user experience.  
+The site was built to demonstrate technical, creative, and professional skills using **HTML5**, **CSS3**, and **basic JavaScript** for interaction.
+
+It combines responsive design, visual storytelling, and structured data (JSON-LD) to align with real-world business communication goals.
+
+Live site: [https://bsn038.github.io](https://bsn038.github.io)  
+Repository: [https://github.com/bsn038/bsn038.github.io](https://github.com/bsn038/bsn038.github.io)
+
+---
+
+## 💡 Learning & Development Process
+
+With guidance from **ChatGPT**, I strengthened my technical understanding and improved the project in several key areas:
+
+### ✅ Technical Improvements
+
+- Learned the role of the `<script>` tag and how to use `defer` to improve page loading and UX performance.
+- Integrated **structured data (JSON-LD)** for SEO, describing the restaurant as a `LocalBusiness` for better visibility in search results.
+- Improved **consistency of heading structure (H1–H3)** to follow semantic HTML and accessibility standards.
+- Refined CSS organization: removed duplicates, added clear comments, and grouped logical sections for easier future maintenance.
+- Replaced and optimized the **main BKC food image** with a realistic version that preserves the restaurant identity (UK flag, logo, real chicken, Colombian-style sides).
+
+### 🎨 Design & UX
+
+- Added a **clean accordion menu** to simplify browsing and avoid overloading the page with images.
+- Used visual hierarchy (cards, spacing, color balance) to improve clarity and encourage exploration.
+- Applied color contrast for accessibility: red for actions, blue for headings, soft gray for reading comfort.
+- Enhanced mobile usability through responsive grid layouts and flexible image ratios.
+
+### 🧭 Documentation & Clarity
+
+- Reviewed every code comment to make it **easy to understand**, so that future edits are faster and clearer.
+- Each section of the code now explains its function in plain language (for example, what each structure or class controls).
+- Ensured that all comments and class names follow a consistent, professional format.
+
+---
+
+## 🧩 Project Alignment with Assessment Criteria
+
+This website now fully aligns with the **assessment requirements**:
+
+- ✅ **Business Showcase Page** — includes three project sections with clear design rationale and a linked case study.
+- ✅ **Problem-Solving Page** — demonstrates design thinking, UX considerations, and performance optimization.
+- ✅ **Technical and SEO Justification** — use of deferred scripts, structured data, and responsive media.
+- ✅ **Professional Documentation** — commented, accessible, and organized code with semantic hierarchy.
+
+Next steps:
+
+- Final validation with the **HTML and CSS W3C Validators** to confirm there are no syntax or accessibility errors.
+- Review of all responsive breakpoints and meta tags to ensure consistent behavior across devices.
+
+---
+
+## 🧠 Reflection
+
+Through this project, I learned not only how to build a functional website, but how to **think like a designer and developer** — balancing usability, speed, and communication.
+
+With support from ChatGPT, I gained a deeper understanding of:
+
+- how scripts improve user experience without slowing pages,
+- how JSON-LD helps SEO and discoverability,
+- and how consistent heading levels create professional, accessible structure.
+
+This collaboration guided me to avoid common mistakes and document every choice — turning the site into both a working prototype and a learning portfolio.
+
+---
+
+## 🔧 Technologies Used
+
+- **HTML5 / CSS3**
+- **JavaScript (defer loading)**
+- **Formspree (for form handling)**
+- **Schema.org JSON-LD (SEO structured data)**
+- **GitHub Pages (hosting)**
+
+---
+
+## 🧩 Change Log
+
+| Version  | Date         | Updates                                                                                        |
+| -------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| **v1.3** | Oct 12, 2025 | Added design rationale & outcome sections; improved accessibility; new food photo integration. |
+| **v1.2** | Oct 10, 2025 | CSS cleanup, semantic HTML validation, enhanced H3 hierarchy consistency.                      |
+| **v1.1** | Oct 8, 2025  | Added Problem-Solving Page link, reviewed SEO metadata and JSON-LD structure.                  |
+| **v1.0** | Oct 5, 2025  | Initial upload with index, business, and contact pages.                                        |
+
+---
+
+## 🤖 Declaration of AI Support
+
+> This project received guidance from ChatGPT (OpenAI) for:
+>
+> - organizing CSS structure and improving readability,
+> - checking consistency of headings and comments,
+> - learning the use of `<script>` and JSON-LD for SEO,
+> - and receiving conceptual support on UX and design documentation.
+>
+> All content, design decisions, and implementation were personally completed by **José Efraín Castro Castillo** as part of the academic requirements.
+
+---
+
+© 2025 José Efraín Castro Castillo — University of Salford  
+All rights reserved.
+
 ## 📂 Project Structure
 
 - `index.html` — Home page
