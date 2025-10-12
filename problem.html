@@ -94,13 +94,12 @@
     <h2>Problem-Solving Case Study — Best Krazy Chicken (BKC)</h2>
 
     <!-- Case-study intro: logo acts as a quick visual "hero" -->
-    <section class="card">
-      <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" />
-      <p>
-        <strong>Best Krazy Chicken (BKC)</strong> is a restaurant concept designed to compete with established UK chains
+    <section class="card" aria-labelledby="bkc-overview">
+      <h3 id="bkc-overview" class="sr-only">Overview</h3>
+      <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" >      
+        <p><strong>Best Krazy Chicken (BKC)</strong> is a restaurant concept designed to compete with established UK chains
         by offering Colombian-style wood-fired rotisserie chicken with authentic flavours and traditional side dishes.
-        The goal is to pair strong product quality with a clear, modern digital presence.
-      </p>
+        The goal is to pair strong product quality with a clear, modern digital presence.</p>
     </section>
 
     <!-- Context explains the product and market gap in simple terms -->
@@ -132,18 +131,66 @@
     <section class="card">
       <h3>Design Choices</h3>
       <p>
-        <p>
-          The site focuses on clarity and speed: a clean layout with soft sky-blue backgrounds, red pill navigation for clear
-          wayfinding, and consistent iconography in the footer. The hero and BKC visuals use a subtle watermark to reinforce the
-          brand without distracting the content. A new Menu section presents dishes with photos and an accessible accordion (red
-          summary, image left, details right) so guests can quickly scan descriptions in blue and prices in red. Forms are
-          powered by Formspree (no backend needed), with proper focus states and mobile-first responsiveness. Metadata (Open
-          Graph/Twitter) and structured data (Schema.org) improve sharing and basic SEO.
-        </p>
-
+        The site focuses on clarity and speed: a clean layout with soft sky-blue backgrounds, red pill navigation for clear
+        wayfinding, and consistent iconography in the footer. The hero and BKC visuals use a subtle watermark to reinforce
+        the
+        brand without distracting the content. A new Menu section presents dishes with photos and an accessible accordion
+        (red
+        summary, image left, details right) so guests can quickly scan descriptions in blue and prices in red. Forms are
+        powered by Formspree (no backend needed), with proper focus states and mobile-first responsiveness. Metadata (Open
+        Graph/Twitter) and structured data (Schema.org) improve sharing and basic SEO.
+      </p>
+    </section>
+    
+    <section class="card card--rationale">
+      <h3>Design Concept for the Problem-Solving Page</h3>
+      <p>
+        The design of the Problem-Solving Page was created to reflect the restaurant’s digital transformation goals:
+        improving customer interaction and simplifying communication.
+        I used a clean and modern layout with clear sections for social media links, contact information, and an interactive
+        booking form.
+        The form allows users to submit booking requests or feedback directly, which demonstrates how web technologies can
+        support real customer engagement.
+        I chose a warm color palette and easy-to-read typography to make the page friendly and professional, reflecting the
+        welcoming atmosphere of a restaurant environment.
+        Overall, the design focuses on usability, clarity, and accessibility while showing my technical ability to combine
+        HTML, CSS, and JavaScript in a functional business context.
+      </p>
+    </section>
+    
+    <section class="card card--rationale">
+      <h3>Design Concept: Expandable Menu (Arrow/Accordion)</h3>
+      <p>
+        To keep the page lightweight and easy to scan, I designed the restaurant menu as an expandable “arrow/accordion”
+        interface instead of showing every image and price at once. Each category (e.g., Starters, Mains, Desserts, Drinks)
+        is collapsed by default with a clear chevron icon that rotates on open. This approach reduces visual clutter,
+        prevents cognitive overload, and improves mobile usability because visitors only expand what they want to explore.
+        When a section is opened, the customer can see dish photos, descriptions, and prices in context—without scrolling
+        through a long, image-heavy page.
+      </p>
+      <p>
+        This interaction motivates customers differently: it creates a sense of discovery and control, while keeping the
+        core page fast and focused. It also supports performance and accessibility: fewer images load initially, and content
+        is structured in logical sections that screen readers can navigate. Overall, the expandable arrows help present the
+        menu clearly, highlight prices and options on demand, and deliver a cleaner user experience that aligns with the
+        digital restaurants transformation goals.
       </p>
     </section>
 
+    <!-- =============================================== -->
+    <!-- Outcome / Results                               -->
+    <!-- Clear, business-oriented summary of the impact. -->
+    <section class="card">
+      <h3>Outcome / Results</h3>
+      <p>
+        By loading fewer images initially and revealing content on demand, the accordion menu keeps the page fast and
+        focused.
+        Combined with consistent branding and visible focus states, the experience is easier to scan, more accessible, and
+        more
+        likely to convert first-time visitors into customers.
+      </p>
+    </section>
+   
     <!-- Social/contact links:
            - target="_blank" opens new tab; rel="noopener" for security
            - tel: enables click-to-call on mobile
@@ -169,10 +216,10 @@
       <h3>Contact Form</h3>
       <form action="mailto:J.E.CastroCastillo@edu.salford.ac.uk" method="post" enctype="text/plain">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required autocomplete="name" />
+        <input type="text" id="name" name="name" required autocomplete="name" >
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required autocomplete="email" />
+        <input type="email" id="email" name="email" required autocomplete="email" >
 
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="5" required autocomplete="off"></textarea>

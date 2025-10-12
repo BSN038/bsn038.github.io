@@ -5,6 +5,38 @@ It demonstrates HTML5, CSS3, and basic web design principles introduced in Week 
 
 ---
 
+# 🍗 Best Krazy Chicken (BKC)
+
+University project demonstrating a **responsive** restaurant website with a focus on **UX**, **accessibility**, and **SEO**.  
+Built with **HTML5**, **CSS3**, and **JavaScript** (loaded with `defer` for performance). Includes **JSON-LD (Schema.org)** for structured data.
+
+👉 **Live site:** https://bsn038.github.io  
+📦 **Repository:** https://github.com/bsn038/bsn038.github.io
+
+## Highlights
+
+- 🧭 Clean information architecture and consistent **H1–H3** heading structure.
+- 📱 **Responsive** layout and accessible focus states.
+- 🪄 **Accordion menu** (expandable) to reduce clutter and keep the page fast.
+- ⚡ Scripts loaded with **`defer`** to avoid render-blocking.
+- 🔎 **SEO:** JSON-LD (Restaurant / LocalBusiness) + sensible metadata.
+- 🖼️ Updated **hero/food image** (real chicken) while keeping BKC logo and UK flag.
+
+## Collaboration & Learning
+
+I used **ChatGPT** to:
+
+- clarify the purpose of `<script>` and **JSON-LD** and apply them correctly,
+- check and fix **heading consistency** (H3 across sections),
+- tidy CSS (remove duplicates, add clear comments), and avoid common mistakes.
+
+_All design decisions and code were implemented by me as part of the coursework._
+
+## License / Notes
+
+© 2025 José Efraín Castro Castillo — University of Salford  
+This repository is for academic purposes (prototype).
+
 ## 📂 Project Structure
 
 - `index.html` — Home page

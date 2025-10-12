@@ -8,6 +8,11 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -17,10 +22,10 @@ body {
 
 a {
   color: #cc0000;
-  /* Brand red */
   text-decoration: none;
 }
 
+/* Brand red */
 a:hover {
   text-decoration: underline;
 }
@@ -36,8 +41,55 @@ textarea:focus-visible {
 }
 
 /* =======================================
+   Design Tokens / CSS Variables
+   Single place for brand colors & assets.
+   ======================================= */
+:root {
+  /* Brand palette */
+  --brand-red: #cc0000;
+  --brand-red-dark: #a30000;
+  --brand-blue-dark: #0b2a4a;
+
+  /* Sky theme */
+  --bg-sky: #eef4ff;
+  --bg-sky-soft: #e3edff;
+
+  /* Subtle outline blues for cards */
+  --line-blue: #a8bff5;
+  --line-blue-strong: #7f9ae6;
+
+  /* Watermark (inline SVG). You can tweak the fill via %23HEX */
+  --wm-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
+}
+
+/* =======================================
+   Accessibility helpers
+   ======================================= */
+/* Screen-reader-only text: announced but not visible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keep filter/SVG helpers out of layout but accessible to CSS */
+.visually-hidden {
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* =======================================
    Layout / Utilities
-   Reusable containers and grid helpers.
    ======================================= */
 .container {
   width: 90%;
@@ -50,7 +102,7 @@ textarea:focus-visible {
   gap: 1.5rem;
 }
 
-/* Responsive grid that adapts to screen size */
+/* Responsive grids that adapt to screen size */
 .grid-2,
 .grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -72,11 +124,28 @@ textarea:focus-visible {
   margin-bottom: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--line-blue);
+  box-shadow:
+    0 1px 0 rgba(11, 42, 74, .10),
+    0 6px 14px rgba(11, 42, 74, .06);
+}
+
+/* Slightly stronger presence for the first big hero card */
+.hero.card {
+  border-width: 1.5px;
+}
+
+/* Hover feedback for cards and inner panels */
+.card:hover,
+.panel-sky:hover {
+  border-color: var(--line-blue-strong);
+  box-shadow:
+    0 2px 0 rgba(11, 42, 74, .12),
+    0 10px 22px rgba(11, 42, 74, .08);
 }
 
 /* =======================================
    Header & Navigation
-   Top bar with site name and links.
    ======================================= */
 header {
   background: #f5f5f5;
@@ -85,69 +154,63 @@ header {
 }
 
 header h1 {
-  margin-bottom: 0.2rem;
+  margin-bottom: .2rem;
 }
 
 nav {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
-/* === Red pill nav: white text + gray press feedback === */
-/* Brand reds */
-:root {
-  --brand-red: #cc0000;
-  /* normal red */
-  --brand-red-dark: #a30000;
-  /* hover/active red */
-}
-
-/* Base pill (all links) */
+/* Red pill nav */
 header nav a {
   display: inline-block;
   padding: .48rem 1rem;
   border-radius: 9999px;
   background: var(--brand-red);
   color: #fff;
-  /* white text */
   border: 1px solid rgba(0, 0, 0, .12);
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
-  /* subtle depth */
   transition: background .18s, box-shadow .12s, transform .06s;
 }
 
-/* Hover = darker red */
 header nav a:hover {
   background: var(--brand-red-dark);
   text-decoration: none;
 }
 
-/* Keyboard focus ring (visible + accessible) */
 header nav a:focus-visible {
   outline: 3px solid rgba(0, 0, 0, .25);
-  /* gray ring */
   outline-offset: 2px;
 }
 
-/* Mouse down / pressed = gray halo + tiny dip */
 header nav a:active {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, .22);
-  /* gray shadow/halo */
   transform: translateY(1px);
 }
 
-/* Current page = keep it darker so it stands out */
 header nav a.active,
 header nav a[aria-current="page"] {
   background: var(--brand-red-dark);
   color: #fff;
   border-color: var(--brand-red-dark);
   box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
-}border-color: var(--brand-blue-dark);
+}
+
+/* Brand heading color (dark blue) */
+header .brand h1 {
+  color: var(--brand-blue-dark);
+}
+
+header .brand h1:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
 
 /* =======================================
-   Hero (used in other pages)
+   Hero
    Area for intro text + image.
    ======================================= */
 .hero-figure {
@@ -173,19 +236,50 @@ header nav a[aria-current="page"] {
 @media (max-width: 720px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    /* from 2 columns to 1 column */
     gap: 1rem;
   }
 
   .profile-container {
     order: 2;
-    /* optional: text first, photo second */
+  }
+
+  /* optional: text first, photo second */
+}
+
+/* Subtle watermark for hero and the inner blue panel */
+.hero.card,
+.hero.card .panel-sky {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+    var(--wm-img);
+  background-repeat: repeat;
+  background-size: 180px auto;
+  background-position: 0 0;
+}
+
+/* Gentle drift animation for hero watermark */
+@keyframes heroDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 200px 120px;
+  }
+}
+
+.hero.card {
+  animation: heroDrift 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.card {
+    animation: none;
   }
 }
 
 /* =======================================
-   Profile (used in About/Skills pages)
-   Avatar and quick action buttons.
+   Profile (About/Skills)
    ======================================= */
 .profile-container {
   text-align: center;
@@ -202,75 +296,64 @@ header nav a[aria-current="page"] {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: .5rem;
   margin-top: 1rem;
 }
 
 /* =======================================
    Figures / Images
-   Keep logos and photos rectangular,
-   show them fully (no cropping).
    ======================================= */
 .card figure img {
   width: 100%;
-  /* responsive width */
   max-width: 350px;
-  /* limit image size */
   height: auto;
-  /* keep natural proportions */
   display: block;
   margin-inline: auto;
-  /* center image */
   border-radius: 12px;
-  /* rounded corners */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
 }
 
 .card figure img:hover {
   transform: scale(1.02);
-  /* small zoom on hover */
 }
 
-/* Optional layout hint to reduce CLS if <img> has no width/height in HTML */
+/* Optional layout hint to reduce CLS if <img> lacks width/height */
 .logo-bkc,
 .rotisserie-img,
 .card figure img {
   aspect-ratio: 4 / 3;
-  /* adjust per real image ratio if needed */
 }
 
 /* =======================================
    Lists
-   Simple styling for bullet lists.
    ======================================= */
 ul {
-  list-style-type: disc;
+  list-style: disc;
   padding-left: 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .skills-list li,
 .contact-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 /* =======================================
    Buttons
-   Primary (red) and secondary (gray).
    ======================================= */
 .btn {
-  background: #cc0000;
+  background: var(--brand-red);
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   border-radius: 5px;
   display: inline-block;
-  font-size: 0.95rem;
-  transition: background 0.2s ease-in-out;
+  font-size: .95rem;
+  transition: background .2s ease-in-out;
 }
 
 .btn:hover {
-  background: #a30000;
+  background: var(--brand-red-dark);
   text-decoration: none;
 }
 
@@ -285,13 +368,12 @@ ul {
 /* Keep focus states visible on buttons */
 .btn:focus-visible,
 form button:focus-visible {
-  outline: 3px solid #cc0000;
+  outline: 3px solid var(--brand-red);
   outline-offset: 2px;
 }
 
 /* =======================================
-   Rotisserie animation
-   Container for image + flames; centers content.
+   Rotisserie visual (image + flame canvas)
    ======================================= */
 .rotisserie-visual {
   margin: 1rem 0;
@@ -300,15 +382,13 @@ form button:focus-visible {
   place-items: center;
 }
 
-/* Base image with subtle heat distortion */
+/* Base image with subtle heat distortion (from hidden SVG filter) */
 .rotisserie-img {
   width: 100%;
   max-width: 420px;
-  /* adjust if you want larger/smaller */
   height: auto;
   display: block;
   filter: url(#heat-wobble);
-  /* heat shimmer from hidden SVG */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -330,7 +410,7 @@ form button:focus-visible {
   /* fire glow blends over the photo */
 }
 
-/* Fallback if a browser/linter complains about 'inset' or blend mode */
+/* Fallback if a browser doesn't support 'inset' prop */
 @supports not (inset: 0) {
   .flame-layer {
     top: auto;
@@ -351,19 +431,8 @@ form button:focus-visible {
   }
 }
 
-/* Keep filter SVG out of layout but available to CSS */
-.visually-hidden {
-  position: absolute !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-  clip-path: inset(50%) !important;
-  white-space: nowrap !important;
-}
-
 /* =======================================
    Forms
-   Inputs, labels, and submit button.
    ======================================= */
 form {
   display: flex;
@@ -371,15 +440,15 @@ form {
 }
 
 form label {
-  margin-top: 0.5rem;
-  margin-bottom: 0.2rem;
+  margin-top: .5rem;
+  margin-bottom: .2rem;
   font-weight: bold;
 }
 
 form input,
 form textarea {
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding: .5rem;
+  margin-bottom: .5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-family: inherit;
@@ -388,16 +457,15 @@ form textarea {
 /* Accessible focus for form controls */
 form input:focus,
 form textarea:focus {
-  border-color: #cc0000;
+  border-color: var(--brand-red);
   box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
   outline: none;
-  /* focus-visible outline already defined above */
 }
 
 form button {
-  background: #cc0000;
+  background: var(--brand-red);
   color: #fff;
-  padding: 0.6rem 1rem;
+  padding: .6rem 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -405,12 +473,11 @@ form button {
 }
 
 form button:hover {
-  background: #a30000;
+  background: var(--brand-red-dark);
 }
 
 /* =======================================
    Footer
-   Small bar at the bottom with links.
    ======================================= */
 footer {
   background: #f5f5f5;
@@ -419,70 +486,20 @@ footer {
   margin-top: 2rem;
 }
 
-/* Style footer links in brand color */
-footer a {
-  color: #cc0000;
-}
-
-/* (Legacy rule kept harmlessly if some pages still use links inside <small>) */
+footer a,
 footer small a {
-  color: #cc0000;
+  color: var(--brand-red);
 }
 
-/* =======================================
-   Footer Enhancements
-   Small spacing and color refinement
-   ======================================= */
+/* Footer Enhancements: spacing + icon rows */
 footer address a {
-  margin: 0 0.25rem;
-  /* spacing between links */
+  margin: 0 .25rem;
 }
 
 footer address a:hover {
   text-decoration: underline;
 }
 
-:root {
-  --bg-sky: #eef4ff;
-  --bg-sky-soft: #e3edff;
-}
-
-body.theme-sky {
-  background: var(--bg-sky);
-}
-
-body.theme-sky header,
-body.theme-sky footer {
-  background: var(--bg-sky-soft);
-}
-/* Box blue colour for image */
-.panel-sky {
-  display: block;
-  width: fit-content;
-  margin: 0 auto 1rem;
-  /* center */
-  background: var(--bg-sky);
-  border: 1px solid rgba(0, 0, 0, .06);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.panel-sky img {
-  display: block;
-  box-shadow: none;
-  margin: 0 auto;
-}
-
-/* avoiding cut 4:3 and be sure it is responsive */
-.storefront-figure img {
-  aspect-ratio: auto;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Footer: layout and space for items with iconos */
 footer address.with-icons {
   display: flex;
   flex-wrap: wrap;
@@ -495,11 +512,10 @@ footer address.with-icons p {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  /* icono ↔ text */
   margin: 0;
 }
 
-/* Hard-limit any SVG inside icon rows */
+/* Icon sizing inside rows */
 .with-icons svg,
 .with-icons .icon {
   width: 1.1rem;
@@ -509,239 +525,84 @@ footer address.with-icons p {
   flex: 0 0 auto;
 }
 
-/* If some global rule sets svg { width:100% } somewhere, neutralize it here */
 .with-icons svg {
   max-width: none;
 }
 
-/* Optional: make contact page address look tidy like footer */
-.card address.with-icons p {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  margin: 0 0 .35rem 0;
-  /* small vertical spacing between rows */
-}
+/* neutralize any global svg { width:100% } */
 
-/* === Brand heading color (dark blue) === */
-/* Global variable for my dark blue brand color */
-:root {
-  --brand-blue-dark: #0b2a4a;
-}
-
-/* Make my name (H1 in the header) dark blue on every page */
-header .brand h1 {
-  color: var(--brand-blue-dark);
-}
-
-/* Optional: small underline on hover for a nicer feel */
-header .brand h1:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-
-/* Watermark using my BKC logo */
-.hero.card {
-  background:
-    /* thin white film so text stays readable */
-    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
-    /* tiled logo behind */
-    url("img/logo-bkc.png");
-  background-repeat: repeat;
-  background-size: 180px auto;
-  background-position: 0 0;
-  animation: heroDrift 18s linear infinite;
-  /* subtle drift */
-}
-
-/* Gentle drift animation for the watermark */
-@keyframes heroDrift {
-  from {
-    background-position: 0 0, 0 0;
-  }
-
-  to {
-    background-position: 0 0, 200px 120px;
-  }
-}
-
-/* Respect reduced-motion preference: no animation */
-@media (prefers-reduced-motion: reduce) {
-  .hero.card {
-    animation: none;
-  }
-}
-
-/* Inline icons next to links (email/phone/LinkedIn) */
 .icon {
   width: 1em;
   height: 1em;
   display: inline-block;
   vertical-align: -0.125em;
-  opacity: 0.85;
+  opacity: .85;
 }
 
-/* Make link + icon align nicely on one line */
 .with-icons a {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: .4rem;
 }
 
-/* Slightly stronger icon on hover for feedback */
 .with-icons a:hover .icon {
   opacity: 1;
 }
 
-/* Watermark using your BKC logo (hero + inner panel) */
-.hero.card,
-.hero.card .panel-sky {
-  background:
-    linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
-    url("img/logo-bkc.png");
-  background-repeat: repeat;
-  background-size: 180px auto;   /* adjust 160–220 */
-  background-position: 0 0;
+/* =======================================
+   Theme: Sky
+   ======================================= */
+body.theme-sky {
+  background: var(--bg-sky);
 }
 
-/* gentle drift (optional) */
-.hero.card { animation: heroDrift 18s linear infinite; }
-@keyframes heroDrift {
-  from { background-position: 0 0,    0 0; }
-  to   { background-position: 0 0, 200px 120px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero.card { animation: none; }
+body.theme-sky header,
+body.theme-sky footer {
+  background: var(--bg-sky-soft);
 }
 
-/* === Watermark (chicken silhouette) for the hero (index) === */
-/* Inline SVG pattern as a data URL so you don't need a file */
-:root {
-  /* you can tweak the fill color by changing %239aa3b2 (hex #9aa3b2) */
-  --wm-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
-}
-
-/* TEST MODE: make it obvious first; then we soften it */
-.hero.card,
-.hero.card .panel-sky {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
-    /* lighter film so you can SEE it */
-    var(--wm-img);
-  background-repeat: repeat;
-  background-size: 140px auto;
-  /* smaller = more tiles = more visible */
-  background-position: 0 0;
-}
-
-/* Optional subtle drift on the outer hero only */
-.hero.card {
-  animation: heroDrift 18s linear infinite;
-}
-
-@keyframes heroDrift {
-  from {
-    background-position: 0 0, 0 0;
-  }
-
-  to {
-    background-position: 0 0, 200px 120px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero.card {
-    animation: none;
-  }
-}
-
-/* === Subtle blue frames for cards and hero === */
-/* A friendly, desaturated blue for outlines */
-:root {
-  --line-blue: #a8bff5;
-  /* main outline */
-  --line-blue-strong: #7f9ae6;
-  /* hover/active accent */
-}
-
-/* Apply to all white cards + the hero box + the blue inner panel */
-.card,
-.hero.card,
+/* Blue “panel” wrapper used in hero or image frames */
 .panel-sky {
-  border: 1px solid var(--line-blue);
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1rem;
+  background: var(--bg-sky);
+  border: 1px solid rgba(0, 0, 0, .06);
   border-radius: 12px;
-  /* keep corners consistent */
-  box-shadow:
-    0 1px 0 rgba(11, 42, 74, .10),
-    0 6px 14px rgba(11, 42, 74, .06);
-  /* very soft depth */
+  padding: 1rem;
 }
 
-/* The first big hero card puede llevar un pelín más de presencia */
-.hero.card {
-  border-width: 1.5px;
+.panel-sky img {
+  display: block;
+  box-shadow: none;
+  margin: 0 auto;
 }
 
-/* Hover: un toque más definido pero sin exagerar */
-.card:hover,
-.panel-sky:hover {
-  border-color: var(--line-blue-strong);
-  box-shadow:
-    0 2px 0 rgba(11, 42, 74, .12),
-    0 10px 22px rgba(11, 42, 74, .08);
+/* Avoid crop to 4:3 and keep responsive in storefront figures */
+.storefront-figure img {
+  aspect-ratio: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* Watermark behind the BKC visuals card only */
-.wm-bkc {
-  /* 1) thin white film so text stays readable
-     2) tiled image underneath as the watermark */
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)),
-    url("img/logo-bkc.png");
-  /* you can swap to var(--wm-img) if you prefer the silhouette */
-  background-repeat: repeat;
-  background-size: 200px auto;
-  /* try 180–240 to taste */
-  background-position: 0 0;
-}
-
-/* Optional: subtle drift animation (remove if you want it static) */
-.wm-bkc {
-  animation: wmDrift 18s linear infinite;
-}
-
-@keyframes wmDrift {
-  from {
-    background-position: 0 0, 0 0;
-  }
-
-  to {
-    background-position: 0 0, 200px 120px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wm-bkc {
-    animation: none;
-  }
-}
-
-/* Watermark behind the BKC visuals card only */
+/* =======================================
+   Watermark for BKC visuals (business card)
+   ======================================= */
 .card.wm-bkc {
-  /* thin white film so text stays readable + tiled logo underneath */
+  /* thin white film so text stays readable + tiled watermark underneath */
   background:
     linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-    url("img/logo-bkc.png");
+    var(--wm-img);
   background-repeat: repeat;
-  background-size: 200px auto;
+  background-size: 220px auto;
   /* tweak 180–240 to taste */
   background-position: 0 0;
   animation: wmDrift 18s linear infinite;
   /* optional gentle drift */
 }
 
-/* gentle drift */
 @keyframes wmDrift {
   from {
     background-position: 0 0, 0 0;
@@ -752,51 +613,28 @@ header .brand h1:hover {
   }
 }
 
-/* respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
   .card.wm-bkc {
     animation: none;
   }
 }
 
-/* use the inline SVG variable instead of the logo file */
-.card.wm-bkc {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
-      /* lighter film so you can SEE it */
-      var(--wm-img);
-  background-repeat: repeat;
-  background-size: 200px auto;
-  background-position: 0 0;
-}
-
-/* =========================
-   BKC MENU styles
-   - Red "pill" summary buttons
-   - Nice open panel with image + price
-========================= */
-
-/* 0) Small helpers */
-:root {
-  /* brand red used across the site */
-  --brand-red: #cc0000;
-  --brand-red-dark: #a30000;
-}
-
-/* 1) Each <details> behaves like a card row */
+/* =======================================
+   BKC MENU (details/summary accordion)
+   ======================================= */
+/* Each <details> behaves like a card row */
 .menu-item {
   margin-bottom: .75rem;
   border-radius: 12px;
   overflow: hidden;
-  /* keeps rounded corners when open */
+  /* keep rounded corners when open */
   border: 1px solid rgba(0, 0, 0, .08);
   background: #fff;
 }
 
-/* 2) Summary = red pill button */
+/* Summary = red pill button */
 .menu-item>summary {
   list-style: none;
-  /* remove default marker */
   cursor: pointer;
   background: var(--brand-red);
   color: #fff;
@@ -810,7 +648,7 @@ header .brand h1:hover {
   justify-content: space-between;
 }
 
-/* custom arrow (so it's consistent across browsers) */
+/* Custom arrow (consistent across browsers) */
 .menu-item>summary::after {
   content: "▸";
   font-size: 1.1rem;
@@ -820,12 +658,11 @@ header .brand h1:hover {
   opacity: .95;
 }
 
-/* rotate arrow when open */
 .menu-item[open]>summary::after {
   transform: rotate(90deg);
 }
 
-/* hover/active/focus states */
+/* Hover/active/focus states */
 .menu-item>summary:hover {
   background: var(--brand-red-dark);
 }
@@ -840,62 +677,14 @@ header .brand h1:hover {
   border-radius: 12px;
 }
 
-/* 3) Open panel content */
+/* Open panel content: image left, info right */
 .menu-item .menu-body {
   padding: 1rem;
-  display: grid;
-  gap: .75rem;
-  grid-template-columns: minmax(0, 1fr) auto;
-  /* image left, price right */
-  align-items: start;
-}
-
-/* 4) Image block */
-.menu-item figure {
-  margin: 0;
-}
-
-.menu-item figure img {
-  width: 100%;
-  max-width: 360px;
-  /* keep images tidy */
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
-  margin-inline: 0;
-}
-
-/* 5) Price */
-.menu-item .price {
-  font-weight: 800;
-  font-size: 1.35rem;
-  color: #1a1a1a;
-  white-space: nowrap;
-  padding-left: .5rem;
-}
-
-/* 6) Mobile: stack price below image */
-@media (max-width: 560px) {
-  .menu-item .menu-body {
-    grid-template-columns: 1fr;
-    /* stack */
-  }
-
-  .menu-item .price {
-    padding-left: 0;
-  }
-}
-
-/* === Menu layout: image left, info right === */
-/* Make the right column wider so we use the empty space */
-.menu-item .menu-body {
   display: grid;
   gap: .8rem;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   /* left img / right text */
   align-items: center;
-  /* vertically center the right column */
 }
 
 /* Right column holds title, description, and price */
@@ -905,34 +694,29 @@ header .brand h1:hover {
   gap: .5rem;
 }
 
-/* Title: strong, neutral (not red or blue) */
 .menu-item .menu-title {
   margin: 0;
   font-weight: 800;
   font-size: 1.25rem;
   color: #111;
-  /* dark for readability */
 }
 
-/* Description: royal/brand blue (uses your existing blue var) */
 .menu-item .menu-desc {
   margin: 0;
   font-size: 1rem;
   line-height: 1.45;
   color: var(--brand-blue-dark);
-  /* blue text as requested */
 }
 
-/* Price: bold and red to stand out */
 .menu-item .price {
   margin-top: .1rem;
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--brand-red);
-  /* your brand red */
+  white-space: nowrap;
 }
 
-/* Images: keep tidy and not too large */
+/* Image block */
 .menu-item figure {
   margin: 0;
 }
@@ -941,11 +725,12 @@ header .brand h1:hover {
   width: 100%;
   max-width: 360px;
   height: auto;
-  border-radius: 10px;
   display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
 }
 
-/* Mobile: stack below image and center text for balance */
+/* Mobile: stack columns and center text for balance */
 @media (max-width: 560px) {
   .menu-item .menu-body {
     grid-template-columns: 1fr;
@@ -954,5 +739,28 @@ header .brand h1:hover {
   .menu-item .menu-info {
     text-align: center;
   }
+
+  .menu-item .price {
+    padding-left: 0;
+  }
 }
 
+/* =======================================
+   Design Rationale blocks (Business page)
+   ======================================= */
+.design-rationale {
+  margin: 2rem 0;
+  /* space between projects and rationale sections */
+  padding: 1rem 1.25rem;
+  /* comfortable spacing for text readability */
+  border-left: 4px solid #ccc;
+  /* subtle visual marker on the left */
+  background: #f8f8f8;
+  /* light gray background for contrast */
+  line-height: 1.6;
+  /* improve paragraph readability */
+}
+
+.design-rationale h2 {
+  margin-top: 0;
+}

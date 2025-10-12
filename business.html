@@ -122,12 +122,22 @@
       ========================== -->
     <section class="card wm-bkc">
       <h2>Best Krazy Chicken — Our Food & Kitchen</h2>
+      <!-- Tagline kept as a short, descriptive line -->
+      <p class="muted"><em>From the Fire to Your Table.</em></p>
+
       <p class="muted">
         Wood-fired rotisserie chicken, roasted potatoes, ripe plantain, and house sauces
         (BBQ, chimichurri, Colombian ají). Below you can see our kitchen, signature dishes,
         and family options available every day.
       </p>
-      <h3>Best Krazy Chicken (BKC) — From the Fire to Your Table</h3>
+
+      <!-- Project title as a link to the full case study (clear and accessible) -->
+      <h3>
+        <a href="problem.html" aria-label="Open the full BKC problem-solving case study">
+          Best Krazy Chicken — Case Study
+        </a>
+      </h3>
+
       <!-- =========================
            MENU (BKC)
            Accessible accordion using <details>/<summary>.
@@ -264,7 +274,6 @@
       </section>
 
       <!-- BKC storefront banner -->
-      <!-- BKC storefront banner (solo contenido, no cambia OG/Twitter) -->
       <figure class="storefront-figure">
         <img src="img/Front2BKC.png" alt="BKC storefront with chefs and wood-fired rotisserie chickens" width="1280"
           height="853" loading="lazy" decoding="async">
@@ -278,7 +287,7 @@
              and on JS in js/script.js to draw flames and animate heat. -->
       <figure class="rotisserie-visual">
         <!-- Base image of the rotisserie (no inline styles; CSS controls size) -->
-        <img src="img/bkc-rotisserie.png" alt="BKC rotisserie with chickens and potatoes" class="rotisserie-img" />
+        <img src="img/bkc-rotisserie.png" alt="BKC rotisserie with chickens and potatoes" class="rotisserie-img" >
 
         <!-- Canvas overlay where flame particles are drawn by JavaScript -->
         <canvas class="flame-layer" aria-hidden="true"></canvas>
@@ -348,7 +357,6 @@
       </address>
     </div>
   </footer>
-
 
   <!-- =========================
          SCRIPTS
