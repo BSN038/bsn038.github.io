@@ -105,7 +105,8 @@ Do not put comments inside the JSON; keep them here above the <script>.
     <section class="hero card">
       
       <figure class="hero-figure panel-sky">
-         <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" >
+                  <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" width="1024" height="1024"
+                    decoding="async" fetchpriority="high"> <!-- Critical image: reserve space + decode off-main -->
          <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
       </figure>
 
@@ -123,7 +124,8 @@ Do not put comments inside the JSON; keep them here above the <script>.
 
         <!-- Profile photo (use class for sizing and shape in CSS) -->
         <div class="profile-container">
-          <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" >
+                    <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" width="1536"
+                      height="2048" decoding="async" loading="lazy"> <!-- Below the fold: lazy + reserved box -->
         </div>
       </div>
     </section>

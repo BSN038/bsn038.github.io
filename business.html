@@ -100,7 +100,16 @@
       ========================== -->
     <section class="grid grid-2 business-grid" aria-labelledby="biz-acts">
       <h3 id="biz-acts" class="visually-hidden">Business Activities</h3>
-
+            <!-- Empty state (reusable)
+                       How to use:
+                       - Keep this block in place but with the 'hidden' attribute.
+                       - When the section has 0 items, remove 'hidden' so users see a friendly message.
+                       - Reuse this same pattern in any grid/list (copy/paste and update the text).
+                  -->
+            <div id="empty-business" class="card" role="status" aria-live="polite" hidden>
+              <h4>No items to show</h4>
+              <p>We are preparing this section. Please check back later or adjust your filters.</p>
+            </div>
       <!-- Card 1: tool and equipment rental -->
       <article class="card">
         <h3>Tool &amp; Equipment Rental</h3>
@@ -438,12 +447,14 @@
         </div>
     
         <!-- Terms -->
-        <div class="form-row checkbox">
-          <label>
-            <input type="checkbox" name="terms" required>
-            I accept the terms.
-          </label>
-        </div>  
+                <div class="form-row checkbox">
+                  <!-- Consistent checkbox: single label wraps input + text, explicit id/for, SR helper -->
+                  <label for="bk-terms" id="bk-terms-label">
+                    <input id="bk-terms" name="terms" type="checkbox" value="yes" required aria-describedby="bk-terms-help">
+                    <span>I accept the <a href="terms.html">Terms &amp; Conditions</a>.</span>
+                  </label>
+                  <small id="bk-terms-help">Required to complete the booking.</small>
+                </div>  
         <!-- Submit -->
         <div class="form-actions">
           <button type="submit" class="btn">Book Now</button>
