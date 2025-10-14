@@ -400,3 +400,30 @@ Open `index.html` in your browser.
 
 - Email: J.E.CastroCastillo@edu.salford.ac.uk
 - LinkedIn: jose-efrain-castro-castillo
+
+# Week 5 — Implementations and Improvements
+
+## Implementations based on Week 5 learnings
+
+- **Global loader:**  
+  Added a subtle top-stripe loader visible on all pages, implemented purely with CSS (`html::before`).  
+  It fades out automatically (~1.2 s) and respects `prefers-reduced-motion`.  
+  → No JavaScript or extra markup required.
+
+- **Skills section:**  
+  Rebuilt progress bars into 10-segment “sauce-colored” stripes (red / green / orange).  
+  Each bar uses CSS gradients with `--w` for width control — no HTML changes needed.  
+  → Cleaner, modular, and accessible design.
+
+- **UI refinements:**  
+  Thinner skill bars (4 px height), consistent rounded edges, and smoother transitions.  
+  Old loaders and duplicate CSS were removed to keep code lightweight.
+
+## Next steps
+
+- Final color-tuning of the three sauce tones to match brand palette.
+- Optional: add a soft highlight overlay for extra depth.
+
+---
+
+_This update applies accessibility, maintainability, and visual-consistency principles learned in Week 5._

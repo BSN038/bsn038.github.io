@@ -174,3 +174,105 @@ document.addEventListener('submit', (e) => {
     form.reset();
   }
 });
+
+(function () {
+  const form   = document.getElementById('booking-form');
+  if (!form) return;
+
+  const nameEl   = document.getElementById('bk-name');
+  const nameErr  = document.getElementById('bk-name-error');
+  const statusEl = document.getElementById('booking-status');
+
+  // Showing error accesible to the name (no)
+  function validateName() {
+    const v = nameEl.value.trim();
+    // Allow letters (includec accents), spaces, apóstrofes. No dígits.
+    const re = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{1,48}$/;
+    if (!v) {
+      nameEl.setCustomValidity('Please enter your name.');
+      nameErr.textContent = 'Please enter your name.';
+      return false;
+    }
+    if (!re.test(v)) {
+      nameEl.setCustomValidity('Name should not contain numbers or symbols.');
+      nameErr.textContent = 'Name should not contain numbers or symbols.';
+      return false;
+    }
+    nameEl.setCustomValidity('');
+    nameErr.textContent = '';
+    return true;
+  }
+
+  nameEl.addEventListener('input', validateName);
+  nameEl.addEventListener('blur', validateName);
+
+  // Helper to show state
+  function showStatus(type, msg) {
+    statusEl.className = 'status ' + type; // success | error
+    statusEl.textContent = msg;
+    statusEl.classList.remove('is-hidden');
+  }
+
+  // Send with fetch a Formspree (avoid rediretion and shows banner)
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Validation + name
+    if (!validateName() || !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    showStatus('success', 'Sending your booking…');
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+
+      if (res.ok) {
+        showStatus('success', 'Your request was sent. We’ll get back to you shortly!');
+        form.reset();
+      } else {
+        const j = await res.json().catch(() => ({}));
+        const msg = (j && j.errors && j.errors[0] && j.errors[0].message) || 'There was a problem sending your request.';
+        showStatus('error', msg);
+      }
+    } catch (err) {
+      showStatus('error', 'Network error. Please try again.');
+    }
+  });
+})();
+
+// Sparkle: always burst (even if clicking the already-selected pill)
+(function () {
+  const root = document.querySelector('.radio-spark');
+  if (!root) return;
+
+  function burst(label) {
+    const dot = label.querySelector('.sparkle');
+    if (!dot) return;
+    dot.classList.remove('burst');
+    void dot.offsetWidth; // reflow to restart the animation
+    dot.classList.add('burst');
+  }
+
+  // Fire when selection changes
+  root.addEventListener('change', (e) => {
+    const input = e.target.closest('input[type="radio"]');
+    if (!input) return;
+    const label = input.closest('label.spark-item');
+    if (label) burst(label);
+  });
+
+  // Also fire on clicks (so it bursts even if the same option is clicked again)
+  root.addEventListener('click', (e) => {
+    const label = e.target.closest('label.spark-item');
+    if (label) burst(label);
+  });
+})();
+
+

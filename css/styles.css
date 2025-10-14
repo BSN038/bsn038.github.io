@@ -764,3 +764,1279 @@ body.theme-sky footer {
 .design-rationale h2 {
   margin-top: 0;
 }
+
+/* ——— Booking ——— */
+#booking.card {
+  padding: var(--space-4, 1rem);
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-row {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font: inherit;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--brand-red, #c62828);
+  outline-offset: 2px;
+}
+
+.form-row.checkbox label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.field-error {
+  min-height: 1.1em;
+  font-size: 0.9rem;
+  color: #b00020;
+}
+
+/* Status banner (success / error) */
+.status {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.status.success {
+  background: #e6f6ee;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.status.error {
+  background: #fdecea;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.is-hidden {
+  display: none;
+}
+
+/* Simple card spacing for this block */
+#skills-accordion { padding: var(--space-4, 1rem); }
+
+/* Collapsible container */
+.skills-accordion details {
+  border: 1px solid #eee;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  background: #fff;
+}
+
+/* Summary is the clickable header */
+.skills-accordion summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none; /* hide default marker in most browsers */
+}
+.skills-accordion summary::-webkit-details-marker { display: none; }
+.skills-accordion summary:focus-visible {
+  outline: 2px solid var(--brand-red, #c62828);
+  outline-offset: 2px;
+}
+
+/* List layout */
+.skills-bars { display: grid; gap: 0.75rem; margin-top: 0.75rem; }
+.skill { display: grid; gap: 0.375rem; }
+.skill-name { font-weight: 600; }
+.skill-num { font-size: 0.9rem; color: #666; }
+
+/* Progress bar shell */
+.bar {
+  position: relative;
+  height: 10px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Progress bar fill; width comes from inline --w */
+.bar i {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%);
+  background: var(--brand-red, #c62828);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .bar i { transition: none; }
+}
+
+/* Simple card spacing for this block */
+#skills-accordion {
+  padding: var(--space-4, 1rem);
+}
+
+/* Collapsible container */
+.skills-accordion details {
+  border: 1px solid #eee;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  background: #fff;
+}
+
+/* Summary is the clickable header */
+.skills-accordion summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  /* hide default marker in most browsers */
+}
+
+.skills-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.skills-accordion summary:focus-visible {
+  outline: 2px solid var(--brand-red, #c62828);
+  outline-offset: 2px;
+}
+
+/* List layout */
+.skills-bars {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.skill {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.skill-name {
+  font-weight: 600;
+}
+
+.skill-num {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Progress bar shell */
+.bar {
+  position: relative;
+  height: 10px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Progress bar fill; width comes from inline --w */
+.bar i {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%);
+  background: var(--brand-red, #c62828);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .bar i {
+    transition: none;
+  }
+}
+
+/* Group layout */
+.radio-spark {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  border: 0;
+  padding: 0;
+}
+
+.radio-spark legend {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+/* Wrap makes whole label clickable */
+.spark-item {
+  display: inline-block;
+}
+
+/* Hide native radio but keep it accessible */
+.spark-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visual button */
+.btn-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fff;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Focus ring for keyboard users */
+.spark-item input:focus-visible+.btn-radio {
+  outline: 2px solid var(--brand-red, #c62828);
+  outline-offset: 2px;
+}
+
+/* Selected state */
+.spark-item input:checked+.btn-radio {
+  border-color: var(--brand-red, #c62828);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+}
+
+/* Tiny sparkle element (positioned dot that bursts) */
+.btn-radio .sparkle {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--brand-red, #c62828);
+  opacity: 0;
+  /* hidden until animated */
+}
+
+/* Burst particles created via box-shadow */
+@keyframes sparkle-burst {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow:
+      0 0 0 0 var(--brand-red, #c62828),
+      0 0 0 0 var(--brand-red, #c62828),
+      0 0 0 0 var(--brand-red, #c62828);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow:
+      -10px -6px 0 0 var(--brand-red, #c62828),
+      2px -12px 0 0 var(--brand-red, #c62828),
+      10px 6px 0 0 var(--brand-red, #c62828);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    box-shadow:
+      -14px -8px 0 0 transparent,
+      2px -16px 0 0 transparent,
+      14px 8px 0 0 transparent;
+  }
+}
+
+/* Trigger via .burst helper class (set from JS on selection) */
+.btn-radio .sparkle.burst {
+  animation: sparkle-burst 480ms ease-out;
+}
+
+/* Micro-press on click */
+.spark-item:active .btn-radio {
+  transform: scale(0.98);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-radio .sparkle.burst {
+    animation: none;
+    opacity: 0;
+  }
+
+  .spark-item:active .btn-radio {
+    transform: none;
+  }
+}
+
+/* === Spice radios: royal blue pill + white text === */
+/* Use a strong royal blue for good contrast */
+:root {
+  --spice-blue: #0033a0; /* royal blue */
+  --spice-blue-dark: #00267a;
+}
+
+.radio-spark .btn-radio {
+  background: var(--spice-blue);
+  color: #fff;
+  border-color: var(--spice-blue);
+}
+
+.spark-item input:checked + .btn-radio {
+  border-color: #fff;                     /* subtle contrast ring */
+  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.18);
+}
+
+.spark-item:active .btn-radio {
+  transform: scale(0.98);
+  background: var(--spice-blue-dark);     /* tiny press feedback */
+}
+
+/* Focus ring stays clear and accessible */
+.spark-item input:focus-visible + .btn-radio {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* === Multicolor sparkles === */
+/* Make the tiny dot invisible until burst */
+.btn-radio .sparkle {
+  background: #ffffff;  /* white center dot (small) */
+  opacity: 0;
+}
+
+/* New burst with multi-color particles */
+@keyframes sparkle-burst {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    /* start with no spread */
+    box-shadow:
+      0 0 0 0 #ffcc00,   /* yellow */
+      0 0 0 0 #00d2ff,   /* cyan */
+      0 0 0 0 #ff4d4d,   /* red */
+      0 0 0 0 #7cff6b,   /* green */
+      0 0 0 0 #ff7af6;   /* magenta */
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.15);
+    /* fly out in different directions */
+    box-shadow:
+      -12px -8px 0 0 #ffcc00,
+       10px -14px 0 0 #00d2ff,
+       14px   6px 0 0 #ff4d4d,
+       -4px  14px 0 0 #7cff6b,
+       -16px  2px 0 0 #ff7af6;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+    /* fade to transparent */
+    box-shadow:
+      -16px -10px 0 0 transparent,
+       14px -18px 0 0 transparent,
+       18px   8px 0 0 transparent,
+       -6px  18px 0 0 transparent,
+       -20px  2px 0 0 transparent;
+  }
+}
+
+/* Respect reduced motion (no change needed if you already had this) */
+@media (prefers-reduced-motion: reduce) {
+  .btn-radio .sparkle.burst { animation: none; opacity: 0; }
+  .spark-item:active .btn-radio { transform: none; }
+}
+
+/* =========================
+   Base + variables
+   ========================= */
+
+/* Better box model everywhere */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* App variables (tweak freely) */
+:root {
+  --brand-red: #c62828;
+  --bg: #f8f9fb;
+  --text: #222;
+  --muted: #666;
+
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+}
+
+/* Page basics */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Headings look clean */
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 .5em;
+}
+
+/* Links */
+a {
+  color: var(--brand-red);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utility: hide */
+.is-hidden {
+  display: none !important;
+}
+
+/* =========================
+   Card + buttons
+   ========================= */
+
+.card {
+  background: #fff;
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-block: var(--space-6);
+}
+
+/* Primary button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--brand-red);
+  background: var(--brand-red);
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Outline button (variant) */
+.btn-outline {
+  background: #fff;
+  color: var(--brand-red);
+  border: 2px solid var(--brand-red);
+}
+
+.btn-outline:hover {
+  background: var(--brand-red);
+  color: #fff;
+}
+
+/* Ghost button (variant) */
+.btn-ghost {
+  background: transparent;
+  color: var(--brand-red);
+  border: 1px dashed var(--brand-red);
+}
+
+.btn-ghost:hover {
+  background: rgba(198, 40, 40, 0.06);
+}
+
+/* =========================
+   Forms (Booking + Contact)
+   ========================= */
+
+#booking.card {
+  padding: var(--space-4);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-row {
+  display: grid;
+  gap: .375rem;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  background: #fff;
+  font: inherit;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+/* Checkbox row */
+.form-row.checkbox label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* Helper text + field error */
+.hint {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.field-error {
+  min-height: 1.1em;
+  font-size: .9rem;
+  color: #b00020;
+}
+
+/* Status banners (success/error) */
+.status {
+  margin-bottom: .75rem;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  font-weight: 600;
+}
+
+.status.success {
+  background: #e6f6ee;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.status.error {
+  background: #fdecea;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+/* =========================
+   Skills: accordion + progress bars
+   ========================= */
+
+#skills-accordion {
+  padding: var(--space-4);
+}
+
+/* Collapsible containers */
+.skills-accordion details {
+  border: 1px solid #eee;
+  border-radius: .75rem;
+  padding: .75rem 1rem;
+  margin-top: .75rem;
+  background: #fff;
+}
+
+.skills-accordion summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.skills-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.skills-accordion summary:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+/* List + items */
+.skills-bars {
+  display: grid;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+.skill {
+  display: grid;
+  gap: .375rem;
+}
+
+.skill-name {
+  font-weight: 600;
+}
+
+.skill-num {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* Progress bar track */
+.bar {
+  position: relative;
+  height: 10px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Progress fill (width via inline --w) */
+.bar i {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%);
+  background: var(--brand-red);
+  border-radius: 999px;
+  transition: width .6s ease;
+}
+
+/* Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .bar i {
+    transition: none;
+  }
+}
+
+/* =========================
+   Spice radios with colored pills + sparkles
+   ========================= */
+
+/* Main layout container for spice level + bottles */
+.spice-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  /* more space for radios */
+  gap: 2rem;
+  align-items: center;
+}
+
+/* --- Radios group --- */
+.radio-spark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* push them toward the right side */
+  gap: 1rem;
+  border: 0;
+  padding: 0;
+}
+
+.radio-spark legend {
+  font-weight: 700;
+  align-self: flex-start;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+/* Make label clickable */
+.spark-item {
+  display: inline-block;
+  position: relative;
+}
+
+/* Hide native radio input */
+.spark-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Pill button style */
+.btn-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  /* bigger buttons */
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+/* Button press feedback */
+.spark-item:active .btn-radio {
+  transform: scale(0.96);
+}
+
+/* Focus ring for keyboard users */
+.spark-item input:focus-visible+.btn-radio {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Color themes per option --- */
+
+/* Base text color */
+.radio-spark .btn-radio {
+  color: #fff;
+}
+
+/* Mild = royal blue */
+.spark-item input[value="mild"]+.btn-radio {
+  background: #0033a0;
+  color: #ffffff;
+}
+
+/* Medium = pistachio */
+.spark-item input[value="medium"]+.btn-radio {
+  background: #93c572;
+  color: #113d00;
+  /* dark text for readability */
+}
+
+/* Hot = bright orange */
+.spark-item input[value="hot"]+.btn-radio {
+  background: #ff7a00;
+  color: #ffffff;
+}
+
+/* Selected glow */
+.spark-item input:checked+.btn-radio {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Sparkle animation --- */
+.btn-radio .sparkle {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+  background: #ffffff;
+}
+
+/* Blue sparkle (Mild) */
+@keyframes sparkle-blue {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #7fb2ff, 0 0 0 0 #ffffff;
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: -12px -8px 0 0 #7fb2ff, 12px 6px 0 0 #ffffff;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
+  }
+}
+
+/* Green sparkle (Medium) */
+@keyframes sparkle-green {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #d2f1a2, 0 0 0 0 #3b7d1b;
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: -12px -8px 0 0 #d2f1a2, 12px 6px 0 0 #3b7d1b;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
+  }
+}
+
+/* Orange sparkle (Hot) */
+@keyframes sparkle-orange {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #ffd199, 0 0 0 0 #ffffff;
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: -12px -8px 0 0 #ffd199, 12px 6px 0 0 #ffffff;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
+  }
+}
+
+/* Apply correct sparkle per selection */
+.spark-item input[value="mild"]:checked+.btn-radio .sparkle.burst {
+  animation: sparkle-blue 480ms ease-out;
+}
+
+.spark-item input[value="medium"]:checked+.btn-radio .sparkle.burst {
+  animation: sparkle-green 480ms ease-out;
+}
+
+.spark-item input[value="hot"]:checked+.btn-radio .sparkle.burst {
+  animation: sparkle-orange 480ms ease-out;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .btn-radio .sparkle.burst {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  .spark-item:active .btn-radio {
+    transform: none;
+  }
+}
+
+/* --- Sauce bottles gallery --- */
+.sauce-gallery {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+/* Each bottle image */
+.sauce-bottle {
+  width: 12%;
+  max-width: 130px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+  transition: transform 0.2s ease;
+}
+
+/* Subtle hover effect */
+.sauce-bottle:hover {
+  transform: translateY(-4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .spice-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .radio-spark {
+    align-items: center;
+  }
+
+  .sauce-gallery {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .sauce-bottle {
+    width: 40px;
+  }
+}
+
+/* --- Spice legend: a bit larger --- */
+.radio-spark legend {
+  font-size: 1.25rem;
+  /* bigger title */
+  font-weight: 800;
+}
+
+/* --- Split the fieldset into two columns: notes (left) + buttons (right) --- */
+.radio-spark {
+  display: grid !important;
+  /* overrides previous flex */
+  grid-template-columns: minmax(280px, 1fr) auto;
+  /* left notes, right buttons */
+  align-items: start;
+  gap: .75rem 1.5rem;
+  /* row x column gap */
+}
+
+.radio-spark legend {
+  grid-column: 1 / -1;
+}
+
+/* Left column (newspaper-style notes) */
+.spice-notes {
+  display: grid;
+  gap: .75rem;
+}
+
+.spice-notes .note h4 {
+  margin: 0 0 .15rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  /* red title as requested */
+  font-size: 1rem;
+}
+
+.spice-notes .note p {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+/* Color the paragraph by spice */
+.note-mild p {
+  color: #5a8f33;
+}
+
+/* royal blue */
+.note-medium p {
+  color: #0033a0;
+}
+
+/* darker pistachio for readability */
+.note-hot p {
+  color: #ff7a00;
+}
+
+/* orange */
+
+/* Right column keeps buttons stacked and aligned to the right */
+.spice-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* same spot as before */
+  gap: 1rem;
+}
+
+/* Mobile: stack notes on top, buttons below */
+@media (max-width: 900px) {
+  .radio-spark {
+    grid-template-columns: 1fr;
+  }
+
+  .spice-buttons {
+    align-items: center;
+  }
+}
+
+/* === Horizontal trio of figures (smaller, side-by-side) === */
+.card.wm-bkc .trio {
+  display: inline-block;
+  /* line up horizontally */
+  width: calc(33.333% - 1rem);
+  /* three per row */
+  vertical-align: top;
+  margin: 0 .5rem 1rem;
+  /* small side gap */
+  text-align: center;
+  /* center captions */
+}
+
+.card.wm-bkc .trio img {
+  width: 100%;
+  max-width: 220px;
+  /* smaller images */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+}
+
+.card.wm-bkc .trio figcaption {
+  font-size: .9rem;
+  line-height: 1.35;
+  margin-top: .4rem;
+  color: #4a5568;
+}
+
+/* Stack nicely on small screens */
+@media (max-width: 800px) {
+  .card.wm-bkc .trio {
+    display: block;
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+
+  .card.wm-bkc .trio img {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+/* =========================
+   Component: Loader (Turning Grill)
+   - CSS-only overlay, ≤1.5s visible on first paint.
+   - Auto fade-out and then hidden (no pointer-events).
+   - Respects prefers-reduced-motion.
+   ========================= */
+
+.loader-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  /* adjust for your theme */
+  z-index: 9999;
+  animation: loader-fade 1.4s forwards;
+  /* total lifetime */
+}
+
+.loader--grill {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px currentColor inset;
+  color: #2b2b2b;
+  /* use brand-neutral dark token */
+  position: relative;
+  animation: loader-spin 1.2s linear infinite;
+}
+
+/* Grill bars using conic gradients */
+.loader--grill::before,
+.loader--grill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 0deg,
+      transparent 0 40deg, currentColor 40 44deg,
+      transparent 44 130deg, currentColor 130 134deg,
+      transparent 134 220deg, currentColor 220 224deg,
+      transparent 224 316deg, currentColor 316 320deg,
+      transparent 320 360deg);
+  mask: radial-gradient(circle 28px, transparent 31px, #000 32px);
+  opacity: 0.9;
+}
+
+.loader--grill::after {
+  transform: rotate(10deg);
+  opacity: 0.6;
+}
+
+/* Fade out backdrop and then hide it */
+@keyframes loader-fade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  85% {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Continuous rotation */
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduce motion: no spin, quicker fade */
+@media (prefers-reduced-motion: reduce) {
+  .loader--grill {
+    animation: none;
+  }
+
+  .loader-backdrop {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Global: Top Stripe Loader (CSS-only, all pages)
+   - 3px animated stripe at the very top of the viewport.
+   - Injected via html::before (no HTML markup).
+   - Auto fades out (~1.2s) and hides.
+   - Respects prefers-reduced-motion.
+*/
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(45deg,
+      currentColor 0 10px,
+      transparent 10px 20px);
+  color: #c43d2f;
+  /* TODO: replace with your brand accent (e.g., pistachio) */
+  opacity: 1;
+  animation: tl-move .6s linear infinite, tl-fade 1.2s ease forwards;
+}
+
+/* diagonal motion */
+@keyframes tl-move {
+  to {
+    background-position-x: 40px;
+  }
+}
+
+/* fade-out and hide */
+@keyframes tl-fade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  85% {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* reduced motion: static bar + quick fade */
+@media (prefers-reduced-motion: reduce) {
+  html::before {
+    animation: tl-fade .5s ease forwards;
+  }
+}
+
+/* =========================================
+   Skills — Segmented bars (10 segments, 3 sauces)
+   Works with your HTML:
+   <div class="bar"><i style="--w:85%"></i></div>
+   The fill width is controlled by --w (0%–100%).
+   ========================================= */
+
+/* Brand palette (adjust if needed) */
+:root {
+  --skills-track: #ececec;
+  /* neutral track */
+  --sauce-1: #c43d2f;
+  /* Red / Picante */
+  --sauce-2: #6fbf3f;
+  /* Green / Chimichurri */
+  --sauce-3: #f5a623;
+  /* Orange / Ají */
+}
+
+/* Progress track (container) */
+.skills-bars .bar {
+  position: relative;
+  height: 3px;
+  /* thinner line (try 3px if you want ultra-thin) */
+  background: var(--skills-track);
+  border-radius: 999px;
+  /* keep rounded edges even when thin */
+  overflow: hidden;
+}
+
+/* Segmented fill (10 equal stripes, cycles sauce-1 → sauce-2 → sauce-3) */
+.skills-bars .bar i {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%);
+  /* 0%–100% from your inline style */
+  background: linear-gradient(to right,
+      var(--sauce-1) 0% 10%,
+      var(--sauce-2) 10% 20%,
+      var(--sauce-3) 20% 30%,
+      var(--sauce-1) 30% 40%,
+      var(--sauce-2) 40% 50%,
+      var(--sauce-3) 50% 60%,
+      var(--sauce-1) 60% 70%,
+      var(--sauce-2) 70% 80%,
+      var(--sauce-3) 80% 90%,
+      var(--sauce-1) 90% 100%);
+  border-radius: inherit;
+  transition: width .25s ease;
+  /* smooth updates if you change --w */
+}
+

@@ -75,8 +75,13 @@
   <header>
     <div class="container brand">
       <h1>José Castro Castillo</h1>
-      <p class="muted">Business Information Technology Student — University of Salford</p>
-
+      <p class="muted">
+        Business Information Technology Student —
+        <a href="https://www.salford.ac.uk/" target="_blank" rel="noopener noreferrer"
+          aria-label="Open University of Salford website in a new tab">
+          University of Salford
+        </a>
+      </p>
       <!-- Primary nav with aria-current for accessibility -->
       <nav aria-label="Primary">
         <a href="index.html">Home</a>
@@ -91,24 +96,208 @@
   <main class="container">
     <h2>Skills</h2>
 
-    <!-- Skill list: grouped by domain (technical, business, and practical)
-           Using <ul> ensures screen readers announce it as a structured list. -->
-    <section class="card">
-      <ul class="skills-list">
-        <li><strong>Programming:</strong> Python, Java, HTML, CSS</li>
-        <li><strong>Business Development:</strong> fundamentals and entrepreneurship</li>
-        <li><strong>Collaboration:</strong> teamwork and leadership</li>
-        <li><strong>Accounting:</strong> bookkeeping and financial basics</li>
-        <li><strong>CRM:</strong> customer relationship management</li>
-        <li><strong>Problem-Solving:</strong> adaptability and creative thinking</li>
-        <li><strong>Entrepreneurship:</strong> small business operations</li>
-        <!-- The final item highlights hands-on, practical competencies -->
-        <li>
-          <strong>Practical Skills:</strong> handling tools and equipment (cement mixers, compactors,
-          carpet cleaning machines, driveway renovation projects)
-        </li>
-      </ul>
+    <!-- ================== Skills (Collapsibles + Progress Bars) ================== -->
+    <section class="card" id="skills-accordion" aria-labelledby="skills-accordion-title">
+      <h3 id="skills-accordion-title">Skills by Type</h3>
+    
+      <div class="skills-accordion">
+        <!-- Soft Skills -->
+        <details open>
+          <summary>Soft Skills</summary>
+          <ul class="skills-bars">
+            <!-- Tip: aria-labelledby points to the text label for screen readers -->
+    
+            <li class="skill-row score-8.5">
+              <span class="skill-name" id="soft-comm">Communication</span>
+              <span class="skill-num" aria-hidden="true">8.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-comm" aria-valuenow="85" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:85%"></i> <!-- bar width -->
+              </div>
+            </li>
+    
+            <li class="skill-row score-8.5">
+              <span class="skill-name" id="soft-team">Teamwork & Collaboration</span>
+              <span class="skill-num" aria-hidden="true">8.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-team" aria-valuenow="85" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:85%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8">
+              <span class="skill-name" id="soft-problem">Problem-Solving</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-problem" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8">
+              <span class="skill-name" id="soft-critical">Critical Thinking</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-critical" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-9">
+              <span class="skill-name" id="soft-time">Time Management</span>
+              <span class="skill-num" aria-hidden="true">9/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-time" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8.7">
+              <span class="skill-name" id="soft-cx">Customer Service</span>
+              <span class="skill-num" aria-hidden="true">8.7/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-cx" aria-valuenow="85" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:85%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8.5">
+              <span class="skill-name" id="soft-detail">Attention to Detail</span>
+              <span class="skill-num" aria-hidden="true">8.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-detail" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-9">
+              <span class="skill-name" id="soft-init">Initiative</span>
+              <span class="skill-num" aria-hidden="true">9/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-init" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:75%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7.5">
+              <span class="skill-name" id="soft-conflict">Conflict Resolution</span>
+              <span class="skill-num" aria-hidden="true">7.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-conflict" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:75%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-9">
+              <span class="skill-name" id="soft-reliable">Reliability</span>
+              <span class="skill-num" aria-hidden="true">9/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="soft-reliable" aria-valuenow="90" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:90%"></i>
+              </div>
+            </li>
+          </ul>
+        </details>
+    
+        <!-- Hard / Business-Technical -->
+        <details>
+          <summary>Hard / Business-Technical</summary>
+          <ul class="skills-bars">
+            <li class="skill-row score-8">
+              <span class="skill-name" id="hard-prog">Programming (Python, Java, HTML, CSS)</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-prog" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7.5">
+              <span class="skill-name" id="hard-bizdev">Business Development</span>
+              <span class="skill-num" aria-hidden="true">7.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-bizdev" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:75%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7">
+              <span class="skill-name" id="hard-acc">Accounting</span>
+              <span class="skill-num" aria-hidden="true">7/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-acc" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:70%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7">
+              <span class="skill-name" id="hard-crm">CRM</span>
+              <span class="skill-num" aria-hidden="true">7/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-crm" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:70%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7.5">
+              <span class="skill-name" id="hard-entre">Entrepreneurship</span>
+              <span class="skill-num" aria-hidden="true">7.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-entre" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:75%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8">
+              <span class="skill-name" id="hard-tools">Practical Tools & Equipment</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-tools" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7">
+              <span class="skill-name" id="hard-git">Git & GitHub</span>
+              <span class="skill-num" aria-hidden="true">7/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-git" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:70%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-7.5">
+              <span class="skill-name" id="hard-rwd">Responsive Web Design</span>
+              <span class="skill-num" aria-hidden="true">7.5/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-rwd" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:75%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8">
+              <span class="skill-name" id="hard-a11y">Web Accessibility (a11y)</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-a11y" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:70%"></i>
+              </div>
+            </li>
+    
+            <li class="skill-row score-8">
+              <span class="skill-name" id="hard-forms">Form Handling (validation + Formspree)</span>
+              <span class="skill-num" aria-hidden="true">8/10</span>
+              <div class="bar" role="progressbar" aria-labelledby="hard-forms" aria-valuenow="80" aria-valuemin="0"
+                aria-valuemax="100">
+                <i style="--w:80%"></i>
+              </div>
+            </li>
+          </ul>
+        </details>
+      </div>
     </section>
+    <!-- ================== /Skills (Collapsibles + Progress Bars) ================== -->
+
   </main>
 
   <footer>
