@@ -137,7 +137,7 @@
     
       <!-- Success note (appears after redirect to ?sent=1) -->
       <div class="card" id="sent-note" hidden aria-live="polite" role="status">
-        ✅ Thanks! Your message was sent. I’ll reply soon.
+        ✅ Thanks! Your message was sent. I Will reply soon.
       </div>
     
       <script>
@@ -147,31 +147,74 @@
         }
       </script>
     
-      <!-- Actual contact form (posts to your Formspree endpoint) -->
-      <form id="contact-form" action="https://formspree.io/f/xdkwlkee" method="POST">
-        <!-- Email subject for the message you receive (helps inbox filtering) -->
-        <input type="hidden" name="_subject" value="New contact form message">
-    
-        <!-- Simple anti-spam "honeypot" (real users won't fill this) -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required autocomplete="name">
-    
-        <label for="email">Email</label>
-        <!-- Formspree expects the email field name to be _replyto -->
-        <input id="email" name="_replyto" type="email" required autocomplete="email">
-    
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" type="text" required autocomplete="off">
-    
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-    
-        <!-- Redirect back to Contact with ?sent=1 (adjust to your live URL if it changes) -->
-        <input type="hidden" name="_next" value="https://bsn038.github.io/contact.html?sent=1">
-    
-        <button type="submit">Send</button>
+      <!-- Accessible, alignment-friendly contact form (HTML only) -->
+      <form id="contact-form" action="https://formspree.io/f/xdkwlkee" method="POST" novalidate>
+        <!-- hidden helpers -->
+        <input type="hidden" name="_subject" value="New contact form message"><!-- email subject you receive -->
+        <input type="hidden" name="_next" value="https://bsn038.github.io/contact.html?sent=1"><!-- redirect after submit -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"><!-- spam honeypot -->
+      
+        <!-- ===== Grid wrapper: each row = label (left) + field (right) ===== -->
+        <div class="form-grid" role="group" aria-labelledby="contact-form-legend">
+          <h4 id="contact-form-legend" class="visually-hidden">Contact form</h4>
+      
+          <!-- ===== Row: Full name ===== -->
+          <div class="form-row">
+            <label for="name" class="form-label">Full name <span aria-hidden="true">*</span></label>
+            <div class="form-field">
+              <input id="name" name="name" type="text" required autocomplete="name" aria-describedby="name-help name-err">
+              <small id="name-help" class="help-text">Enter your first and last name.</small>
+              <p id="name-err" class="field-error" role="alert" aria-live="polite" hidden>
+                Please enter your name (letters only).
+              </p>
+            </div>
+          </div>
+      
+          <!-- ===== Row: Email ===== -->
+          <div class="form-row">
+            <label for="email" class="form-label">Email <span aria-hidden="true">*</span></label>
+            <div class="form-field">
+              <!-- Formspree expects _replyto as the email field name -->
+              <input id="email" name="_replyto" type="email" required autocomplete="email" spellcheck="false"
+                aria-describedby="email-help email-err">
+
+              <small id="email-help" class="help-text">We’ll use this to reply to you.</small>
+              <p id="email-err" class="field-error" role="alert" aria-live="polite" hidden>
+                Please enter a valid email address.
+              </p>
+            </div>
+          </div>
+      
+          <!-- ===== Row: Subject ===== -->
+          <div class="form-row">
+            <label for="subject" class="form-label">Subject <span aria-hidden="true">*</span></label>
+            <div class="form-field">
+              <input id="subject" name="subject" type="text" required autocomplete="off"
+                aria-describedby="subject-help subject-err">
+              <small id="subject-help" class="help-text">Short summary of your enquiry.</small>
+              <p id="subject-err" class="field-error" role="alert" aria-live="polite" hidden>
+                Please add a subject.
+              </p>
+            </div>
+          </div>
+      
+          <!-- ===== Row: Message ===== -->
+          <div class="form-row">
+            <label for="message" class="form-label">Message <span aria-hidden="true">*</span></label>
+            <div class="form-field">
+              <textarea id="message" name="message" rows="6" required aria-describedby="message-help message-err"></textarea>
+              <small id="message-help" class="help-text">Include any details that help me reply.</small>
+              <p id="message-err" class="field-error" role="alert" aria-live="polite" hidden>
+                Please write a message.
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- ===== Actions ===== -->
+        <div class="form-actions">
+          <button type="submit">Send</button>
+        </div>
       </form>
     </section>
 
