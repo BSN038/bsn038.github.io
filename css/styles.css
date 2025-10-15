@@ -1544,3 +1544,24 @@ figure.trio {
   box-shadow: 0 0 0 3px rgba(25, 118, 210, .25);
 }
 
+/* Spice colors for the slogan */
+.c-pistachio {
+  color: #93C572;
+}
+
+/* pistachio */
+.c-royal {
+  color: #4169E1;
+}
+
+/* royal blue */
+.c-red {
+  color: #BA1E1E;
+}
+
+/* brand red */
+
+#home-slogan {
+  transition: opacity .2s ease;
+}
+
