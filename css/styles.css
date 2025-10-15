@@ -25,7 +25,6 @@ a {
   text-decoration: none;
 }
 
-/* Brand red */
 a:hover {
   text-decoration: underline;
 }
@@ -58,14 +57,33 @@ textarea:focus-visible {
   --line-blue: #a8bff5;
   --line-blue-strong: #7f9ae6;
 
-  /* Watermark (inline SVG). You can tweak the fill via %23HEX */
+  /* Watermark SVG (inline); tweak fill via %23HEX */
   --wm-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
+
+  /* Extra tokens used by later sections */
+  --skills-track: #ececec;
+  --sauce-1: #c43d2f;
+  /* Red / Picante */
+  --sauce-2: #6fbf3f;
+  /* Green / Chimichurri */
+  --sauce-3: #f5a623;
+  /* Orange / Ají */
+
+  /* App defaults (for forms & spacing blocks) */
+  --bg: #f8f9fb;
+  --text: #222;
+  --muted: #666;
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
 }
 
 /* =======================================
    Accessibility helpers
    ======================================= */
-/* Screen-reader-only text: announced but not visible */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -78,7 +96,6 @@ textarea:focus-visible {
   border: 0;
 }
 
-/* Keep filter/SVG helpers out of layout but accessible to CSS */
 .visually-hidden {
   position: absolute !important;
   width: 0 !important;
@@ -102,13 +119,11 @@ textarea:focus-visible {
   gap: 1.5rem;
 }
 
-/* Responsive grids that adapt to screen size */
 .grid-2,
 .grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Smaller spacing for business cards grid */
 .business-grid {
   gap: 1rem;
   margin-bottom: 1rem;
@@ -123,25 +138,14 @@ textarea:focus-visible {
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--line-blue);
-  box-shadow:
-    0 1px 0 rgba(11, 42, 74, .10),
-    0 6px 14px rgba(11, 42, 74, .06);
+  box-shadow: 0 1px 0 rgba(11, 42, 74, .10), 0 6px 14px rgba(11, 42, 74, .06);
 }
 
-/* Slightly stronger presence for the first big hero card */
-.hero.card {
-  border-width: 1.5px;
-}
-
-/* Hover feedback for cards and inner panels */
 .card:hover,
 .panel-sky:hover {
   border-color: var(--line-blue-strong);
-  box-shadow:
-    0 2px 0 rgba(11, 42, 74, .12),
-    0 10px 22px rgba(11, 42, 74, .08);
+  box-shadow: 0 2px 0 rgba(11, 42, 74, .12), 0 10px 22px rgba(11, 42, 74, .08);
 }
 
 /* =======================================
@@ -195,10 +199,8 @@ header nav a[aria-current="page"] {
   background: var(--brand-red-dark);
   color: #fff;
   border-color: var(--brand-red-dark);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
 }
 
-/* Brand heading color (dark blue) */
 header .brand h1 {
   color: var(--brand-blue-dark);
 }
@@ -210,8 +212,7 @@ header .brand h1:hover {
 }
 
 /* =======================================
-   Hero
-   Area for intro text + image.
+   Hero (intro area)
    ======================================= */
 .hero-figure {
   text-align: center;
@@ -232,7 +233,6 @@ header .brand h1:hover {
   align-items: center;
 }
 
-/* Mobile-first hero: stack to one column on small screens */
 @media (max-width: 720px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -242,22 +242,20 @@ header .brand h1:hover {
   .profile-container {
     order: 2;
   }
-
-  /* optional: text first, photo second */
 }
 
-/* Subtle watermark for hero and the inner blue panel */
-.hero.card,
-.hero.card .panel-sky {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
-    var(--wm-img);
-  background-repeat: repeat;
-  background-size: 180px auto;
-  background-position: 0 0;
+/* Make the patterned watermark visible on the home hero wrapper */
+/* NOTE: To use this, remove the inline background="... !important" from #hero-watermark in HTML.
+   Inline !important beats stylesheet rules. */
+#hero-watermark {
+  /* thin white film so content stays readable + tiled "pollitos" beneath */
+  background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), url('img/bg-chicks.png');
+  background-repeat: no-repeat, repeat;
+  background-size: auto, 160px auto;
+  background-position: 0 0, 0 0;
 }
 
-/* Gentle drift animation for hero watermark */
+/* Optional gentle drift animation for the watermark pattern */
 @keyframes heroDrift {
   from {
     background-position: 0 0, 0 0;
@@ -268,12 +266,12 @@ header .brand h1:hover {
   }
 }
 
-.hero.card {
+#hero-watermark {
   animation: heroDrift 18s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero.card {
+  #hero-watermark {
     animation: none;
   }
 }
@@ -310,7 +308,7 @@ header .brand h1:hover {
   display: block;
   margin-inline: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
   transition: transform .3s ease;
 }
 
@@ -318,7 +316,6 @@ header .brand h1:hover {
   transform: scale(1.02);
 }
 
-/* Optional layout hint to reduce CLS if <img> lacks width/height */
 .logo-bkc,
 .rotisserie-img,
 .card figure img {
@@ -349,7 +346,7 @@ ul {
   border-radius: 5px;
   display: inline-block;
   font-size: .95rem;
-  transition: background .2s ease-in-out;
+  transition: background .2s;
 }
 
 .btn:hover {
@@ -365,7 +362,6 @@ ul {
   background: #333;
 }
 
-/* Keep focus states visible on buttons */
 .btn:focus-visible,
 form button:focus-visible {
   outline: 3px solid var(--brand-red);
@@ -382,7 +378,6 @@ form button:focus-visible {
   place-items: center;
 }
 
-/* Base image with subtle heat distortion (from hidden SVG filter) */
 .rotisserie-img {
   width: 100%;
   max-width: 420px;
@@ -390,27 +385,21 @@ form button:focus-visible {
   display: block;
   filter: url(#heat-wobble);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
 }
 
-/* Canvas overlay where flames are drawn */
 .flame-layer {
   position: absolute;
   inset: auto 0 6% 0;
-  /* stick to bottom area of the image */
   width: 100%;
   max-width: 420px;
   height: 38%;
-  /* flame area height */
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   pointer-events: none;
-  /* ignore mouse */
   mix-blend-mode: screen;
-  /* fire glow blends over the photo */
 }
 
-/* Fallback if a browser doesn't support 'inset' prop */
 @supports not (inset: 0) {
   .flame-layer {
     top: auto;
@@ -420,7 +409,6 @@ form button:focus-visible {
   }
 }
 
-/* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .rotisserie-img {
     filter: none;
@@ -454,11 +442,10 @@ form textarea {
   font-family: inherit;
 }
 
-/* Accessible focus for form controls */
 form input:focus,
 form textarea:focus {
   border-color: var(--brand-red);
-  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, .15);
   outline: none;
 }
 
@@ -491,7 +478,6 @@ footer small a {
   color: var(--brand-red);
 }
 
-/* Footer Enhancements: spacing + icon rows */
 footer address a {
   margin: 0 .25rem;
 }
@@ -505,7 +491,6 @@ footer address.with-icons {
   flex-wrap: wrap;
   justify-content: center;
   gap: .6rem 1rem;
-  /* row x column */
 }
 
 footer address.with-icons p {
@@ -515,7 +500,6 @@ footer address.with-icons p {
   margin: 0;
 }
 
-/* Icon sizing inside rows */
 .with-icons svg,
 .with-icons .icon {
   width: 1.1rem;
@@ -528,8 +512,6 @@ footer address.with-icons p {
 .with-icons svg {
   max-width: none;
 }
-
-/* neutralize any global svg { width:100% } */
 
 .icon {
   width: 1em;
@@ -561,7 +543,6 @@ body.theme-sky footer {
   background: var(--bg-sky-soft);
 }
 
-/* Blue “panel” wrapper used in hero or image frames */
 .panel-sky {
   display: block;
   width: fit-content;
@@ -578,7 +559,6 @@ body.theme-sky footer {
   margin: 0 auto;
 }
 
-/* Avoid crop to 4:3 and keep responsive in storefront figures */
 .storefront-figure img {
   aspect-ratio: auto;
   max-width: 100%;
@@ -588,19 +568,17 @@ body.theme-sky footer {
 }
 
 /* =======================================
-   Watermark for BKC visuals (business card)
+   Watermark card variant (business page)
    ======================================= */
+/* Softer (darker) watermark background – no syntax errors */
 .card.wm-bkc {
-  /* thin white film so text stays readable + tiled watermark underneath */
   background:
-    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-    var(--wm-img);
-  background-repeat: repeat;
-  background-size: 220px auto;
-  /* tweak 180–240 to taste */
-  background-position: 0 0;
+    linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)),
+    rgba(255, 255, 255, .75);
+  background-repeat: no-repeat, repeat;
+  background-size: auto, 220px auto;
+  background-position: 0 0, 0 0;
   animation: wmDrift 18s linear infinite;
-  /* optional gentle drift */
 }
 
 @keyframes wmDrift {
@@ -622,17 +600,14 @@ body.theme-sky footer {
 /* =======================================
    BKC MENU (details/summary accordion)
    ======================================= */
-/* Each <details> behaves like a card row */
 .menu-item {
   margin-bottom: .75rem;
   border-radius: 12px;
   overflow: hidden;
-  /* keep rounded corners when open */
   border: 1px solid rgba(0, 0, 0, .08);
   background: #fff;
 }
 
-/* Summary = red pill button */
 .menu-item>summary {
   list-style: none;
   cursor: pointer;
@@ -641,14 +616,11 @@ body.theme-sky footer {
   font-weight: 700;
   padding: .7rem 1rem;
   border: 0;
-  outline: none;
-  user-select: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Custom arrow (consistent across browsers) */
 .menu-item>summary::after {
   content: "▸";
   font-size: 1.1rem;
@@ -662,7 +634,6 @@ body.theme-sky footer {
   transform: rotate(90deg);
 }
 
-/* Hover/active/focus states */
 .menu-item>summary:hover {
   background: var(--brand-red-dark);
 }
@@ -677,17 +648,14 @@ body.theme-sky footer {
   border-radius: 12px;
 }
 
-/* Open panel content: image left, info right */
 .menu-item .menu-body {
   padding: 1rem;
   display: grid;
   gap: .8rem;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  /* left img / right text */
   align-items: center;
 }
 
-/* Right column holds title, description, and price */
 .menu-item .menu-info {
   display: flex;
   flex-direction: column;
@@ -716,7 +684,6 @@ body.theme-sky footer {
   white-space: nowrap;
 }
 
-/* Image block */
 .menu-item figure {
   margin: 0;
 }
@@ -730,7 +697,6 @@ body.theme-sky footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
 }
 
-/* Mobile: stack columns and center text for balance */
 @media (max-width: 560px) {
   .menu-item .menu-body {
     grid-template-columns: 1fr;
@@ -750,24 +716,19 @@ body.theme-sky footer {
    ======================================= */
 .design-rationale {
   margin: 2rem 0;
-  /* space between projects and rationale sections */
   padding: 1rem 1.25rem;
-  /* comfortable spacing for text readability */
   border-left: 4px solid #ccc;
-  /* subtle visual marker on the left */
   background: #f8f8f8;
-  /* light gray background for contrast */
   line-height: 1.6;
-  /* improve paragraph readability */
 }
 
 .design-rationale h2 {
   margin-top: 0;
 }
 
-/* ——— Booking ——— */
+/* ===== Booking (shared form styles) ===== */
 #booking.card {
-  padding: var(--space-4, 1rem);
+  padding: var(--space-4);
 }
 
 .form {
@@ -805,7 +766,7 @@ body.theme-sky footer {
 .form-row input:focus,
 .form-row select:focus,
 .form-row textarea:focus {
-  outline: 2px solid var(--brand-red, #c62828);
+  outline: 2px solid var(--brand-red);
   outline-offset: 2px;
 }
 
@@ -826,7 +787,6 @@ body.theme-sky footer {
   color: #b00020;
 }
 
-/* Status banner (success / error) */
 .status {
   margin-bottom: 0.75rem;
   padding: 0.75rem 1rem;
@@ -850,66 +810,13 @@ body.theme-sky footer {
   display: none;
 }
 
-/* Simple card spacing for this block */
-#skills-accordion { padding: var(--space-4, 1rem); }
-
-/* Collapsible container */
-.skills-accordion details {
-  border: 1px solid #eee;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-  margin-top: 0.75rem;
-  background: #fff;
-}
-
-/* Summary is the clickable header */
-.skills-accordion summary {
-  cursor: pointer;
-  font-weight: 700;
-  list-style: none; /* hide default marker in most browsers */
-}
-.skills-accordion summary::-webkit-details-marker { display: none; }
-.skills-accordion summary:focus-visible {
-  outline: 2px solid var(--brand-red, #c62828);
-  outline-offset: 2px;
-}
-
-/* List layout */
-.skills-bars { display: grid; gap: 0.75rem; margin-top: 0.75rem; }
-.skill { display: grid; gap: 0.375rem; }
-.skill-name { font-weight: 600; }
-.skill-num { font-size: 0.9rem; color: #666; }
-
-/* Progress bar shell */
-.bar {
-  position: relative;
-  height: 10px;
-  background: #eee;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-/* Progress bar fill; width comes from inline --w */
-.bar i {
-  display: block;
-  height: 100%;
-  width: var(--w, 0%);
-  background: var(--brand-red, #c62828);
-  border-radius: 999px;
-  transition: width 0.6s ease;
-}
-
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .bar i { transition: none; }
-}
-
-/* Simple card spacing for this block */
+/* =======================================
+   Skills — accordion + segmented progress bars
+   ======================================= */
 #skills-accordion {
-  padding: var(--space-4, 1rem);
+  padding: var(--space-4);
 }
 
-/* Collapsible container */
 .skills-accordion details {
   border: 1px solid #eee;
   border-radius: 0.75rem;
@@ -918,12 +825,10 @@ body.theme-sky footer {
   background: #fff;
 }
 
-/* Summary is the clickable header */
 .skills-accordion summary {
   cursor: pointer;
   font-weight: 700;
   list-style: none;
-  /* hide default marker in most browsers */
 }
 
 .skills-accordion summary::-webkit-details-marker {
@@ -931,11 +836,10 @@ body.theme-sky footer {
 }
 
 .skills-accordion summary:focus-visible {
-  outline: 2px solid var(--brand-red, #c62828);
+  outline: 2px solid var(--brand-red);
   outline-offset: 2px;
 }
 
-/* List layout */
 .skills-bars {
   display: grid;
   gap: 0.75rem;
@@ -953,10 +857,9 @@ body.theme-sky footer {
 
 .skill-num {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
 }
 
-/* Progress bar shell */
 .bar {
   position: relative;
   height: 10px;
@@ -965,616 +868,181 @@ body.theme-sky footer {
   overflow: hidden;
 }
 
-/* Progress bar fill; width comes from inline --w */
 .bar i {
   display: block;
   height: 100%;
   width: var(--w, 0%);
-  background: var(--brand-red, #c62828);
+  background: var(--brand-red);
   border-radius: 999px;
   transition: width 0.6s ease;
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .bar i {
     transition: none;
   }
 }
 
-/* Group layout */
-.radio-spark {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1rem;
-  border: 0;
-  padding: 0;
+/* Segmented thin variant (used in certain skills blocks) */
+.skills-bars .bar {
+  height: 3px;
+  background: var(--skills-track);
 }
 
-.radio-spark legend {
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+.skills-bars .bar i {
+  background: linear-gradient(to right,
+      var(--sauce-1) 0% 10%, var(--sauce-2) 10% 20%, var(--sauce-3) 20% 30%,
+      var(--sauce-1) 30% 40%, var(--sauce-2) 40% 50%, var(--sauce-3) 50% 60%,
+      var(--sauce-1) 60% 70%, var(--sauce-2) 70% 80%, var(--sauce-3) 80% 90%, var(--sauce-1) 90% 100%);
+  transition: width .25s ease;
 }
 
-/* Wrap makes whole label clickable */
-.spark-item {
-  display: inline-block;
-}
-
-/* Hide native radio but keep it accessible */
-.spark-item input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Visual button */
-.btn-radio {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid #ddd;
-  background: #fff;
-  line-height: 1;
-  user-select: none;
-  cursor: pointer;
-  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
-}
-
-/* Focus ring for keyboard users */
-.spark-item input:focus-visible+.btn-radio {
-  outline: 2px solid var(--brand-red, #c62828);
-  outline-offset: 2px;
-}
-
-/* Selected state */
-.spark-item input:checked+.btn-radio {
-  border-color: var(--brand-red, #c62828);
-  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
-}
-
-/* Tiny sparkle element (positioned dot that bursts) */
-.btn-radio .sparkle {
-  position: relative;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--brand-red, #c62828);
-  opacity: 0;
-  /* hidden until animated */
-}
-
-/* Burst particles created via box-shadow */
-@keyframes sparkle-burst {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow:
-      0 0 0 0 var(--brand-red, #c62828),
-      0 0 0 0 var(--brand-red, #c62828),
-      0 0 0 0 var(--brand-red, #c62828);
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale(1.2);
-    box-shadow:
-      -10px -6px 0 0 var(--brand-red, #c62828),
-      2px -12px 0 0 var(--brand-red, #c62828),
-      10px 6px 0 0 var(--brand-red, #c62828);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-    box-shadow:
-      -14px -8px 0 0 transparent,
-      2px -16px 0 0 transparent,
-      14px 8px 0 0 transparent;
-  }
-}
-
-/* Trigger via .burst helper class (set from JS on selection) */
-.btn-radio .sparkle.burst {
-  animation: sparkle-burst 480ms ease-out;
-}
-
-/* Micro-press on click */
-.spark-item:active .btn-radio {
-  transform: scale(0.98);
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .btn-radio .sparkle.burst {
-    animation: none;
-    opacity: 0;
-  }
-
-  .spark-item:active .btn-radio {
-    transform: none;
-  }
-}
-
-/* === Spice radios: royal blue pill + white text === */
-/* Use a strong royal blue for good contrast */
+/* =======================================
+   Radio "Spark" group (spice level selector)
+   ======================================= */
+     /* =========================
+     Spice row (2 columns): left = radios, right = bottles
+     ========================= */
+     .spice-row {
+       display: grid;
+       grid-template-columns: minmax(320px, 1fr) 1fr;
+       align-items: start;
+       gap: 1.5rem 2rem;
+     }
+  
+     @media (max-width: 900px) {
+       .spice-row {
+         grid-template-columns: 1fr;
+       }
+     }
 :root {
-  --spice-blue: #0033a0; /* royal blue */
+  --spice-blue: #0033a0;
   --spice-blue-dark: #00267a;
 }
 
-.radio-spark .btn-radio {
-  background: var(--spice-blue);
-  color: #fff;
-  border-color: var(--spice-blue);
-}
-
-.spark-item input:checked + .btn-radio {
-  border-color: #fff;                     /* subtle contrast ring */
-  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.18);
-}
-
-.spark-item:active .btn-radio {
-  transform: scale(0.98);
-  background: var(--spice-blue-dark);     /* tiny press feedback */
-}
-
-/* Focus ring stays clear and accessible */
-.spark-item input:focus-visible + .btn-radio {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
-}
-
-/* === Multicolor sparkles === */
-/* Make the tiny dot invisible until burst */
-.btn-radio .sparkle {
-  background: #ffffff;  /* white center dot (small) */
-  opacity: 0;
-}
-
-/* New burst with multi-color particles */
-@keyframes sparkle-burst {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    /* start with no spread */
-    box-shadow:
-      0 0 0 0 #ffcc00,   /* yellow */
-      0 0 0 0 #00d2ff,   /* cyan */
-      0 0 0 0 #ff4d4d,   /* red */
-      0 0 0 0 #7cff6b,   /* green */
-      0 0 0 0 #ff7af6;   /* magenta */
-  }
-  55% {
-    opacity: 1;
-    transform: scale(1.15);
-    /* fly out in different directions */
-    box-shadow:
-      -12px -8px 0 0 #ffcc00,
-       10px -14px 0 0 #00d2ff,
-       14px   6px 0 0 #ff4d4d,
-       -4px  14px 0 0 #7cff6b,
-       -16px  2px 0 0 #ff7af6;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.85);
-    /* fade to transparent */
-    box-shadow:
-      -16px -10px 0 0 transparent,
-       14px -18px 0 0 transparent,
-       18px   8px 0 0 transparent,
-       -6px  18px 0 0 transparent,
-       -20px  2px 0 0 transparent;
-  }
-}
-
-/* Respect reduced motion (no change needed if you already had this) */
-@media (prefers-reduced-motion: reduce) {
-  .btn-radio .sparkle.burst { animation: none; opacity: 0; }
-  .spark-item:active .btn-radio { transform: none; }
-}
-
-/* =========================
-   Base + variables
-   ========================= */
-
-/* Better box model everywhere */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* App variables (tweak freely) */
-:root {
-  --brand-red: #c62828;
-  --bg: #f8f9fb;
-  --text: #222;
-  --muted: #666;
-
-  --radius: 12px;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-
-  --space-2: .5rem;
-  --space-3: .75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-}
-
-/* Page basics */
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-/* Headings look clean */
-h1,
-h2,
-h3 {
-  line-height: 1.2;
-  margin: 0 0 .5em;
-}
-
-/* Links */
-a {
-  color: var(--brand-red);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Utility: hide */
-.is-hidden {
-  display: none !important;
-}
-
-/* =========================
-   Card + buttons
-   ========================= */
-
-.card {
-  background: #fff;
-  padding: var(--space-6);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-block: var(--space-6);
-}
-
-/* Primary button */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: .6rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--brand-red);
-  background: var(--brand-red);
-  color: #fff;
-  font-weight: 600;
-  line-height: 1;
-  cursor: pointer;
-  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
-}
-
-.btn:hover {
-  filter: brightness(0.95);
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* Outline button (variant) */
-.btn-outline {
-  background: #fff;
-  color: var(--brand-red);
-  border: 2px solid var(--brand-red);
-}
-
-.btn-outline:hover {
-  background: var(--brand-red);
-  color: #fff;
-}
-
-/* Ghost button (variant) */
-.btn-ghost {
-  background: transparent;
-  color: var(--brand-red);
-  border: 1px dashed var(--brand-red);
-}
-
-.btn-ghost:hover {
-  background: rgba(198, 40, 40, 0.06);
-}
-
-/* =========================
-   Forms (Booking + Contact)
-   ========================= */
-
-#booking.card {
-  padding: var(--space-4);
-}
-
-.form {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.form-grid {
-  display: grid;
-  gap: var(--space-4);
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 640px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.form-row {
-  display: grid;
-  gap: .375rem;
-}
-
-.form-row input,
-.form-row select,
-.form-row textarea {
-  width: 100%;
-  padding: .6rem .75rem;
-  border: 1px solid #ddd;
-  border-radius: .5rem;
-  background: #fff;
-  font: inherit;
-}
-
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus {
-  outline: 2px solid var(--brand-red);
-  outline-offset: 2px;
-}
-
-/* Checkbox row */
-.form-row.checkbox label {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-}
-
-/* Helper text + field error */
-.hint {
-  font-size: .85rem;
-  color: var(--muted);
-}
-
-.field-error {
-  min-height: 1.1em;
-  font-size: .9rem;
-  color: #b00020;
-}
-
-/* Status banners (success/error) */
-.status {
-  margin-bottom: .75rem;
-  padding: .75rem 1rem;
-  border-radius: .5rem;
-  font-weight: 600;
-}
-
-.status.success {
-  background: #e6f6ee;
-  color: #0f5132;
-  border: 1px solid #badbcc;
-}
-
-.status.error {
-  background: #fdecea;
-  color: #842029;
-  border: 1px solid #f5c2c7;
-}
-
-/* =========================
-   Skills: accordion + progress bars
-   ========================= */
-
-#skills-accordion {
-  padding: var(--space-4);
-}
-
-/* Collapsible containers */
-.skills-accordion details {
-  border: 1px solid #eee;
-  border-radius: .75rem;
-  padding: .75rem 1rem;
-  margin-top: .75rem;
-  background: #fff;
-}
-
-.skills-accordion summary {
-  cursor: pointer;
-  font-weight: 700;
-  list-style: none;
-}
-
-.skills-accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.skills-accordion summary:focus-visible {
-  outline: 2px solid var(--brand-red);
-  outline-offset: 2px;
-}
-
-/* List + items */
-.skills-bars {
-  display: grid;
-  gap: .75rem;
-  margin-top: .75rem;
-}
-
-.skill {
-  display: grid;
-  gap: .375rem;
-}
-
-.skill-name {
-  font-weight: 600;
-}
-
-.skill-num {
-  font-size: .9rem;
-  color: var(--muted);
-}
-
-/* Progress bar track */
-.bar {
-  position: relative;
-  height: 10px;
-  background: #eee;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-/* Progress fill (width via inline --w) */
-.bar i {
-  display: block;
-  height: 100%;
-  width: var(--w, 0%);
-  background: var(--brand-red);
-  border-radius: 999px;
-  transition: width .6s ease;
-}
-
-/* Motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .bar i {
-    transition: none;
-  }
-}
-
-/* =========================
-   Spice radios with colored pills + sparkles
-   ========================= */
-
-/* Main layout container for spice level + bottles */
-.spice-row {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  /* more space for radios */
-  gap: 2rem;
-  align-items: center;
-}
-
-/* --- Radios group --- */
 .radio-spark {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  /* push them toward the right side */
-  gap: 1rem;
-  border: 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) auto;
+  align-items: start;
+  justify-items: start;
+  /* fieldset alineado a la izquierda */
+  gap: .75rem 1.5rem;
 }
 
 .radio-spark legend {
-  font-weight: 700;
-  align-self: flex-start;
-  margin-bottom: 0.25rem;
-  color: #222;
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
-/* Make label clickable */
+.spice-notes {
+  display: grid;
+  gap: .75rem;
+}
+
+.spice-notes .note h4 {
+  margin: 0 0 .15rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  font-size: 1rem;
+}
+
+.spice-notes .note p {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+.note-mild p {
+  color: #5a8f33;
+}
+
+.note-medium p {
+  color: #0033a0;
+}
+
+.note-hot p {
+  color: #ff7a00;
+}
+
+.spice-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* ⟵ a la izquierda */
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .radio-spark {
+    grid-template-columns: 1fr;
+  }
+
+  .spice-buttons {
+    align-items: center;
+  }
+}
+
+/* Pills */
 .spark-item {
   display: inline-block;
   position: relative;
 }
 
-/* Hide native radio input */
 .spark-item input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Pill button style */
 .btn-radio {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.4rem;
-  /* bigger buttons */
+  gap: .5rem;
+  padding: .8rem 1.4rem;
   border-radius: 999px;
   border: 2px solid transparent;
   background: #fff;
   font-weight: 600;
   cursor: pointer;
   line-height: 1;
-  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease, background 120ms ease, color 120ms ease;
+  transition: transform 120ms, filter 120ms, box-shadow 120ms, background 120ms, color 120ms;
 }
 
-/* Button press feedback */
 .spark-item:active .btn-radio {
   transform: scale(0.96);
 }
 
-/* Focus ring for keyboard users */
 .spark-item input:focus-visible+.btn-radio {
   outline: 2px solid #fff;
   outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
 }
 
-/* --- Color themes per option --- */
-
-/* Base text color */
 .radio-spark .btn-radio {
   color: #fff;
 }
 
-/* Mild = royal blue */
 .spark-item input[value="mild"]+.btn-radio {
   background: #0033a0;
-  color: #ffffff;
+  color: #fff;
 }
 
-/* Medium = pistachio */
 .spark-item input[value="medium"]+.btn-radio {
   background: #93c572;
   color: #113d00;
-  /* dark text for readability */
 }
 
-/* Hot = bright orange */
 .spark-item input[value="hot"]+.btn-radio {
   background: #ff7a00;
-  color: #ffffff;
+  color: #fff;
 }
 
-/* Selected glow */
 .spark-item input:checked+.btn-radio {
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, .08);
 }
 
-/* --- Sparkle animation --- */
+/* Sparkle dot + bursts */
 .btn-radio .sparkle {
   position: relative;
   width: 8px;
@@ -1584,28 +1052,26 @@ a:hover {
   background: #ffffff;
 }
 
-/* Blue sparkle (Mild) */
 @keyframes sparkle-blue {
   0% {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 0 #7fb2ff, 0 0 0 0 #ffffff;
+    box-shadow: 0 0 0 0 #7fb2ff, 0 0 0 0 #fff;
   }
 
   55% {
     opacity: 1;
     transform: scale(1.15);
-    box-shadow: -12px -8px 0 0 #7fb2ff, 12px 6px 0 0 #ffffff;
+    box-shadow: -12px -8px 0 0 #7fb2ff, 12px 6px 0 0 #fff;
   }
 
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(.8);
     box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
   }
 }
 
-/* Green sparkle (Medium) */
 @keyframes sparkle-green {
   0% {
     opacity: 1;
@@ -1621,33 +1087,31 @@ a:hover {
 
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(.8);
     box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
   }
 }
 
-/* Orange sparkle (Hot) */
 @keyframes sparkle-orange {
   0% {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 0 #ffd199, 0 0 0 0 #ffffff;
+    box-shadow: 0 0 0 0 #ffd199, 0 0 0 0 #fff;
   }
 
   55% {
     opacity: 1;
     transform: scale(1.15);
-    box-shadow: -12px -8px 0 0 #ffd199, 12px 6px 0 0 #ffffff;
+    box-shadow: -12px -8px 0 0 #ffd199, 12px 6px 0 0 #fff;
   }
 
   100% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(.8);
     box-shadow: -16px -10px 0 0 transparent, 16px 8px 0 0 transparent;
   }
 }
 
-/* Apply correct sparkle per selection */
 .spark-item input[value="mild"]:checked+.btn-radio .sparkle.burst {
   animation: sparkle-blue 480ms ease-out;
 }
@@ -1660,7 +1124,6 @@ a:hover {
   animation: sparkle-orange 480ms ease-out;
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .btn-radio .sparkle.burst {
     animation: none !important;
@@ -1672,193 +1135,17 @@ a:hover {
   }
 }
 
-/* --- Sauce bottles gallery --- */
-.sauce-gallery {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 2rem;
-  flex-wrap: nowrap;
-}
-
-/* Each bottle image */
-.sauce-bottle {
-  width: 12%;
-  max-width: 130px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
-  transition: transform 0.2s ease;
-}
-
-/* Subtle hover effect */
-.sauce-bottle:hover {
-  transform: translateY(-4px);
-}
-
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .spice-row {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .radio-spark {
-    align-items: center;
-  }
-
-  .sauce-gallery {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .sauce-bottle {
-    width: 40px;
-  }
-}
-
-/* --- Spice legend: a bit larger --- */
-.radio-spark legend {
-  font-size: 1.25rem;
-  /* bigger title */
-  font-weight: 800;
-}
-
-/* --- Split the fieldset into two columns: notes (left) + buttons (right) --- */
-.radio-spark {
-  display: grid !important;
-  /* overrides previous flex */
-  grid-template-columns: minmax(280px, 1fr) auto;
-  /* left notes, right buttons */
-  align-items: start;
-  gap: .75rem 1.5rem;
-  /* row x column gap */
-}
-
-.radio-spark legend {
-  grid-column: 1 / -1;
-}
-
-/* Left column (newspaper-style notes) */
-.spice-notes {
-  display: grid;
-  gap: .75rem;
-}
-
-.spice-notes .note h4 {
-  margin: 0 0 .15rem;
-  font-weight: 800;
-  color: var(--brand-red);
-  /* red title as requested */
-  font-size: 1rem;
-}
-
-.spice-notes .note p {
-  margin: 0;
-  font-size: .95rem;
-  line-height: 1.35;
-}
-
-/* Color the paragraph by spice */
-.note-mild p {
-  color: #5a8f33;
-}
-
-/* royal blue */
-.note-medium p {
-  color: #0033a0;
-}
-
-/* darker pistachio for readability */
-.note-hot p {
-  color: #ff7a00;
-}
-
-/* orange */
-
-/* Right column keeps buttons stacked and aligned to the right */
-.spice-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  /* same spot as before */
-  gap: 1rem;
-}
-
-/* Mobile: stack notes on top, buttons below */
-@media (max-width: 900px) {
-  .radio-spark {
-    grid-template-columns: 1fr;
-  }
-
-  .spice-buttons {
-    align-items: center;
-  }
-}
-
-/* === Horizontal trio of figures (smaller, side-by-side) === */
-.card.wm-bkc .trio {
-  display: inline-block;
-  /* line up horizontally */
-  width: calc(33.333% - 1rem);
-  /* three per row */
-  vertical-align: top;
-  margin: 0 .5rem 1rem;
-  /* small side gap */
-  text-align: center;
-  /* center captions */
-}
-
-.card.wm-bkc .trio img {
-  width: 100%;
-  max-width: 220px;
-  /* smaller images */
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
-}
-
-.card.wm-bkc .trio figcaption {
-  font-size: .9rem;
-  line-height: 1.35;
-  margin-top: .4rem;
-  color: #4a5568;
-}
-
-/* Stack nicely on small screens */
-@media (max-width: 800px) {
-  .card.wm-bkc .trio {
-    display: block;
-    width: 100%;
-    margin: 0 0 1rem;
-  }
-
-  .card.wm-bkc .trio img {
-    max-width: 320px;
-    margin-inline: auto;
-  }
-}
-
-/* =========================
-   Component: Loader (Turning Grill)
-   - CSS-only overlay, ≤1.5s visible on first paint.
-   - Auto fade-out and then hidden (no pointer-events).
-   - Respects prefers-reduced-motion.
-   ========================= */
-
+/* =======================================
+   Loader decorations (optional)
+   ======================================= */
 .loader-backdrop {
   position: fixed;
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.95);
-  /* adjust for your theme */
+  background: rgba(255, 255, 255, .95);
   z-index: 9999;
   animation: loader-fade 1.4s forwards;
-  /* total lifetime */
 }
 
 .loader--grill {
@@ -1867,35 +1154,26 @@ a:hover {
   border-radius: 50%;
   box-shadow: 0 0 0 2px currentColor inset;
   color: #2b2b2b;
-  /* use brand-neutral dark token */
   position: relative;
   animation: loader-spin 1.2s linear infinite;
 }
 
-/* Grill bars using conic gradients */
 .loader--grill::before,
 .loader--grill::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background:
-    conic-gradient(from 0deg,
-      transparent 0 40deg, currentColor 40 44deg,
-      transparent 44 130deg, currentColor 130 134deg,
-      transparent 134 220deg, currentColor 220 224deg,
-      transparent 224 316deg, currentColor 316 320deg,
-      transparent 320 360deg);
+  background: conic-gradient(from 0deg, transparent 0 40deg, currentColor 40 44deg, transparent 44 130deg, currentColor 130 134deg, transparent 134 220deg, currentColor 220 224deg, transparent 224 316deg, currentColor 316 320deg, transparent 320 360deg);
   mask: radial-gradient(circle 28px, transparent 31px, #000 32px);
-  opacity: 0.9;
+  opacity: .9;
 }
 
 .loader--grill::after {
   transform: rotate(10deg);
-  opacity: 0.6;
+  opacity: .6;
 }
 
-/* Fade out backdrop and then hide it */
 @keyframes loader-fade {
   0% {
     opacity: 1;
@@ -1913,30 +1191,23 @@ a:hover {
   }
 }
 
-/* Continuous rotation */
 @keyframes loader-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-/* Reduce motion: no spin, quicker fade */
 @media (prefers-reduced-motion: reduce) {
   .loader--grill {
     animation: none;
   }
 
   .loader-backdrop {
-    animation-duration: 0.5s;
+    animation-duration: .5s;
   }
 }
 
-/* Global: Top Stripe Loader (CSS-only, all pages)
-   - 3px animated stripe at the very top of the viewport.
-   - Injected via html::before (no HTML markup).
-   - Auto fades out (~1.2s) and hides.
-   - Respects prefers-reduced-motion.
-*/
+/* Global top stripe (CSS-only) */
 html::before {
   content: "";
   position: fixed;
@@ -1946,24 +1217,18 @@ html::before {
   height: 3px;
   z-index: 9999;
   pointer-events: none;
-  background:
-    repeating-linear-gradient(45deg,
-      currentColor 0 10px,
-      transparent 10px 20px);
+  background: repeating-linear-gradient(45deg, currentColor 0 10px, transparent 10px 20px);
   color: #c43d2f;
-  /* TODO: replace with your brand accent (e.g., pistachio) */
   opacity: 1;
   animation: tl-move .6s linear infinite, tl-fade 1.2s ease forwards;
 }
 
-/* diagonal motion */
 @keyframes tl-move {
   to {
     background-position-x: 40px;
   }
 }
 
-/* fade-out and hide */
 @keyframes tl-fade {
   0% {
     opacity: 1;
@@ -1981,64 +1246,200 @@ html::before {
   }
 }
 
-/* reduced motion: static bar + quick fade */
 @media (prefers-reduced-motion: reduce) {
   html::before {
     animation: tl-fade .5s ease forwards;
   }
 }
 
-/* =========================================
-   Skills — Segmented bars (10 segments, 3 sauces)
-   Works with your HTML:
-   <div class="bar"><i style="--w:85%"></i></div>
-   The fill width is controlled by --w (0%–100%).
-   ========================================= */
-
-/* Brand palette (adjust if needed) */
-:root {
-  --skills-track: #ececec;
-  /* neutral track */
-  --sauce-1: #c43d2f;
-  /* Red / Picante */
-  --sauce-2: #6fbf3f;
-  /* Green / Chimichurri */
-  --sauce-3: #f5a623;
-  /* Orange / Ají */
+/* === Patch: Spice bottles right + smaller + more spacing === */
+.spice-row .sauce-gallery {
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 3.25rem;
+  flex-wrap: nowrap;
 }
 
-/* Progress track (container) */
-.skills-bars .bar {
-  position: relative;
-  height: 3px;
-  /* thinner line (try 3px if you want ultra-thin) */
-  background: var(--skills-track);
-  border-radius: 999px;
-  /* keep rounded edges even when thin */
-  overflow: hidden;
+.spice-row .sauce-bottle {
+  width: clamp(36px, 7vw, 56px);
+  max-width: none;
+  height: auto;
 }
 
-/* Segmented fill (10 equal stripes, cycles sauce-1 → sauce-2 → sauce-3) */
-.skills-bars .bar i {
+/* Opcional: phone size/tablet */
+@media (max-width: 900px) {
+  .spice-row .sauce-bottle {
+    width: clamp(48px, 14vw, 64px);
+  }
+}
+
+.spice-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* group of pills */
+.spice-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* each pill */
+.spice-buttons .spark-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Remove default margins so spacing is fully controlled here */
+figure.trio {
+  margin: 0;
+}
+
+/* ── 1) Put the three figures on one row, evenly spaced, same width ── */
+.trio {
+  display: inline-block;
+  /* lay them side-by-side */
+  width: calc((100% - 2rem) / 3);
+  /* 3 columns with 1rem gap between */
+  margin-right: 1rem;
+  /* horizontal gap */
+  vertical-align: top;
+  /* align tops */
+  text-align: center;
+  /* captions centered */
+}
+
+/* no right margin on every third item (end of each row) */
+.trio:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+/* ── 2) Normalize inner media size (same visual box for image/canvas) ── */
+.trio img,
+.trio canvas {
+  width: 100%;
+  height: 260px;
+  /* adjust this height as needed (e.g., 240–320px) */
+  object-fit: contain;
+  /* show the entire image, no cropping */
+  object-position: center;
+  /* keep it centered vertically and horizontally */
   display: block;
-  height: 100%;
-  width: var(--w, 0%);
-  /* 0%–100% from your inline style */
-  background: linear-gradient(to right,
-      var(--sauce-1) 0% 10%,
-      var(--sauce-2) 10% 20%,
-      var(--sauce-3) 20% 30%,
-      var(--sauce-1) 30% 40%,
-      var(--sauce-2) 40% 50%,
-      var(--sauce-3) 50% 60%,
-      var(--sauce-1) 60% 70%,
-      var(--sauce-2) 70% 80%,
-      var(--sauce-3) 80% 90%,
-      var(--sauce-1) 90% 100%);
-  border-radius: inherit;
-  transition: width .25s ease;
-  /* smooth updates if you change --w */
+  background: #111;
+  /* optional: background color behind letterboxing */
+}
+
+/* Optional: if you want images to fill the box again on small screens */
+@media (max-width: 580px) {
+
+  .trio img,
+  .trio canvas {
+    object-fit: cover;
+    /* fill the box on mobile (cropped again) */
+    height: auto;
+    /* adjust height naturally on small screens */
+  }
 }
 
 
+/* Keep the flame canvas over the rotisserie image */
+.rotisserie-visual {
+  position: relative;
+}
+
+.rotisserie-visual .flame-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── 3) Responsive behavior ── */
+@media (max-width: 900px) {
+  .trio {
+    width: calc((100% - 1rem) / 2);
+  }
+
+  /* 2 per row */
+  .trio:nth-of-type(3n) {
+    margin-right: 1rem;
+  }
+
+  .trio:nth-of-type(2n) {
+    margin-right: 0;
+  }
+
+  /* no gap at row end */
+}
+
+@media (max-width: 580px) {
+  .trio {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  /* 1 per row */
+  .trio img,
+  .trio canvas {
+    height: auto;
+  }
+
+  /* let height flow on mobile */
+}
+
+.trio img,
+.trio canvas {
+  width: 100%;
+  height: 260px;              /* adjust this height as needed (e.g., 240–320px) */
+  object-fit: contain;        /* show the entire image, no cropping */
+  object-position: center;    /* keep it centered vertically and horizontally */
+  display: block;
+  background: #111;           /* optional: background color behind letterboxing */
+}
+
+/* Optional: if you want images to fill the box again on small screens */
+@media (max-width: 580px) {
+  .trio img,
+  .trio canvas {
+    object-fit: cover;        /* fill the box on mobile (cropped again) */
+    height: auto;             /* adjust height naturally on small screens */
+  }
+}
+
+/* === HOME PAGE WATERMARK BACKGROUND === */
+#hero-watermark {
+  position: relative;                     /* allows overlay stacking */
+  overflow: hidden;                       /* keeps watermark inside */
+  background-color: transparent;
+}
+
+/* create the moving chicken watermark layer */
+#hero-watermark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("img/bg-chicks.png"); /* <-- your chicken watermark file */
+  background-repeat: repeat;
+  background-size: 160px auto;             /* adjust scale */
+  background-position: 0 0;
+  opacity: 0.25;                           /* visibility: raise/lower to taste */
+  pointer-events: none;                    /* keeps page fully clickable */
+  z-index: 0;
+  animation: wmDrift 40s linear infinite;  /* slow horizontal drift */
+}
+
+/* ensure the actual content sits above the watermark */
+#hero-watermark > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* subtle drifting animation */
+@keyframes wmDrift {
+  from { background-position: 0 0; }
+  to   { background-position: -300px 0; }
+}
 

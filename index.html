@@ -102,14 +102,55 @@ Do not put comments inside the JSON; keep them here above the <script>.
            HERO SECTION
            Quick intro with brand case-study image and profile photo
       ========================== -->
-    <section class="hero card">
-      
-      <figure class="hero-figure panel-sky">
-                  <img src="img/logo-bkc.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" width="1024" height="1024"
-                    decoding="async" fetchpriority="high"> <!-- Critical image: reserve space + decode off-main -->
-         <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+    <!-- Home loader (prepared, hidden by default). JS will reveal briefly if motion allowed -->
+    <div id="home-loader" class="card" role="status" aria-live="polite" hidden>
+      <!-- Keep it lightweight: reuse brand logo; no extra CSS -->
+      <figure style="text-align:center; margin:0;">
+        <img src="img/Logo1KBC.png" alt="Best Krazy Chicken (BKC) logo warming up" width="256" height="256"
+          decoding="async">
+        <figcaption>Warming up the roast…</figcaption>
       </figure>
-
+    </div>
+    
+    <!-- Three horizontal cards: logo | slogan | profile -->
+          <div id="hero-watermark" class="card" style="background: url('img/bg-chicks.png') 0 0 / 160px auto repeat !important;">
+    <!-- Chick watermark forced with !important to bypass any prior `background` rules -->
+      
+              <section class="cards" aria-label="Brand intro">
+        
+      <!--</section> Left: Logo card -->
+      <article class="card" aria-labelledby="logo-title">
+        <h3 id="logo-title" class="visually-hidden">BKC logo</h3>
+        <figure style="text-align:center; margin:0;">
+          <img src="img/Logo1KBC.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" width="1024" height="1024"
+            decoding="async" fetchpriority="high"> <!-- Critical image: reserve space + decode off-main -->
+          <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+        </figure>
+      </article>
+    
+      <!-- Center: Slogan card -->
+      <article class="card" aria-labelledby="slogan-title">
+        <h3 id="slogan-title" class="visually-hidden">Brand slogan</h3>
+          <h2 id="home-slogan" style="text-align:center; margin:0.5rem 0; opacity:0;">
+          Once you savor our <span style="color:#BA1E1E;">roast</span>, you’ll want it the
+          <span style="color:#BA1E1E;">most</span><span style="color:#FF8C00;">!</span>
+        </h2>
+        <!-- Note: minimal inline color only for emphasis; everything else reuses existing card styles -->
+      </article>
+      
+      <!-- Right: Signature dish card -->
+      <article class="card" aria-labelledby="dish-title">
+        <h3 id="dish-title" class="visually-hidden">Signature dish</h3>
+        <!-- We move here the same figure that was centered before -->
+        <figure style="text-align:center; margin:0;">
+          <!-- Keep your current image src exactly as you have it now -->
+          <img src="img/logo-bkc.png" alt="BKC signature roast chicken with sides" width="1024" height="768" decoding="async"
+            loading="lazy"> <!-- Below the fold: lazy + reserved box -->
+          <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+        </figure>
+      </article>
+    </section>
+                
       <!-- Two-column grid: intro text (left) + profile image (right) -->
       <div class="hero-grid">
         <div>

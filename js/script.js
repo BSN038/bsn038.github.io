@@ -2,6 +2,7 @@
 /* =========================================================
    ACTIVE NAV ITEM
    Highlights the current page link and applies aria-current.
+   (Safe to run on every page.)
    ========================================================= */
 (function () {
   const path = location.pathname.split('/').pop() || 'index.html';
@@ -14,9 +15,9 @@
 })();
 
 /* =========================================================
-   ROTISSERIE VISUAL EFFECTS
-   Adds heat shimmer (SVG filter) + flame particles (Canvas).
-   Runs only when .rotisserie-visual exists on the page.
+   ROTISSERIE VISUAL EFFECTS (Specific page)
+   Adds heat shimmer (SVG filter) and flame particles (Canvas).
+   Runs only when .rotisserie-visual and its elements exist.
    ========================================================= */
 document.addEventListener('DOMContentLoaded', () => {
   const rotisserie = document.querySelector('.rotisserie-visual');
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.querySelector('.flame-layer');
   const heatNoise = document.getElementById('heatNoise');
 
-  // Stop if this section is not on the current page
+  // Exit if this section is not on the current page
   if (!rotisserie || !img || !canvas) return;
 
   const prefersReduced =
@@ -42,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateHeat);
     })();
   } else if (prefersReduced) {
-    img.style.filter = 'none'; // Disable shimmer for accessibility
+    // Disable shimmer for accessibility
+    img.style.filter = 'none';
   }
 
   /* ---- Flame particles on Canvas ---- */
@@ -142,52 +144,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================================
-   CONTACT FORM (Mailto)
-   Lightweight enhancement: prevents empty fields and confirms.
+   CONTACT FORM (mailto: enhancement)
+   Prevents empty fields and opens user's email client.
+   Only runs for forms whose action starts with "mailto:".
    ========================================================= */
 document.addEventListener('submit', (e) => {
   const form = e.target;
-  if (form.matches('form[action^="mailto:"]')) {
-    e.preventDefault();
+  if (!form.matches || !form.matches('form[action^="mailto:"]')) return;
 
-    const name = form.querySelector('#name')?.value.trim();
-    const email = form.querySelector('#email')?.value.trim();
-    const subject = form.querySelector('#subject')?.value.trim() || 'Enquiry';
-    const message = form.querySelector('#message')?.value.trim();
+  e.preventDefault();
 
-    if (!name || !email || !message) {
-      alert('Please fill in all fields before sending.');
-      return;
-    }
+  const name = form.querySelector('#name')?.value.trim();
+  const email = form.querySelector('#email')?.value.trim();
+  const subject = form.querySelector('#subject')?.value.trim() || 'Enquiry';
+  const message = form.querySelector('#message')?.value.trim();
 
-    // Compose mailto body safely
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-    const mailto = `${form.action}?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-    // Open default mail client
-    window.location.href = mailto;
-
-    // User feedback
-    alert('Your email client will open with your message. Thank you!');
-    form.reset();
+  if (!name || !email || !message) {
+    alert('Please fill in all fields before sending.');
+    return;
   }
+
+  // Compose mailto body safely
+  const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+Message:
+${message}`);
+  const mailto = `${form.action}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  // Open default mail client
+  window.location.href = mailto;
+
+  // User feedback
+  alert('Your email client will open with your message. Thank you!');
+  form.reset();
 });
 
+/* =========================================================
+   BOOKING FORM (e.g., Formspree)
+   Validates name, posts with fetch, and shows inline status.
+   Runs only when #booking-form exists on the page.
+   ========================================================= */
 (function () {
-  const form   = document.getElementById('booking-form');
+  const form = document.getElementById('booking-form');
   if (!form) return;
 
   const nameEl   = document.getElementById('bk-name');
   const nameErr  = document.getElementById('bk-name-error');
   const statusEl = document.getElementById('booking-status');
 
-  // Showing error accesible to the name (no)
+  // Validate name: allow letters (incl. accents), spaces, apostrophes; no digits.
   function validateName() {
-    const v = nameEl.value.trim();
-    // Allow letters (includec accents), spaces, apóstrofes. No dígits.
+    const v = (nameEl?.value || '').trim();
     const re = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{1,48}$/;
+
+    if (!nameEl || !nameErr) return true; // if elements are missing, skip validation
+
     if (!v) {
       nameEl.setCustomValidity('Please enter your name.');
       nameErr.textContent = 'Please enter your name.';
@@ -203,21 +215,24 @@ document.addEventListener('submit', (e) => {
     return true;
   }
 
-  nameEl.addEventListener('input', validateName);
-  nameEl.addEventListener('blur', validateName);
+  if (nameEl) {
+    nameEl.addEventListener('input', validateName);
+    nameEl.addEventListener('blur', validateName);
+  }
 
   // Helper to show state
   function showStatus(type, msg) {
+    if (!statusEl) return;
     statusEl.className = 'status ' + type; // success | error
     statusEl.textContent = msg;
     statusEl.classList.remove('is-hidden');
   }
 
-  // Send with fetch a Formspree (avoid rediretion and shows banner)
+  // Submit handler
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // Validation + name
+    // Validation + native validity checks
     if (!validateName() || !form.checkValidity()) {
       form.reportValidity();
       return;
@@ -229,8 +244,8 @@ document.addEventListener('submit', (e) => {
     try {
       const res = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
+        headers: { Accept: 'application/json' },
+        body: data,
       });
 
       if (res.ok) {
@@ -247,7 +262,11 @@ document.addEventListener('submit', (e) => {
   });
 })();
 
-// Sparkle: always burst (even if clicking the already-selected pill)
+/* =========================================================
+   RADIO "SPARK" EFFECT (Specific page)
+   Always triggers a burst animation on selection or click.
+   Runs only when .radio-spark exists.
+   ========================================================= */
 (function () {
   const root = document.querySelector('.radio-spark');
   if (!root) return;
@@ -262,7 +281,7 @@ document.addEventListener('submit', (e) => {
 
   // Fire when selection changes
   root.addEventListener('change', (e) => {
-    const input = e.target.closest('input[type="radio"]');
+    const input = e.target.closest && e.target.closest('input[type="radio"]');
     if (!input) return;
     const label = input.closest('label.spark-item');
     if (label) burst(label);
@@ -270,9 +289,92 @@ document.addEventListener('submit', (e) => {
 
   // Also fire on clicks (so it bursts even if the same option is clicked again)
   root.addEventListener('click', (e) => {
-    const label = e.target.closest('label.spark-item');
+    const label = e.target.closest && e.target.closest('label.spark-item');
     if (label) burst(label);
   });
 })();
 
+/* =========================================================
+   HOME PAGE: Loader + background animation + typewriter slogan
+   Runs only when #home-slogan exists (no effect elsewhere).
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const loader = document.getElementById('home-loader'); // brief brand moment
+  const slogan = document.getElementById('home-slogan'); // slogan h2 (has colored HTML)
+  const heroBg = document.getElementById('hero-watermark'); // watermark on the card wrapper
 
+  // Do nothing if not on Home
+  if (!slogan) return;
+
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Typewriter: type plain text first, then restore colored HTML at the end
+  const originalHTML = slogan.innerHTML;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = originalHTML;
+  const plainText = tmp.textContent || tmp.innerText || '';
+
+  function typeSlogan() {
+    const speed = 90; // ~90ms per char
+    let i = 0;
+    slogan.style.opacity = 1; // ensure visible when typing
+    slogan.textContent = ''; // start empty (plain)
+
+    (function tick() {
+      slogan.textContent = plainText.slice(0, i++);
+      if (i <= plainText.length) {
+        setTimeout(tick, speed);
+      } else {
+        // After typing, restore the colored HTML version
+        slogan.innerHTML = originalHTML;
+      }
+    })();
+  }
+
+  // Background subtle scroll (pattern)
+  function startBgAnim() {
+    if (!heroBg) return;
+    let raf = null;
+    let offset = 0;
+
+    function step() {
+      offset += 0.15; // subtle, cheap
+      heroBg.style.backgroundPosition = `-${offset}px 0`;
+      raf = requestAnimationFrame(step);
+    }
+
+    function onVis() {
+      if (document.hidden) {
+        if (raf) cancelAnimationFrame(raf), (raf = null);
+      } else if (!raf) {
+        raf = requestAnimationFrame(step);
+      }
+    }
+
+    document.addEventListener('visibilitychange', onVis);
+    raf = requestAnimationFrame(step);
+  }
+
+  // Loader flow
+  function showInstant() {
+    if (loader) loader.hidden = true;
+    slogan.innerHTML = originalHTML; // show final state immediately
+    slogan.style.opacity = 1;
+  }
+
+  function runLoader() {
+    if (loader) loader.hidden = false;
+    setTimeout(() => {
+      if (loader) loader.hidden = true;
+      typeSlogan(); // type after loader ends
+    }, 1200); // keep under 1.5s
+  }
+
+  // Start
+  if (prefersReduced) {
+    showInstant();
+  } else {
+    runLoader();
+    startBgAnim();
+  }
+});
