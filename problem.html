@@ -74,7 +74,7 @@
 
 </head>
 
-<body class="theme-sky">
+<body class="theme-sky pistachio-cards">
   
   <header>
     <div class="container brand">
@@ -240,6 +240,151 @@
     </section>
     
   </main>
+  <!-- Checkout wrapper centered like other cards -->
+  <section id="checkout-demo" class="container card spice-bg--mild u-transition" aria-labelledby="ck-title">
+    <!-- Section heading & intro: clear context for the prototype -->
+    <h2 id="ck-title" style="margin:0 0 .5rem">Interactive Checkout Prototype</h2>
+    <p class="hint" style="margin:0 0 1rem">
+      This demo simulates a 4-step checkout (Cart → Billing → Shipping → Payment). No real charges will be made.
+    </p>
+    
+    <!-- Stepper / breadcrumb -->
+    <nav aria-label="Checkout steps" class="u-transition" style="margin-bottom:1rem;">
+      <ol class="steps">
+        <li><span aria-current="step" class="u-transition">Cart</span></li>
+        <li><span class="u-transition">Billing</span></li>
+        <li><span class="u-transition">Shipping</span></li>
+        <li><span class="u-transition">Payment</span></li>
+      </ol>
+    </nav>
+  
+    <!-- Status area -->
+    <div id="ck-status" class="status is-hidden" role="status" aria-live="polite"></div>
+  
+    <!-- Form start -->
+    <form id="checkout-form" novalidate>
+ 
+  <!-- Billing step: hidden until Next (structure only) -->
+  <fieldset class="is-hidden">
+    <legend>Billing</legend>
+    <div class="form-grid" role="group" aria-labelledby="billing-legend">
+      <h3 id="billing-legend" class="visually-hidden">Billing details</h3>
+  
+      <div class="form-row">
+        <label for="bill-name">Full name <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="bill-name" name="bill_name" type="text" required aria-describedby="bill-name-err">
+          <p id="bill-name-err" class="field-error" role="alert" hidden>Please enter your name.</p>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <label for="bill-email">Email <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="bill-email" name="bill_email" type="email" required aria-describedby="bill-email-err">
+          <p id="bill-email-err" class="field-error" role="alert" hidden>Please enter a valid email.</p>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <label for="bill-address">Address <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="bill-address" name="bill_address" type="text" required aria-describedby="bill-address-err">
+          <p id="bill-address-err" class="field-error" role="alert" hidden>Please enter your address.</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <!-- Shipping step: hidden until Next (structure only) -->
+  <fieldset class="is-hidden">
+    <legend>Shipping</legend>
+    <div class="form-grid" role="group" aria-labelledby="shipping-legend">
+      <h3 id="shipping-legend" class="visually-hidden">Shipping details</h3>
+  
+      <div class="form-row">
+        <label for="ship-name">Recipient name <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="ship-name" name="ship_name" type="text" required aria-describedby="ship-name-err">
+          <p id="ship-name-err" class="field-error" role="alert" hidden>Please enter recipient name.</p>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <label for="ship-address">Address <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="ship-address" name="ship_address" type="text" required aria-describedby="ship-address-err">
+          <p id="ship-address-err" class="field-error" role="alert" hidden>Please enter shipping address.</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  
+  <!-- Payment step: hidden until Next (structure only) -->
+  <fieldset class="is-hidden">
+    <legend>Payment</legend>
+  
+    <div class="cards-row" aria-hidden="true" style="margin:.25rem 0 .75rem;">
+      <span class="cc-icon cc-visa" title="Visa"></span>
+      <span class="cc-icon cc-mc" title="Mastercard"></span>
+      <span class="hint-inline">Demo only — no real charges.</span>
+    </div>
+  
+    <div class="form-grid" role="group" aria-labelledby="payment-legend">
+      <h3 id="payment-legend" class="visually-hidden">Card details</h3>
+  
+      <!-- Cardholder name: plain text required -->
+      <div class="form-row">
+        <label for="cc-name">Name on card <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="cc-name" name="cc_name" type="text" required aria-describedby="cc-name-err">
+          <p id="cc-name-err" class="field-error" role="alert" hidden>Please enter cardholder name.</p>
+        </div>
+      </div>
+  
+      <!-- Card number: numeric keypad via type=tel; guard pattern (Luhn in JS later) -->
+      <div class="form-row">
+        <label for="cc-number">Card number <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="cc-number" name="cc_number" type="tel" placeholder="4111 1111 1111 1111" required
+            aria-describedby="cc-number-err" pattern="[0-9\s-]{12,23}">
+          <p id="cc-number-err" class="field-error" role="alert" hidden>Enter a valid card number.</p>
+        </div>
+      </div>
+  
+      <!-- Expiry MM/YY: numeric keypad via type=tel; regex enforces MM/YY -->
+      <div class="form-row">
+        <label for="cc-exp">Expiry (MM/YY) <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="cc-exp" name="cc_exp" type="tel" placeholder="08/28" required aria-describedby="cc-exp-err"
+            pattern="(0[1-9]|1[0-2])\/\d{2}">
+          <p id="cc-exp-err" class="field-error" role="alert" hidden>Enter a valid future date (MM/YY).</p>
+        </div>
+      </div>
+  
+      <!-- CVC: 3–4 digits, numeric keypad via type=tel -->
+      <div class="form-row">
+        <label for="cc-cvc">CVC <span aria-hidden="true">*</span></label>
+        <div class="form-field">
+          <input id="cc-cvc" name="cc_cvc" type="tel" placeholder="123" required aria-describedby="cc-cvc-err"
+            pattern="[0-9]{3,4}">
+          <p id="cc-cvc-err" class="field-error" role="alert" hidden>3–4 digits.</p>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+    <!-- Actions: keep inside the form to stay inside the card -->
+  <div class="wizard-actions">
+    <button type="button" class="btn btn-secondary" disabled>Back</button>
+    <div style="display:flex; gap:.5rem;">
+      <button type="button" class="btn">Next</button>
+      <button type="submit" class="btn btn--hot" hidden>Pay Now</button>
+    </div>
+  </div>
+        
+    </form>
+    </section>
 
   <footer>
     <div class="container">

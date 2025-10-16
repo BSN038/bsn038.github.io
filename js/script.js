@@ -372,10 +372,140 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Start
-  if (prefersReduced) {
-    showInstant();
-  } else {
-    runLoader();
-    startBgAnim();
+if (prefersReduced) {
+  showInstant();
+} else {
+  runLoader();
+  // startBgAnim(); // CSS handles the drift
+}
+
+});
+
+/* Checkout demo: stepper logic (runs only if #checkout-demo exists) */
+(function () {
+  const host = document.getElementById('checkout-demo');
+  if (!host) return;
+
+  const form = host.querySelector('#checkout-form');
+  const statusEl = host.querySelector('#ck-status');
+  const fieldsets = Array.from(host.querySelectorAll('#checkout-form fieldset'));
+  const stepItems = Array.from(host.querySelectorAll('.steps li'));
+
+  // Botones: Back, Next, Pay Now (dentro de .wizard-actions)
+  const actions = host.querySelector('.wizard-actions');
+  const btnBack = actions?.querySelector('.btn.btn-secondary');
+  const btnNext = actions?.querySelector('button.btn:not(.btn-secondary):not(.btn--hot)');
+  const btnPay  = actions?.querySelector('button.btn--hot[type="submit"]');
+
+  // Map de clases spice por paso
+  const spiceMap = ['spice-bg--mild', 'spice-bg--mild', 'spice-bg--medium', 'spice-bg--hot'];
+
+  let current = 0;
+
+  // Helpers
+  const showStatus = (type, msg) => {
+    if (!statusEl) return;
+    statusEl.className = 'status' + (type ? ' ' + type : '');
+    statusEl.textContent = msg || '';
+    statusEl.classList.toggle('is-hidden', !msg);
+  };
+
+  const setSpice = (i) => {
+    host.classList.remove('spice-bg--mild', 'spice-bg--medium', 'spice-bg--hot');
+    host.classList.add(spiceMap[i] || 'spice-bg--mild');
+  };
+
+  const setStep = (i) => {
+    current = Math.max(0, Math.min(i, fieldsets.length - 1));
+    fieldsets.forEach((fs, idx) => fs.classList.toggle('is-hidden', idx !== current));
+    stepsChips.forEach((el, idx) => {
+      if (idx === current) el.setAttribute('aria-current', 'step');
+      else el.removeAttribute('aria-current');
+    });
+    btnBack.disabled = current === 0;
+    btnNext.hidden   = current === fieldsets.length - 1;
+    btnPay.hidden    = current !== fieldsets.length - 1;
+    setSpice(current);
+    // Expose current step for CSS
+host.setAttribute('data-step', String(current));
+
+    showStatus('', '');
+    // Enfocar el legend para accesibilidad
+    fieldsets[current].querySelector('legend')?.focus?.();
+  };
+
+  // Validación ligera del fieldset visible
+  const validateCurrent = () => {
+    const fs = fieldsets[current];
+    if (!fs) return true;
+    let ok = true;
+
+    const controls = Array.from(fs.querySelectorAll('input, select, textarea'));
+    controls.forEach((inp) => {
+      // limpia error previo
+      const errId = (inp.getAttribute('aria-describedby') || '').split(' ').find((id) => /-err$/.test(id));
+      const errEl = errId ? host.querySelector('#' + errId) : null;
+      if (errEl) errEl.hidden = true;
+
+      // validación HTML5 básica
+      const valid = inp.checkValidity();
+      if (!valid) {
+        ok = false;
+        if (errEl) errEl.hidden = false;
+      }
+    });
+
+    return ok;
+  };
+
+  // Eventos de navegación
+  btnBack?.addEventListener('click', () => {
+    setStep(current - 1);
+  });
+
+  btnNext?.addEventListener('click', () => {
+    if (!validateCurrent()) {
+      showStatus('error', 'Please fix the highlighted fields in this step.');
+      return;
+    }
+    setStep(current + 1);
+  });
+
+  // Submit/Pago simulado
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateCurrent()) {
+      showStatus('error', 'Please fix the highlighted fields in this step.');
+      return;
+    }
+    // Estado cargando
+    btnPay.classList.add('is-loading'); btnPay.disabled = true;
+    showStatus('loading', 'Processing payment…');
+
+    // Simulación corta
+    setTimeout(() => {
+      btnPay.classList.remove('is-loading'); btnPay.disabled = false;
+      const orderNo = 'BKCD-' + Math.floor(Math.random() * 90000 + 10000);
+      showStatus('success', '✅ Payment approved. Your order number is ' + orderNo + '.');
+      // Opcional: form.reset(); setStep(0);
+    }, 1200);
+  });
+
+  // Init
+  setStep(0);
+})();
+
+// Mark active step on <li>
+stepItems.forEach((li, idx) => {
+  const active = idx === current;
+  li.classList.toggle('is-active', active);
+  const chip = li.firstElementChild;
+  if (chip) {
+    if (active) chip.setAttribute('aria-current', 'step');
+    else chip.removeAttribute('aria-current');
   }
 });
+
+
+
+

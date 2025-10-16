@@ -45,6 +45,8 @@ textarea:focus-visible {
    ======================================= */
 :root {
   /* Brand palette */
+  --sauce-3: #f5a623;
+  /* Orange / Ají */
   --brand-red: #cc0000;
   --brand-red-dark: #a30000;
   --brand-blue-dark: #0b2a4a;
@@ -79,6 +81,20 @@ textarea:focus-visible {
   --space-3: .75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
+}
+
+/* Pistachio look: turn all cards pistachio when body has .pistachio-cards */
+.pistachio-cards .card {
+  background: var(--spice-mild-bg) !important;
+  border-color: #d9e9cf
+}
+
+.pistachio-cards .menu-item {
+  background: var(--spice-mild-bg)
+}
+
+.pistachio-cards .panel-sky {
+  background: var(--spice-mild-bg)
 }
 
 /* =======================================
@@ -127,6 +143,64 @@ textarea:focus-visible {
 .business-grid {
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+/* Spice utilities: minimal classes for backgrounds, text, borders, and smooth transitions */
+.spice-bg--mild {
+  background: var(--spice-mild-soft);
+}
+
+.spice-bg--medium {
+  background: var(--spice-medium-soft);
+}
+
+.spice-bg--hot {
+  background: var(--spice-hot-soft);
+}
+
+.spice-text--mild {
+  color: var(--spice-mild);
+}
+
+.spice-text--medium {
+  color: var(--spice-medium);
+}
+
+.spice-text--hot {
+  color: var(--spice-hot);
+}
+
+.spice-border--mild {
+  border-color: var(--spice-mild);
+}
+
+.spice-border--medium {
+  border-color: var(--spice-medium);
+}
+
+.spice-border--hot {
+  border-color: var(--spice-hot);
+}
+
+/* Buttons: hot variant (use sparingly on primary actions) */
+.btn--hot {
+  background: var(--spice-hot);
+  color: #fff;
+}
+
+.btn--hot:hover {
+  background: var(--spice-exhot);
+}
+
+/* Soft transition helper for subtle color changes */
+.u-transition {
+  transition: background-color .24s ease, color .24s ease, border-color .24s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-transition {
+    transition: none;
+  }
 }
 
 /* =======================================
@@ -244,38 +318,6 @@ header .brand h1:hover {
   }
 }
 
-/* Make the patterned watermark visible on the home hero wrapper */
-/* NOTE: To use this, remove the inline background="... !important" from #hero-watermark in HTML.
-   Inline !important beats stylesheet rules. */
-#hero-watermark {
-  /* thin white film so content stays readable + tiled "pollitos" beneath */
-  background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), url('img/bg-chicks.png');
-  background-repeat: no-repeat, repeat;
-  background-size: auto, 160px auto;
-  background-position: 0 0, 0 0;
-}
-
-/* Optional gentle drift animation for the watermark pattern */
-@keyframes heroDrift {
-  from {
-    background-position: 0 0, 0 0;
-  }
-
-  to {
-    background-position: 0 0, 200px 120px;
-  }
-}
-
-#hero-watermark {
-  animation: heroDrift 18s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #hero-watermark {
-    animation: none;
-  }
-}
-
 /* =======================================
    Profile (About/Skills)
    ======================================= */
@@ -366,6 +408,170 @@ ul {
 form button:focus-visible {
   outline: 3px solid var(--brand-red);
   outline-offset: 2px;
+}
+
+/* Checkout stepper: compact chips with smooth hover/focus */
+/* Step chip color per current step (mild → medium → hot) */
+#checkout-demo[data-step="0"] .steps li:nth-child(1)>*[aria-current="step"] {
+  background: var(--spice-mild);
+  border-color: var(--spice-mild);
+  color: #111;
+}
+
+#checkout-demo[data-step="1"] .steps li:nth-child(2)>*[aria-current="step"] {
+  background: var(--spice-mild);
+  border-color: var(--spice-mild);
+  color: #111;
+}
+
+#checkout-demo[data-step="2"] .steps li:nth-child(3)>*[aria-current="step"] {
+  background: var(--spice-medium);
+  border-color: var(--spice-medium);
+  color: #111;
+}
+
+#checkout-demo[data-step="3"] .steps li:nth-child(4)>*[aria-current="step"] {
+  background: var(--spice-hot);
+  border-color: var(--spice-hot);
+  color: #fff;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem
+}
+
+.steps li {
+  display: block
+}
+
+.steps li>* {
+  display: block;
+  text-align: center;
+  padding: .55rem .75rem;
+  border-radius: 9999px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-weight: 700;
+  line-height: 1
+}
+
+.steps li>*:hover {
+  background: #fafafa
+}
+
+.steps li>*:focus-visible {
+  outline: 3px solid var(--brand-red);
+  outline-offset: 2px
+}
+
+.steps [aria-current="step"] {
+  background: var(--spice-mild);
+  border-color: var(--spice-mild);
+  color: #111
+}
+
+/* Cart table: clean compact table for checkout summary */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: .5rem 0 1rem
+}
+
+.cart-table th,
+.cart-table td {
+  padding: .6rem .5rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: top
+}
+
+.cart-table thead th {
+  font-weight: 800
+}
+
+.cart-table tfoot th,
+.cart-table tfoot td {
+  border-top: 2px solid #ddd
+}
+
+/* Checkout wrapper: same width & centering as other cards */
+#checkout-demo{
+  display:block;
+  width:90%;
+  max-width:1100px;
+  margin:1.25rem auto 2rem; /* centra y deja aire arriba/abajo */
+}
+
+
+/* noop guard (keeps linter happy) */
+
+/* Wizard actions: full-width inside card + responsive stack */
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.wizard-actions .btn {
+  min-width: 96px
+}
+
+@media (max-width:560px) {
+  .wizard-actions {
+    flex-direction: column;
+    align-items: stretch
+  }
+
+  .wizard-actions>div {
+    display: flex;
+    gap: .5rem;
+    justify-content: space-between;
+    width: 100%
+  }
+
+  .wizard-actions .btn {
+    flex: 1
+  }
+}
+
+/* Card brand demo icons (Visa/Mastercard) */
+.cards-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .25rem 0 .75rem
+}
+
+.cc-icon {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 4px
+}
+
+.cc-visa {
+  background: linear-gradient(#1a1f71, #1a1f71)
+}
+
+.cc-mc {
+  background:
+    radial-gradient(circle at 40% 50%, #eb001b 55%, transparent 56%),
+    radial-gradient(circle at 60% 50%, #f79e1b 55%, transparent 56%)
+}
+
+.hint-inline {
+  font-size: .85rem;
+  color: #666;
+  margin-left: .25rem
 }
 
 /* =======================================
@@ -570,7 +776,7 @@ body.theme-sky footer {
 /* =======================================
    Watermark card variant (business page)
    ======================================= */
-/* Softer (darker) watermark background – no syntax errors */
+/* Softer (darker) watermark background – fixed, unique animation name */
 .card.wm-bkc {
   background:
     linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)),
@@ -578,10 +784,10 @@ body.theme-sky footer {
   background-repeat: no-repeat, repeat;
   background-size: auto, 220px auto;
   background-position: 0 0, 0 0;
-  animation: wmDrift 18s linear infinite;
+  animation: wmDriftCard 18s linear infinite;
 }
 
-@keyframes wmDrift {
+@keyframes wmDriftCard {
   from {
     background-position: 0 0, 0 0;
   }
@@ -1416,31 +1622,56 @@ figure.trio {
   background-color: transparent;
 }
 
-/* create the moving chicken watermark layer */
-#hero-watermark::before {
+/* === HERO watermark inside the white cards (conflict-free) === */
+/* Put the pattern on each .card, not on the wrapper */
+#hero-watermark .card {
+  position: relative;
+  /* anchor for ::before */
+  overflow: hidden;
+  /* keep pattern inside */
+  background-color: #fff;
+  /* keep the card white */
+}
+
+/* Subtle chicken silhouettes under the content */
+#hero-watermark .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("img/bg-chicks.png"); /* <-- your chicken watermark file */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
   background-repeat: repeat;
-  background-size: 160px auto;             /* adjust scale */
-  background-position: 0 0;
-  opacity: 0.25;                           /* visibility: raise/lower to taste */
-  pointer-events: none;                    /* keeps page fully clickable */
+  background-size: 160px auto;
+  opacity: 0.22;
+  /* soft, non-distracting */
+  pointer-events: none;
+  /* fully clickable */
   z-index: 0;
-  animation: wmDrift 40s linear infinite;  /* slow horizontal drift */
+  /* behind content */
+  animation: wmDriftHero 40s linear infinite;
 }
 
-/* ensure the actual content sits above the watermark */
-#hero-watermark > * {
+/* Ensure card content stays above the pattern */
+#hero-watermark .card>* {
   position: relative;
   z-index: 1;
 }
 
-/* subtle drifting animation */
-@keyframes wmDrift {
-  from { background-position: 0 0; }
-  to   { background-position: -300px 0; }
+/* Gentle horizontal drift */
+@keyframes wmDriftHero {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -300px 0;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  #hero-watermark .card::before {
+    animation: none;
+  }
 }
 
 /* ===== CONTACT FORM LAYOUT (labels left, fields right) ===== */
@@ -1564,4 +1795,102 @@ figure.trio {
 #home-slogan {
   transition: opacity .2s ease;
 }
+
+/* === Shared watermark for all pages with class "has-watermark" === */
+.has-watermark .card {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.has-watermark .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%239aa3b2" d="M93.6 27.4c3.7 2.6 6 6.7 6 11 0 2.4-.6 4.6-1.7 6.6 3.6 6.2 3.7 13.6.7 20.3-3.1 6.8-9.2 12.2-17.1 15.2-7.9 3.1-16.9 3.4-25.1 1.3-2.8 4.4-7.7 7.3-13.3 7.3-8.6 0-15.6-7-15.6-15.6 0-4.5 1.9-8.6 5-11.5-4.6-5.3-6.7-11.9-5.7-18.4 1.4-9.4 9.6-17.7 20.5-21 8.5-2.6 17.4-1.9 24.5 1.6 2.9-3.1 7-4.9 11.5-4.9 2.6 0 5.1.6 7.4 1.8l2.9-3.8 4 2.9-2.4 4.7c-.7 1.4-.4 1.8.4 2.5ZM51.2 46.2c-5 0-9 4-9 9s4 9 9 9c5 0 9-4 9-9s-4-9-9-9Z"/></svg>');
+  background-repeat: repeat;
+  background-size: 160px auto;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+  animation: wmDriftHero 40s linear infinite;
+}
+
+.has-watermark .card>* {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes wmDriftHero {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -300px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-watermark .card::before {
+    animation: none;
+  }
+}
+
+/* Spice theme: tokens + utilities */
+:root {
+  --spice-mild: #93C572;
+  /* pistachio */
+  --spice-medium: #4169E1;
+  /* royal blue */
+  --spice-hot: #BA1E1E;
+  /* brand red */
+  --spice-mild-bg: #f3faef;
+  --spice-medium-bg: #eef2ff;
+  --spice-hot-bg: #fff1f1;
+}
+
+/* Card background modifiers per step */
+.spice-bg--mild {
+  background: var(--spice-mild-bg) !important;
+}
+
+.spice-bg--medium {
+  background: var(--spice-medium-bg) !important;
+}
+
+.spice-bg--hot {
+  background: var(--spice-hot-bg) !important;
+}
+
+/* Accent on the step chip currently active (we referenced this earlier) */
+.steps [aria-current="step"] {
+  background: var(--spice-mild);
+  border-color: var(--spice-mild);
+  color: #111;
+}
+
+/* Hot CTA variant (Payment) */
+.btn.btn--hot {
+  background: var(--spice-hot);
+}
+
+.btn.btn--hot:hover {
+  background: #8f1616;
+}
+
+button:focus,
+input:focus {
+  outline: 2px solid var(--spice-medium);
+  outline-offset: 2px;
+}
+
+.steps [aria-current="step"] {
+  background: var(--spice-mild);
+}
+
+
+
+
+
 
