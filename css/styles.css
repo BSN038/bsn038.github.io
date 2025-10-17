@@ -87,11 +87,11 @@ textarea:focus-visible {
 }
 
 .pistachio-cards .menu-item {
-  background: var(--spice-mild-bg)
+  background: var(--spice-mild-bg, #f3f7ec)
 }
 
 .pistachio-cards .panel-sky {
-  background: var(--spice-mild-bg)
+  background: var(--spice-mild-bg, #f3f7ec)
 }
 
 /* =======================================
