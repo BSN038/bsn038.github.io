@@ -418,7 +418,7 @@ if (prefersReduced) {
   const setStep = (i) => {
     current = Math.max(0, Math.min(i, fieldsets.length - 1));
     fieldsets.forEach((fs, idx) => fs.classList.toggle('is-hidden', idx !== current));
-    stepsChips.forEach((el, idx) => {
+    stepItems.forEach((el, idx) => {
       if (idx === current) el.setAttribute('aria-current', 'step');
       else el.removeAttribute('aria-current');
     });
@@ -495,16 +495,6 @@ host.setAttribute('data-step', String(current));
   setStep(0);
 })();
 
-// Mark active step on <li>
-stepItems.forEach((li, idx) => {
-  const active = idx === current;
-  li.classList.toggle('is-active', active);
-  const chip = li.firstElementChild;
-  if (chip) {
-    if (active) chip.setAttribute('aria-current', 'step');
-    else chip.removeAttribute('aria-current');
-  }
-});
 
 
 

@@ -10,14 +10,11 @@
 
 html,
 body {
-  height: 100%;
-}
-
-body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #fafafa;
+  height: 100%;
 }
 
 a {
@@ -1888,6 +1885,80 @@ input:focus {
 .steps [aria-current="step"] {
   background: var(--spice-mild);
 }
+
+/* Ensure each step is positioned relative for stacking control */
+.steps li {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bring the active step above others */
+.steps li.is-active {
+  z-index: 3;
+}
+
+/* Add small spacing between steps to avoid visual overlap */
+.steps {
+  display: flex;
+  gap: 6px;
+  /* Adjust between 4–8px if needed */
+}
+
+/* Fix layering: ensure the step container is above white backgrounds */
+.steps {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+  /* spacing between steps */
+}
+
+/* Bring the active chip clearly above any background */
+.steps li.is-active {
+  position: relative;
+  z-index: 20;
+}
+
+/* Keep step chips readable and responsive on mobile */
+.steps li {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* prevent overflow on small screens */
+}
+
+.steps li * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Brand color for all headers (applies to every <header>) */
+header {
+  background-color: #58913D !important;
+  /* your color */
+  color: #fff;
+}
+
+/* Make nav links readable on the dark header */
+header a {
+  color: #fff;
+}
+
+header a:hover,
+header a:focus {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+ 
+
+
 
 
 
