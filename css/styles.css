@@ -82,7 +82,7 @@ textarea:focus-visible {
 
 /* Pistachio look: turn all cards pistachio when body has .pistachio-cards */
 .pistachio-cards .card {
-  background: var(--spice-mild-bg) !important;
+  background: var(--spice-mild-bg, #f3f7ec) !important;
   border-color: #d9e9cf
 }
 
@@ -95,27 +95,26 @@ textarea:focus-visible {
 }
 
 /* =======================================
-   Accessibility helpers
+   Accessibility helpers (modern)
    ======================================= */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
+.sr-only,
 .visually-hidden {
   position: absolute !important;
-  width: 0 !important;
-  height: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
   overflow: hidden !important;
-  clip-path: inset(50%) !important;
   white-space: nowrap !important;
+  border: 0 !important;
+  clip-path: inset(50%) !important;
+  /* reemplaza al clip obsoleto */
+}
+
+header {
+  background: none !important;
+  background-color: #3d916a !important;
+  color: #fff !important;
 }
 
 /* =======================================
