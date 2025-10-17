@@ -1367,7 +1367,7 @@ body.theme-sky footer {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent  40deg, currentColor 40 44deg, transparent 44 130deg, currentColor 130 134deg, transparent 134 220deg, currentColor 220 224deg, transparent 224 316deg, currentColor 316 320deg, transparent 320 360deg);
+  background: conic-gradient(from 0deg, transparent 40deg, currentColor 40deg 44deg, transparent 44deg 130deg, currentColor 130deg 134deg, transparent 134deg 220deg, currentColor 220 224deg, transparent 224 316deg, currentColor 316 320deg, transparent 320 360deg);
   mask: radial-gradient(circle 28px, transparent 31px, #000 32px);
   opacity: .9;
 }
