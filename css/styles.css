@@ -268,7 +268,7 @@ header nav a.active,
 header nav a[aria-current="page"] {
   background: var(--brand-red-dark);
   color: #fff;
-  border-color: var(--brand-red-dark);
+  border-color: transparent;;
 }
 
 header .brand h1 {
@@ -1033,12 +1033,15 @@ body.theme-sky footer {
   list-style: none;
 }
 
+.skills-accordion summary::marker {
+  content: "";
+}
 .skills-accordion summary::-webkit-details-marker {
   display: none;
 }
 
 .skills-accordion summary:focus-visible {
-  outline: 2px solid var(--brand-red);
+  outline: 2px solid var(--brand-red, #cc1f1a);
   outline-offset: 2px;
 }
 
@@ -1882,7 +1885,7 @@ input:focus {
 }
 
 .steps [aria-current="step"] {
-  background: var(--spice-mild);
+  background: transparent;
 }
 
 /* Ensure each step is positioned relative for stacking control */
