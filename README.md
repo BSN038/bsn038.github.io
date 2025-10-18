@@ -1,429 +1,77 @@
-# Personal Website — José Castro Castillo
+# **Best Krazy Chicken (BKC) — Personal Website Project**
 
-This is my personal website created as part of the Web Development assessment at the University of Salford.  
-It demonstrates HTML5, CSS3, and basic web design principles introduced in Week 3, applied to a personal profile and a case study restaurant brand (Best Krazy Chicken).
-
----
-
-# 🍗 Best Krazy Chicken (BKC)
-
-University project demonstrating a **responsive** restaurant website with a focus on **UX**, **accessibility**, and **SEO**.  
-Built with **HTML5**, **CSS3**, and **JavaScript** (loaded with `defer` for performance). Includes **JSON-LD (Schema.org)** for structured data.
-
-👉 **Live site:** https://bsn038.github.io  
-📦 **Repository:** https://github.com/bsn038/bsn038.github.io
-
-## Highlights
-
-- 🧭 Clean information architecture and consistent **H1–H3** heading structure.
-- 📱 **Responsive** layout and accessible focus states.
-- 🪄 **Accordion menu** (expandable) to reduce clutter and keep the page fast.
-- ⚡ Scripts loaded with **`defer`** to avoid render-blocking.
-- 🔎 **SEO:** JSON-LD (Restaurant / LocalBusiness) + sensible metadata.
-- 🖼️ Updated **hero/food image** (real chicken) while keeping BKC logo and UK flag.
-
-## Collaboration & Learning
-
-I used **ChatGPT** to:
-
-- clarify the purpose of `<script>` and **JSON-LD** and apply them correctly,
-- check and fix **heading consistency** (H3 across sections),
-- tidy CSS (remove duplicates, add clear comments), and avoid common mistakes.
-
-_All design decisions and code were implemented by me as part of the coursework._
-
-## License / Notes
-
-## ✅ Standards Validation
-
-All pages and stylesheets were validated with the official W3C tools.
-
-### HTML (W3C Markup Validation)
-
-- Result: **No errors or warnings** (HTML5 compliant).
-- Tool: https://validator.w3.org/
-- Evidence: `HTML_ValidationScreenshotFinal.png`
-
-### CSS (W3C CSS Validation)
-
-- Result: **Congratulations! No Error Found** (CSS Level 3 + SVG).
-- Tool: https://jigsaw.w3.org/css-validator/
-- Evidence: `CSS_ValidationScreenshotFinal.png`
-
-**Why this matters:** Standards compliance improves cross-browser reliability, accessibility, and maintainability.
-
-© 2025 José Efraín Castro Castillo — University of Salford  
-This repository is for academic purposes (prototype).
-
-# 🍗 Best Krazy Chicken (BKC) — Digital Transformation Project
-
-**Student:** José Efraín Castro Castillo  
-**ID:** @00778110  
-**Course:** Web Development — University of Salford  
-**Date:** October 2025
+### **Author:** José Castro Castillo  
+### **Course:** Business Information Technology — University of Salford  
+### **Module:** Web Application Development  
+### **Deployment:** [Live Website (Vercel)](https://bsn038-github-io.vercel.app/)  
+### **Repository:** *(Add your GitHub repo link here)*  
 
 ---
 
-## 📖 Overview
+## **Project Overview**
+This website was developed as part of the Web Application Development assessment.  
+It represents the digital presence of **Best Krazy Chicken (BKC)** — a conceptual restaurant brand designed to showcase technical and creative web development skills.  
 
-This project represents the digital presence of **Best Krazy Chicken (BKC)** — a restaurant concept focused on quality, accessibility, and engaging user experience.  
-The site was built to demonstrate technical, creative, and professional skills using **HTML5**, **CSS3**, and **basic JavaScript** for interaction.
-
-It combines responsive design, visual storytelling, and structured data (JSON-LD) to align with real-world business communication goals.
-
-Live site: [https://bsn038.github.io](https://bsn038.github.io)  
-Repository: [https://github.com/bsn038/bsn038.github.io](https://github.com/bsn038/bsn038.github.io)
+The goal was to create a **fully responsive**, **accessible**, and **brand-consistent** website that integrates front-end technologies (HTML, CSS, and JavaScript) following professional standards and modern web practices.
 
 ---
 
-## 💡 Learning & Development Process
-
-With guidance from **ChatGPT**, I strengthened my technical understanding and improved the project in several key areas:
-
-### ✅ Technical Improvements
-
-- Learned the role of the `<script>` tag and how to use `defer` to improve page loading and UX performance.
-- Integrated **structured data (JSON-LD)** for SEO, describing the restaurant as a `LocalBusiness` for better visibility in search results.
-- Improved **consistency of heading structure (H1–H3)** to follow semantic HTML and accessibility standards.
-- Refined CSS organization: removed duplicates, added clear comments, and grouped logical sections for easier future maintenance.
-- Replaced and optimized the **main BKC food image** with a realistic version that preserves the restaurant identity (UK flag, logo, real chicken, Colombian-style sides).
-
-### 🎨 Design & UX
-
-- Added a **clean accordion menu** to simplify browsing and avoid overloading the page with images.
-- Used visual hierarchy (cards, spacing, color balance) to improve clarity and encourage exploration.
-- Applied color contrast for accessibility: red for actions, blue for headings, soft gray for reading comfort.
-- Enhanced mobile usability through responsive grid layouts and flexible image ratios.
-
-### 🧭 Documentation & Clarity
-
-- Reviewed every code comment to make it **easy to understand**, so that future edits are faster and clearer.
-- Each section of the code now explains its function in plain language (for example, what each structure or class controls).
-- Ensured that all comments and class names follow a consistent, professional format.
+## **Key Features**
+- Responsive, mobile-first layout using CSS Grid and flexible containers.  
+- Consistent typography and clear color contrast for readability.  
+- Accordion-style restaurant menu to enhance usability and reduce scrolling.  
+- Simulated payment box for credit card checkout (Problem-Solving section).  
+- Optimized images and subtle watermark integration (BKC logo + UK flag).  
+- Use of `<script defer>` for faster load performance.  
+- Metadata and JSON-LD (Schema.org Restaurant) for SEO and discoverability.  
+- Accessible focus states and semantic structure (H1–H3 consistency).  
+- Validation of both HTML and CSS with **no errors** (W3C standards).  
 
 ---
 
-## 🧩 Project Alignment with Assessment Criteria
-
-This website now fully aligns with the **assessment requirements**:
-
-- ✅ **Business Showcase Page** — includes three project sections with clear design rationale and a linked case study.
-- ✅ **Problem-Solving Page** — demonstrates design thinking, UX considerations, and performance optimization.
-- ✅ **Technical and SEO Justification** — use of deferred scripts, structured data, and responsive media.
-- ✅ **Professional Documentation** — commented, accessible, and organized code with semantic hierarchy.
-
-Next steps:
-
-- Final validation with the **HTML and CSS W3C Validators** to confirm there are no syntax or accessibility errors.
-- Review of all responsive breakpoints and meta tags to ensure consistent behavior across devices.
+## **Design Choices**
+The website follows a **clean and structured design**, with a warm green palette inspired by the brand’s pistachio color.  
+Soft contrasts and rounded buttons maintain a friendly, professional atmosphere suitable for a restaurant.  
+All pages share a unified header and navigation bar for consistency, while the layout adapts fluidly to different devices using responsive grid structures.  
+The design prioritizes accessibility, readability, and a natural user flow.
 
 ---
 
-## 🧠 Reflection
-
-Through this project, I learned not only how to build a functional website, but how to **think like a designer and developer** — balancing usability, speed, and communication.
-
-With support from ChatGPT, I gained a deeper understanding of:
-
-- how scripts improve user experience without slowing pages,
-- how JSON-LD helps SEO and discoverability,
-- and how consistent heading levels create professional, accessible structure.
-
-This collaboration guided me to avoid common mistakes and document every choice — turning the site into both a working prototype and a learning portfolio.
+## **Technical Summary**
+- **HTML5:** Semantic markup structure and accessibility tags.  
+- **CSS3:** Custom variables, responsive grid, and media queries.  
+- **JavaScript (ES6):** Interactive elements including the accordion menu and form enhancements.  
+- **Form Handling:** Implemented via Formspree (no backend required).  
+- **Deployment:** Hosted on **Vercel**, integrated with GitHub for version control.  
 
 ---
 
-## 🔧 Technologies Used
-
-- **HTML5 / CSS3**
-- **JavaScript (defer loading)**
-- **Formspree (for form handling)**
-- **Schema.org JSON-LD (SEO structured data)**
-- **GitHub Pages (hosting)**
+## **Validation Results**
+- **HTML:** 100% valid — No errors or warnings (checked with [W3C Validator](https://validator.w3.org/)).  
+- **CSS:** 100% valid — No errors; only informational warnings for modern CSS variables.  
+  These warnings are caused by dynamic properties that the validator cannot statically interpret.  
+  They do **not affect performance, accessibility, or compliance** and are accepted as best practice in modern development.
 
 ---
 
-## 🧩 Change Log
+## **Generative AI Usage Statement**
+I used **ChatGPT (OpenAI)** as a learning and support tool during development.  
+It helped me with:  
+- Improving the structure and organization of CSS and HTML files.  
+- Understanding the role of `<script defer>` and JSON-LD for performance and SEO.  
+- Debugging JavaScript logic and accessibility focus states.  
+- Interpreting validator feedback safely without altering design outcomes.  
+- Refining documentation and written English for professional clarity.  
 
-| Version  | Date         | Updates                                                                                        |
-| -------- | ------------ | ---------------------------------------------------------------------------------------------- |
-| **v1.3** | Oct 12, 2025 | Added design rationale & outcome sections; improved accessibility; new food photo integration. |
-| **v1.2** | Oct 10, 2025 | CSS cleanup, semantic HTML validation, enhanced H3 hierarchy consistency.                      |
-| **v1.1** | Oct 8, 2025  | Added Problem-Solving Page link, reviewed SEO metadata and JSON-LD structure.                  |
-| **v1.0** | Oct 5, 2025  | Initial upload with index, business, and contact pages.                                        |
-
----
-
-## 🤖 Declaration of AI Support
-
-> This project received guidance from ChatGPT (OpenAI) for:
->
-> - organizing CSS structure and improving readability,
-> - checking consistency of headings and comments,
-> - learning the use of `<script>` and JSON-LD for SEO,
-> - and receiving conceptual support on UX and design documentation.
->
-> All content, design decisions, and implementation were personally completed by **José Efraín Castro Castillo** as part of the academic requirements.
+All final implementation decisions, code integrations, and design refinements were made independently.
 
 ---
 
-© 2025 José Efraín Castro Castillo — University of Salford  
-All rights reserved.
+## **Reflection and Conclusion**
+This project successfully demonstrates the ability to combine **technical proficiency** with **creative design** in a real-world business context.  
+Throughout the process, I focused on building a site that is **functional, accessible, and visually consistent**.  
+Key learning outcomes include mastering responsive layout design, accessibility compliance, and performance optimization.  
 
-## 📂 Project Structure
-
-- `index.html` — Home page
-- `about.html` — About me
-- `contact.html` — Contact information
-- `skills.html` — Skills list
-- `business.html` — Business showcase (including Best Krazy Chicken project)
-- `problem.html` — Problem-solving case study with a contact form
-- `css/styles.css` — Main stylesheet
-- `img/` — Images (profile photo, BKC logo, etc.)
+By completing the validation, deployment, and documentation process, this project meets the professional and academic standards expected for a prototype deliverable.
 
 ---
-
-## 🌐 Live Website
-
-The site is hosted on **GitHub Pages**:  
-👉 [Click here to view](https://your-username.github.io/your-repo-name)  
-(Replace with your actual GitHub link once deployed.)
-
----
-
-## 🛠️ Development Process
-
-- The initial HTML framework was created by me using knowledge gained during my first year of Software Engineering at Edge Hill University.
-- Now in my second year at the University of Salford, I am revisiting and improving this work with better structure, styling, and branding.
-- The project includes six connected pages, consistent navigation, and a business case study for Best Krazy Chicken.
-- This is an ongoing project, and I will continue refining it as I progress through upcoming seminars.
-
----
-
-## 📘 AI Usage Statement
-
-I used OpenAI’s ChatGPT as a support tool during development.
-
-- It helped me identify improvements in the HTML structure and CSS organisation.
-- It suggested ways to make the design more consistent and professional.
-- It provided ideas for branding (e.g., BKC logo and profile photo adjustments).
-
-All content was reviewed, adapted, and finalised by me.  
-The project reflects my own understanding, combining experience from my first year at Edge Hill with current learning at Salford.
-
-# WAD Personal Website — José Castro Castillo
-
-This repository contains the personal website of **José Castro Castillo**,  
-a _Business Information Technology student at the University of Salford (UK)_.
-
-The project demonstrates a multi-page responsive site including:
-
-- **Home** (`index.html`)
-- **Contact**
-- **Skills**
-- **Business Showcase**
-- **Problem-Solving Case Study**
-
-Each page is semantically structured, accessible, and styled using modular CSS.
-
----
-
-## 🔧 Technical Overview
-
-**Languages & Technologies:**
-
-- HTML5 (semantic structure, W3C validated)
-- CSS3 (responsive design, accessibility-friendly)
-- JavaScript (interactive animations & dynamic behaviors)
-
-**Key features:**
-
-- Responsive layout built with CSS Grid and Flexbox
-- Accessibility improvements (ARIA, focus styles, alt text)
-- Interactive canvas animation for BKC visual branding
-- Form validation and mailto functionality in JavaScript
-- Clean folder structure and commented source code
-
----
-
-## 🧠 Code Review and Improvements
-
-During development, various **code refinement tools** were used to:
-
-- Improve code readability and professional commenting.
-- Ensure WCAG and W3C HTML/CSS compliance.
-- Simplify and optimize the JavaScript animation logic.
-- Standardize file organization, indentation, and semantics.
-
-The code has been **validated** using:
-
-- [W3C HTML Validator](https://validator.w3.org/)
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-- [JSHint](https://jshint.com/) for JavaScript linting.
-
----
-
-## 📁 Folder Structure
-
----
-
-## ✅ Validation & Testing
-
-All HTML pages were tested and validated using the official **W3C Markup Validation Service**:
-
-- **Validator:** [https://validator.w3.org/](https://validator.w3.org/)
-- **Result:** No errors or warnings were found on any page.
-- **Validation proof:** Confirmed for [https://bsn038.github.io/](https://bsn038.github.io/)
-
-### Accessibility & Structure Improvements
-
-- Added semantic HTML5 elements (`<main>`, `<header>`, `<section>`, `<article>`, `<footer>`).
-- Used proper heading hierarchy (`<h1>`–`<h3>`).
-- Updated `<address>` placement for valid context.
-- Included ARIA attributes for better navigation (`aria-current="page"`).
-- All images have descriptive `alt` text for accessibility.
-
-**Outcome:**  
-The final version of the website passes all HTML validation tests with no warnings and follows accessibility best practices.
-
----
-
-## ✅ HTML Validation
-
-The website’s HTML structure was successfully validated using the **W3C Markup Validation Service**.
-
-**Result:**  
-✅ No errors or warnings found.
-
-**Screenshot:**
-![HTML Validation Screenshot](validation_screenshots/html_validation_ok.png)
-
----
-
-## 🧩 CSS & JS Validation (optional)
-
-If you validated CSS or JavaScript, you can include them as well:
-
-**CSS Validation:**
-![CSS Validation Screenshot](validation_screenshots/css_validation_ok.png)
-
-**JS Validation:**
-![JS Validation Screenshot](validation_screenshots/js_validation_ok.png)
-
-## 🎨 CSS Validation
-
-The stylesheet (`styles.css`) was validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
-
-**Result:**  
-✅ No errors or warnings were found.  
-The document conforms to **CSS Level 3 + SVG** specifications.
-
-**Screenshot:**  
-![CSS Validation Screenshot](validation_screenshots/css_validation_ok.png)
-
-## 🧪 Validation & Mobile Testing
-
-All project files were validated and tested to ensure quality and accessibility.
-
-### ✅ HTML & CSS Validation
-
-- **HTML** pages were validated using the [W3C Markup Validation Service](https://validator.w3.org/).
-- **CSS** was validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
-- Both returned _no critical errors_ and only minor best-practice suggestions.
-
-### 📱 Responsive & Cross-Device Testing
-
-- The website was tested using **Chrome DevTools (Device Toolbar)** across multiple simulated devices such as iPhone SE, iPad, and Pixel 7.
-- Layout and typography adapt correctly to smaller screens.
-- Navigation links and buttons remain easy to tap and accessible.
-- Additional live testing was performed on a real mobile phone to confirm full responsiveness and proper scaling.
-
-### ⚙️ Accessibility & Usability
-
-- Semantic HTML elements are used throughout the site (`header`, `main`, `section`, `footer`).
-- `aria-current` and descriptive alt text were applied for improved screen-reader support.
-- The design avoids motion for users with “prefers-reduced-motion” enabled.
-
-## 🏁 Final Summary
-
-This project demonstrates the integration of web development, design principles, and business-focused problem solving.  
-Each page was built using clean, semantic **HTML5**, organized **CSS3**, and lightweight **JavaScript (ES6+)** for interactive effects such as animated branding.
-
-The website highlights key skills, business experience, and a real-world case study — all presented through a responsive and accessible layout.  
-It was tested across multiple devices, validated using W3C tools, and structured following professional web development standards.
-
-Through this process, I improved my understanding of **responsive design**, **accessibility best practices**, and **front-end optimization** while ensuring a consistent and modern user experience.
-
-# José Castro Castillo — Personal Website
-
-**Live site:** https://bsn038.github.io/
-
-Portfolio + BKC (Best Krazy Chicken) concept. Built for Web Authoring & Design.
-
-## What's inside
-
-- Clean layout with soft sky-blue theme
-- Red pill navigation (accessible focus states)
-- Subtle brand watermark on hero/visuals
-- **Menu** with photos and accordion (image left, info right)
-- Contact form via **Formspree** (no backend)
-- Open Graph/Twitter meta + Schema.org JSON-LD
-- Mobile-first, semantic HTML
-
-## Pages
-
-- `index.html` (Home)
-- `business.html` (BKC visuals + Menu)
-- `skills.html`
-- `problem.html` (case study)
-- `contact.html` (Formspree form)
-
-## Run locally
-
-Open `index.html` in your browser.
-
-> Tip: with VS Code, use “Live Server” for auto-reload.
-
-## Deploy (GitHub Pages)
-
-- Repo name: `bsn038.github.io`
-- Settings → Pages → **Deploy from branch**: `main` / **root**
-- Your site: https://bsn038.github.io/
-
-## Assets
-
-- CSS: `css/styles.css`
-- JS: `js/script.js`
-- Images: `img/*`
-
-## Contact
-
-- Email: J.E.CastroCastillo@edu.salford.ac.uk
-- LinkedIn: jose-efrain-castro-castillo
-
-# Week 5 — Implementations and Improvements
-
-## Implementations based on Week 5 learnings
-
-- **Global loader:**  
-  Added a subtle top-stripe loader visible on all pages, implemented purely with CSS (`html::before`).  
-  It fades out automatically (~1.2 s) and respects `prefers-reduced-motion`.  
-  → No JavaScript or extra markup required.
-
-- **Skills section:**  
-  Rebuilt progress bars into 10-segment “sauce-colored” stripes (red / green / orange).  
-  Each bar uses CSS gradients with `--w` for width control — no HTML changes needed.  
-  → Cleaner, modular, and accessible design.
-
-- **UI refinements:**  
-  Thinner skill bars (4 px height), consistent rounded edges, and smoother transitions.  
-  Old loaders and duplicate CSS were removed to keep code lightweight.
-
-## Next steps
-
-- Final color-tuning of the three sauce tones to match brand palette.
-- Optional: add a soft highlight overlay for extra depth.
-
----
-
-_This update applies accessibility, maintainability, and visual-consistency principles learned in Week 5._
