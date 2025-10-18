@@ -1361,19 +1361,34 @@ body.theme-sky footer {
   color: #2b2b2b;
   position: relative;
   animation: loader-spin 1.2s linear infinite;
-}
 
+}
 .loader--grill::before,
 .loader--grill::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 40deg, currentColor 40deg 44deg, transparent 44deg 130deg, currentColor 130deg 134deg, transparent 134deg 220deg, currentColor 220 224deg, transparent 224 316deg, currentColor 316 320deg, transparent 320 360deg);
-  mask: radial-gradient(circle 28px, transparent 31px, #000 32px);
+  background: conic-gradient(from 0deg,
+      transparent 40deg,
+      currentColor 40deg 44deg,
+      transparent 44deg 130deg,
+      currentColor 130deg 134deg,
+      transparent 134deg 220deg,
+      currentColor 220deg 224deg,
+      /* ← añade deg */
+      transparent 224deg 316deg,
+      /* ← añade deg */
+      currentColor 316deg 320deg,
+      /* ← añade deg */
+      transparent 320deg 360deg
+      /* ← añade deg */
+    );
+  -webkit-mask-image: radial-gradient(circle 28px, transparent 31px, #000 32px);
+  mask-image: radial-gradient(circle 28px, transparent 31px, #000 32px);
   opacity: .9;
+  
 }
-
 .loader--grill::after {
   transform: rotate(10deg);
   opacity: .6;
