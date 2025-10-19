@@ -87,6 +87,32 @@ Do not put comments inside the JSON; keep them here above the <script>.
         <a href="problem.html">Problem-Solving</a>
       </nav>
     </div>
+    <!-- Little walking chick (decorative) -->
+<div class="chick" aria-hidden="true">
+  <svg viewBox="0 0 120 90" width="100" height="75" role="img" focusable="false">
+    <!-- body -->
+    <ellipse cx="60" cy="50" rx="36" ry="28" fill="#FFD54F" stroke="#C9A63A" stroke-width="2"/>
+    <!-- head -->
+    <circle cx="85" cy="35" r="16" fill="#FFD54F" stroke="#C9A63A" stroke-width="2"/>
+    <!-- eye -->
+    <circle cx="90" cy="33" r="3.2" fill="#111"/>
+    <!-- beak -->
+    <polygon points="100,36 112,40 100,44" fill="#F57C00"/>
+    <!-- wing -->
+    <ellipse cx="52" cy="48" rx="12" ry="9" fill="#FFEB7A" stroke="#C9A63A" stroke-width="2"/>
+    <!-- legs -->
+    <line x1="48" y1="72" x2="48" y2="84" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <line x1="62" y1="72" x2="62" y2="84" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <!-- toes -->
+    <line x1="48" y1="84" x2="42" y2="88" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <line x1="48" y1="84" x2="54" y2="88" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <line x1="62" y1="84" x2="56" y2="88" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <line x1="62" y1="84" x2="68" y2="88" stroke="#B85C00" stroke-width="3" stroke-linecap="round"/>
+    <!-- tiny tuft -->
+    <path d="M78 22 q6 -8 12 0" fill="none" stroke="#C9A63A" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+
   </header>
 
   <!-- =========================
@@ -119,7 +145,7 @@ Do not put comments inside the JSON; keep them here above the <script>.
         <figure style="text-align:center; margin:0;">
           <img src="img/Logo1KBC.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" width="1024" height="1024"
             decoding="async" fetchpriority="high"> <!-- Critical image: reserve space + decode off-main -->
-          <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+          <figcaption class="muted c-red" style="font-weight:700;">Best Krazy Chicken (BKC) — case study branding</figcaption>
         </figure>
       </article>
     
@@ -143,7 +169,7 @@ Do not put comments inside the JSON; keep them here above the <script>.
           <!-- Keep your current image src exactly as you have it now -->
           <img src="img/logo-bkc.png" alt="BKC signature roast chicken with sides" width="1024" height="768" decoding="async"
             loading="lazy"> <!-- Below the fold: lazy + reserved box -->
-          <figcaption class="muted">Best Krazy Chicken (BKC) — case study branding</figcaption>
+          <figcaption class="muted c-red" style="font-weight:700;">Best Krazy Chicken — Branding That Brings Flavor to Life</figcaption>
         </figure>
       </article>
     </section>
@@ -151,7 +177,7 @@ Do not put comments inside the JSON; keep them here above the <script>.
       <!-- Two-column grid: intro text (left) + profile image (right) -->
       <div class="hero-grid">
         <div>
-          <h2>Welcome</h2>
+          <h2 style="color:#0D47A1;">Welcome</h2>
           <!-- Short value proposition for visitors -->
           <p>
             I am a Business Information Technology student focused on building practical web solutions.
