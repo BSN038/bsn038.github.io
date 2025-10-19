@@ -75,3 +75,6 @@ Key learning outcomes include mastering responsive layout design, accessibility 
 By completing the validation, deployment, and documentation process, this project meets the professional and academic standards expected for a prototype deliverable.
 
 ---
+### HTML Validation
+All pages successfully validated using [W3C Validator](https://validator.w3.org/).  
+✅ No errors or warnings detected (October 2025).
