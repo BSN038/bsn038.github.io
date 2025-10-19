@@ -2025,6 +2025,25 @@ header {
   /* more space below nav for the chick */
 }
 
+/* ====== Info Boxes for Skills page (Certificates, Education, Experience) ====== */
+.info-box {
+  background-color: rgba(255, 255, 255, 0.90);
+  /* semi-white box */
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+
 
 
 
