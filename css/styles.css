@@ -2042,6 +2042,36 @@ header {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
+/* Partner delivery logos */
+.delivery-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.delivery-links img {
+  width: 120px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.delivery-links img:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
