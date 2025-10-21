@@ -2070,7 +2070,14 @@ header {
   position: relative;
 }
 
-/* anchor for the logo */
+//* ----------------------------------------
+   Site logo (top-right in header)
+   ---------------------------------------- */
+.container.brand {
+  position: relative;
+}
+
+/* anchor for absolute logo positioning */
 
 .site-logo {
   /* Keep it away from the very edge for a professional look */
@@ -2080,23 +2087,28 @@ header {
   display: inline-block;
   line-height: 0;
   /* tight clickable area */
+  z-index: 2;
+  /* above ornaments, below dropdowns */
 }
 
 .site-logo img {
-  /* About half of the old loader size (previously 256px) and responsive */
-  width: clamp(64px, 10vw, 128px);
+  /* Prevent global img { width:100% } rules from blowing it up */
+  width: auto;
+  max-width: clamp(56px, 7.5vw, 110px);
   height: auto;
+  object-fit: contain;
+
+  /* Subtle polish */
   border-radius: 6px;
-  /* subtle polish */
   box-shadow: none;
-  /* keep it minimal */
 }
 
-/* Keep the logo above background ornaments but below potential dropdowns */
-header .site-logo {
-  z-index: 2;
+/* Hard cap for very small phones */
+@media (max-width: 480px) {
+  .site-logo img {
+    max-width: 72px;
+  }
 }
-
 
 
 
