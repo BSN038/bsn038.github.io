@@ -2082,8 +2082,8 @@ header {
 .site-logo {
   /* Keep it away from the very edge for a professional look */
   position: absolute;
-  top: clamp(8px, 1.2vw, 14px);
-  right: clamp(12px, 2vw, 24px);
+  top: clamp(4px, 0.9vw, 12px);
+  right: clamp(1.4px, 2vw, 20px);
   display: inline-block;
   line-height: 0;
   /* tight clickable area */
