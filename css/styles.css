@@ -2065,77 +2065,42 @@ header {
 /* ----------------------------------------
    Site logo (top-right in header)
    ---------------------------------------- */
-/* Anchor for absolute positioning; if .container.brand already has position, keep the existing value */
 .container.brand {
   position: relative;
+  /* anchor for absolute logo */
+  padding-right: clamp(80px, 10vw, 140px);
+  /* reserve space so text never sits under the logo */
 }
-
-//* ----------------------------------------
-   Site logo (top-right in header)
-   ---------------------------------------- */
-.container.brand {
-  position: relative;
-}
-
-/* anchor for absolute logo positioning */
 
 .site-logo {
-  /* Keep it away from the very edge for a professional look */
   position: absolute;
   top: clamp(4px, 0.9vw, 12px);
-  right: clamp(1.4px, 2vw, 20px);
+  right: clamp(8px, 1.4vw, 20px);
   display: inline-block;
   line-height: 0;
-  /* tight clickable area */
   z-index: 2;
-  /* above ornaments, below dropdowns */
 }
 
 .site-logo img {
-  /* Prevent global img { width:100% } rules from blowing it up */
   width: auto;
+  /* defend against global img { width:100% } */
   max-width: clamp(56px, 7.5vw, 110px);
   height: auto;
   object-fit: contain;
-
-  /* Subtle polish */
   border-radius: 6px;
   box-shadow: none;
 }
 
-/* Hard cap for very small phones */
-@media (max-width: 480px) {
+/* Very small phones: shrink logo a bit more and keep space */
+@media (max-width: 430px) {
+  .container.brand {
+    padding-right: 88px;
+  }
+
   .site-logo img {
-    max-width: 72px;
+    max-width: 64px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
 
 
 
