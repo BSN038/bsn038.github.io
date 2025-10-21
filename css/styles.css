@@ -2062,6 +2062,41 @@ header {
   transform: scale(1.05);
 }
 
+/* ----------------------------------------
+   Site logo (top-right in header)
+   ---------------------------------------- */
+/* Anchor for absolute positioning; if .container.brand already has position, keep the existing value */
+.container.brand {
+  position: relative;
+}
+
+/* anchor for the logo */
+
+.site-logo {
+  /* Keep it away from the very edge for a professional look */
+  position: absolute;
+  top: clamp(8px, 1.2vw, 14px);
+  right: clamp(12px, 2vw, 24px);
+  display: inline-block;
+  line-height: 0;
+  /* tight clickable area */
+}
+
+.site-logo img {
+  /* About half of the old loader size (previously 256px) and responsive */
+  width: clamp(64px, 10vw, 128px);
+  height: auto;
+  border-radius: 6px;
+  /* subtle polish */
+  box-shadow: none;
+  /* keep it minimal */
+}
+
+/* Keep the logo above background ornaments but below potential dropdowns */
+header .site-logo {
+  z-index: 2;
+}
+
 
 
 
