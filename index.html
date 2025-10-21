@@ -65,11 +65,15 @@ Do not put comments inside the JSON; keep them here above the <script>.
          SITE HEADER / BRAND BAR
          Contains site title, subtitle, and primary navigation
     ========================== -->
-  <header>
-    <div class="container brand">
+  <header>    
+    <div class="container brand">      
       <!-- Personal brand (use H1 once per page) -->
       <h1>José Castro Castillo</h1>
-    
+          <!-- Brand mark (top-right across all pages) -->
+    <a href="index.html" class="site-logo" aria-label="Go to home">
+      <img src="img/Logo1KBC.png" alt="BKC brand mark">
+    </a>
+          
       <!-- Make the university name clickable -->
 <p class="muted">
   Business Information Technology Student — 
@@ -77,7 +81,6 @@ Do not put comments inside the JSON; keep them here above the <script>.
     University of Salford
   </a>
 </p>
-
       <!-- Primary navigation (highlight current page with .active; use aria-current for accessibility) -->
       <nav aria-label="Primary">
         <a href="index.html" class="active" aria-current="page">Home</a>
@@ -124,35 +127,36 @@ Do not put comments inside the JSON; keep them here above the <script>.
            HERO SECTION
            Quick intro with brand case-study image and profile photo
       ========================== -->
-    <!-- Home loader (prepared, hidden by default). JS will reveal briefly if motion allowed -->
-    <div id="home-loader" class="card" role="status" aria-live="polite" hidden>
-      <!-- Keep it lightweight: reuse brand logo; no extra CSS -->
-      <figure style="text-align:center; margin:0;">
-        <img src="img/Logo1KBC.png" alt="Best Krazy Chicken (BKC) logo warming up" width="256" height="256"
-          decoding="async">
-        <figcaption>Warming up the roast…</figcaption>
-      </figure>
-    </div>
-    
+       
     <!-- Three horizontal cards: logo | slogan | profile -->
     <div id="hero-watermark" class="card">
       
     <section class="cards" aria-label="Brand intro">
-        
-      <!-- Left: Logo card -->
-      <article class="card" aria-labelledby="logo-title">
-        <h3 id="logo-title" class="visually-hidden">BKC logo</h3>
-        <figure style="text-align:center; margin:0;">
-          <img src="img/Logo1KBC.png" alt="Best Krazy Chicken (BKC) logo" class="logo-bkc" width="1024" height="1024"
-            decoding="async" fetchpriority="high"> <!-- Critical image: reserve space + decode off-main -->
-          <figcaption class="muted c-red" style="font-weight:700;">Best Krazy Chicken (BKC) — case study branding</figcaption>
-        </figure>
-      </article>
-    
+          <!-- Left: BKC visuals (links to Business page) -->
+    <article class="card" aria-label="BKC Visual Gallery">
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <a href="business.html#storefront" aria-label="Open BKC storefront visual">
+          <img src="img/Front2BKC.png" alt="BKC storefront thumbnail" width="310" height="260">
+        </a>
+        <a href="business.html#rotisserie" aria-label="Open BKC rotisserie visual">
+          <img src="img/bkc-rotisserie.png" alt="Rotisserie visual thumbnail" width="310" height="260">
+        </a>
+        <a href="business.html#plated" aria-label="Open BKC plated dish visual">
+          <img src="img/bkc-plated-dish.png" alt="Signature plated dish thumbnail" width="310" height="260">
+        </a>
+        <p style="color:#0D47A1; font-weight:bold; font-size:1.8em; margin-top:0.5rem;">
+  Colombian wood-fired chicken, spiced with our special ají, guacamole, and chimichurri — bringing a unique Colombian kick right to the UK.
+</p>
+        <a href="https://www.youtube.com/shorts/-5WofqVxiVA" target="_blank" rel="noopener noreferrer">
+      🔥 Watch wood-fire roasting example on YouTube
+        </a>
+      </div>
+    </article>
+            
       <!-- Center: Slogan card -->
       <article class="card" aria-labelledby="slogan-title">
         <h3 id="slogan-title" class="visually-hidden">Brand slogan</h3>
-          <h2 id="home-slogan" style="text-align:center; margin:0.5rem 0; opacity:0;">
+          <h2 id="home-slogan" style="text-align:center;font-size:2.1em; margin:0.5rem 0; opacity:0;">
             Once you <span class="c-pistachio">savor</span> our
             <span class="c-royal">roast</span>, you’ll want it the
             <span class="c-red">most!</span>

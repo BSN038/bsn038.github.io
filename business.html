@@ -62,6 +62,11 @@
     <div class="container brand">
       <!-- Personal brand (use H1 once per page) -->
       <h1>José Castro Castillo</h1>
+          <!-- Brand mark (top-right across all pages) -->
+    <a href="index.html" class="site-logo" aria-label="Go to home">
+      <img src="img/Logo1KBC.png" alt="BKC brand mark">
+    </a>
+
       <!-- Short role/affiliation line -->
       <p class="muted">
         Business Information Technology Student —
@@ -171,7 +176,6 @@
   </p>
   <small>Video used for illustrative purposes — all rights belong to the original creator.</small>
 </div>
-
 
     <!-- =========================
            BKC VISUAL CONCEPT
@@ -345,8 +349,7 @@
   
         <!-- Group: Sides -->
         <h4>Sides</h4>
-      
-        <!-- Tray of Roasted Potatoes -->
+              <!-- Tray of Roasted Potatoes -->
         <details class="menu-item">
           <summary>Tray of Roasted Potatoes</summary>
           <div class="menu-body">
@@ -376,7 +379,6 @@
             </div>
           </div>
         </details>
-
       </section>
 
       <svg class="visually-hidden" width="0" height="0" aria-hidden="true" focusable="false">
@@ -389,7 +391,7 @@
       <div style="display:flex; justify-content:center; gap:1rem; align-items:flex-start; flex-wrap:nowrap;">
 
       <!-- BKC storefront banner -->
-      <figure class="storefront-figure trio">
+      <figure id="storefront" class="storefront-figure trio">
         <img src="img/Front2BKC.png" alt="BKC storefront with chefs and wood-fired rotisserie chickens" width="1280"
           height="853" loading="lazy" decoding="async">
         <figcaption class="muted" style="text-align:center;">
@@ -400,7 +402,7 @@
       <!-- Rotisserie visual: base photo + heat shimmer + flame canvas (animated by JS) -->
       <!-- This block relies on CSS (.rotisserie-visual, .rotisserie-img, .flame-layer)
              and on JS in js/script.js to draw flames and animate heat. -->
-      <figure class="rotisserie-visual trio">
+      <figure id="rotisserie" class="rotisserie-visual trio">
         <!-- Base image of the rotisserie (no inline styles; CSS controls size) -->
         <img src="img/bkc-rotisserie.png" alt="BKC rotisserie with chickens and potatoes" class="rotisserie-img" >
 
@@ -411,13 +413,11 @@
           Traditional wood-fired rotisserie — BKC branding.
         </figcaption>
 
-        <!-- Hidden SVG filter: creates the heat distortion effect on the image -->
-      
+        <!-- Hidden SVG filter: creates the heat distortion effect on the image -->      
       </figure>
 
       <!-- Plated dish visual: simple image without animation (keeps natural proportions) -->
-      <figure class="trio">
-
+      <figure id="plated" class="trio">
         <img src="img/bkc-plated-dish.png"
           alt="BKC plated dish: roasted chicken with roasted potatoes, ripe plantain, yuca, and chimichurri">
         <figcaption class="muted" style="text-align:center;">
