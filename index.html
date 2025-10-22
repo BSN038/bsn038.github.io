@@ -179,30 +179,59 @@ Do not put comments inside the JSON; keep them here above the <script>.
     </section>
     </div>           
       <!-- Two-column grid: intro text (left) + profile image (right) -->
-      <div class="hero-grid">
-        <div>
-          <h2 style="color:#0D47A1;">Welcome</h2>
-          <!-- Short value proposition for visitors -->
-          <p>
-            I am a Business Information Technology student focused on building practical web solutions.
-            My work combines technology and entrepreneurship, from small business operations to a digital
-            transformation case study for a restaurant brand (BKC).
-          </p>
-        </div>
+      <!-- Welcome (card) -->
+<section class="card" aria-labelledby="welcome-title">
+  <div class="hero-grid">
+    <div>
+      <h2 id="welcome-title" style="color:#0D47A1;">Welcome</h2>
+      <!-- Short value proposition for visitors -->
+      <p>
+        I am a Business Information Technology student focused on building practical web solutions.
+        My work combines technology and entrepreneurship, from small business operations to a digital
+        transformation case study for a restaurant brand (BKC).
+      </p>
+    </div>
 
-        <!-- Profile photo (use class for sizing and shape in CSS) -->
-        <div class="profile-container">
-                    <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" width="1536"
-                      height="2048" decoding="async" loading="lazy"> <!-- Below the fold: lazy + reserved box -->
-        </div>
-      </div>
+    <!-- Profile photo (use class for sizing and shape in CSS) -->
+    <div class="profile-container">
+      <img src="img/profile-jose.png" alt="Profile photo of José Castro Castillo" class="profile-pic" width="1536"
+        height="2048" decoding="async" loading="lazy"> <!-- Below the fold: lazy + reserved box -->
+    </div>
+  </div>
+</section> <!-- end of Welcome card -->
 
     <!-- =========================
            ABOUT / BIO SECTION
            Brief background, interests, and motivation
       ========================== -->
+        <!-- Upcoming Openings (concept) -->
+    <!-- This card announces hypothetical/planned locations clearly and professionally -->
+    <section class="card" aria-labelledby="upcoming-title">
+      <h2 id="upcoming-title" style="color:#0D47A1;">Upcoming Openings (Concept)</h2>
+      <p>
+        <strong>Best Krazy Chicken (BKC)</strong> is a concept restaurant project inspired by Colombian wood-fired cooking.
+        We’re preparing to bring it to the heart of <strong>Liverpool</strong> and <strong>Chester</strong> — stay tuned for updates.
+      </p>
+      <!-- Optional note to keep transparency clear for evaluators -->
+      <p class="muted">Note: BKC is a student/portfolio concept; locations are planned, not yet open.</p>
+            <!-- Quick map links to planned locations -->
+      <ul class="quick-maps" style="list-style:none; padding-left:0; margin-top:0.5rem;">
+        <li>
+          <a href="https://www.google.com/maps?q=Liverpool+City+Centre" target="_blank" rel="noopener noreferrer" aria-label="Open map: Liverpool city centre">
+            📍 Liverpool city centre (view on Google Maps)
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Chester+City+Centre" target="_blank" rel="noopener noreferrer" aria-label="Open map: Chester city centre">
+            📍 Chester city centre (view on Google Maps)
+          </a>
+        </li>
+      </ul>
+
+    </section>
+
     <section class="card">
-      <h2>About Me</h2>
+      <h2 style="color:#0D47A1;">About Me</h2>
       <p>
         I am a full-time student of <strong>Business Information Technology</strong> at the University of Salford.
         In addition to my studies, I run a small <strong>tool and equipment rental business</strong> and during
@@ -227,28 +256,28 @@ Do not put comments inside the JSON; keep them here above the <script>.
 
       <!-- Skills card -->
       <article class="card">
-        <h3>Skills</h3>
+        <h2 style="color:#0D47A1;">Skills</h2>
         <p class="muted">Technical, business, and practical competencies.</p>
         <a class="btn" href="skills.html">View skills</a>
       </article>
 
       <!-- Business showcase card -->
       <article class="card">
-        <h3>Business Showcase</h3>
+        <h2 style="color:#0D47A1;">Business Showcase</h2>
         <p class="muted">Entrepreneurship, tool rental, and construction projects.</p>
         <a class="btn" href="business.html">Explore</a>
       </article>
 
       <!-- Problem-solving project card -->
       <article class="card">
-        <h3>Problem-Solving</h3>
+        <h2 style="color:#0D47A1;">Problem Problem-solving</h2>
         <p class="muted">Restaurant case study (BKC): branding, links, and contact form.</p>
         <a class="btn" href="problem.html">Open project</a>
       </article>
 
       <!-- External Resource card (out-of-sector, value-add) -->
       <article class="card">
-        <h3>Learn Digital Skills</h3>
+        <h2 style="color:#0D47A1;">Learn Digital Skills</h2>
         <p class="muted">Free courses to grow your web & business skills.</p>
         <a class="btn" href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer"
           aria-label="Open freeCodeCamp in a new tab">Visit freeCodeCamp</a>
@@ -303,6 +332,33 @@ Do not put comments inside the JSON; keep them here above the <script>.
          Place JavaScript at the end for faster initial render
     ========================== -->
   <script src="js/script.js"></script>
+      <!-- ========================================================= -->
+    <!-- AI Assistant: Floating Chat Button + Chat Window (Phase 1) -->
+    <!-- ========================================================= -->
+
+    <!-- Floating chat button (always visible in bottom-right corner) -->
+    <button id="ai-chat-toggle" class="ai-chat-btn" aria-label="Open BKC Assistant">
+      💬
+    </button>
+
+    <!-- Hidden chat window (appears when button is clicked) -->
+    <div id="ai-chat-window" class="ai-chat-window" hidden>
+      <header class="ai-chat-header">
+        <h3>BKC Assistant</h3>
+        <button id="ai-chat-close" class="ai-chat-close" aria-label="Close chat">×</button>
+      </header>
+
+      <div class="ai-chat-body">
+        <p class="ai-chat-greeting">
+          Hi 👋, I’m your BKC Assistant. Ask me anything about our skills, projects, or business!
+        </p>
+      </div>
+
+      <form class="ai-chat-input" action="javascript:void(0);">
+        <input type="text" id="ai-user-input" placeholder="Type your message..." aria-label="Your message" required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
 </body>
 
 </html>
