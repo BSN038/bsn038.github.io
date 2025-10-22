@@ -535,14 +535,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape' && !win.hidden) closeChat();
   });
 
-  // Basic submit (echo + placeholder)
+  // Submit: send the message to the Netlify function (/ask)
   if (form && input && body) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
-      var text = input.value.trim();
+      const text = input.value.trim();
       if (!text) return;
 
-      var p = document.createElement('p');
+      // 1) Append user bubble
+      const p = document.createElement('p');
       p.textContent = text;
       p.style.margin = '0 0 .6rem';
       p.style.padding = '.5rem .7rem';
@@ -551,109 +552,69 @@ document.addEventListener('DOMContentLoaded', function () {
       p.style.alignSelf = 'flex-end';
       p.style.background = '#f5f7ff';
       body.appendChild(p);
-
-      var a = document.createElement('p');
-      a.textContent = 'Thanks! AI responses are coming in the next step.';
-      a.style.margin = '0 0 .9rem';
-      a.style.padding = '.5rem .7rem';
-      a.style.borderRadius = '10px';
-      a.style.background = '#fafafa';
-      a.style.border = '1px solid #eee';
-      body.appendChild(a);
-
       body.scrollTop = body.scrollHeight;
-      input.value = '';
+
+      // 2) Typing indicator
+      const typing = document.createElement('p');
+      typing.textContent = 'Assistant is typing…';
+      typing.style.margin = '0 0 .9rem';
+      typing.style.padding = '.5rem .7rem';
+      typing.style.borderRadius = '10px';
+      typing.style.background = '#fafafa';
+      typing.style.border = '1px solid #eee';
+      typing.style.opacity = '.8';
+      body.appendChild(typing);
+      body.scrollTop = body.scrollHeight;
+
+      // 3) Call the secure proxy
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 20000); // 20s timeout
+
+        const res = await fetch('/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text }),
+          signal: ctrl.signal
+        });
+        clearTimeout(timer);
+
+        let reply = 'Sorry, I could not reach the assistant right now.';
+        if (res.ok) {
+          const data = await res.json();
+          // Function returns { ok, source, reply }
+          if (data && typeof data.reply === 'string' && data.reply.trim()) {
+            reply = data.reply.trim();
+          }
+        }
+
+        // 4) Replace typing with the assistant reply
+        const a = document.createElement('p');
+        a.textContent = reply;
+        a.style.margin = '0 0 .9rem';
+        a.style.padding = '.5rem .7rem';
+        a.style.borderRadius = '10px';
+        a.style.background = '#fafafa';
+        a.style.border = '1px solid #eee';
+
+        if (typing.parentNode) typing.parentNode.replaceChild(a, typing);
+        else body.appendChild(a);
+
+      } catch (err) {
+        // Network/error case
+        if (typing.parentNode) typing.parentNode.removeChild(typing);
+        const a = document.createElement('p');
+        a.textContent = 'Network error. Please try again in a moment.';
+        a.style.margin = '0 0 .9rem';
+        a.style.padding = '.5rem .7rem';
+        a.style.borderRadius = '10px';
+        a.style.background = '#fff3f3';
+        a.style.border = '1px solid #ffd6d6';
+        body.appendChild(a);
+      } finally {
+        input.value = '';
+        body.scrollTop = body.scrollHeight;
+      }
     });
   }
 });
-
-{
-  "meta": {
-    "site_name": "Best Krazy Chicken (BKC) — José Castro Castillo",
-      "version": "1.0.0",
-        "last_updated": "2025-10-22",
-          "policy": "Answer only using this file; if not covered, say you don’t know and point to the site’s pages."
-  },
-  "sections": {
-    "business": {
-      "summary": "BKC is a concept restaurant project inspired by Colombian wood-fired chicken. The brand emphasizes authentic flavor, simple visual identity (logo with a chicken and flame), and a friendly, family-style experience.",
-        "highlights": [
-          "Concept status: student/portfolio project (not yet open).",
-          "Planned locations: Liverpool city centre and Chester city centre (concept/plan).",
-          "Signature flavors: Colombian wood-fired roast with ají, guacamole, and chimichurri."
-        ],
-          "links": [
-            { "label": "Business page", "url": "/business.html" },
-            { "label": "Storefront visual", "url": "/business.html#storefront" },
-            { "label": "Rotisserie visual", "url": "/business.html#rotisserie" },
-            { "label": "Plated dish visual", "url": "/business.html#plated" }
-          ]
-    },
-    "skills": {
-      "soft": [
-        "Communication and teamwork.",
-        "Problem-solving and critical thinking.",
-        "Time management and reliability."
-      ],
-        "hard": [
-          "Business & technical: web development basics (HTML/CSS/JS), UX thinking, data handling.",
-          "Tooling: Git/GitHub, basic design/editing workflows.",
-          "Prototyping: interactive checkout demo; booking form; order/partner links."
-        ],
-          "links": [
-            { "label": "Skills page", "url": "/skills.html" }
-          ]
-    },
-    "problem_solving": {
-      "summary": "Case study mindset: analyze a restaurant brand scenario (BKC), design clear branding, structure the site, and deliver small interactive demos to showcase usability and business thinking.",
-        "links": [
-          { "label": "Home hero visuals", "url": "/index.html" },
-          { "label": "Business visuals", "url": "/business.html" }
-        ]
-    },
-    "contact": {
-      "summary": "Professional contact through the site’s Contact section.",
-        "links": [
-          { "label": "Contact page", "url": "/contact.html" }
-        ]
-    },
-    "openings": {
-      "summary": "Upcoming Openings (Concept): planning Liverpool and Chester. Not yet open; follow updates on the site.",
-        "map_links": [
-          { "label": "Liverpool city centre (Google Maps)", "url": "https://www.google.com/maps?q=Liverpool+City+Centre" },
-          { "label": "Chester city centre (Google Maps)", "url": "https://www.google.com/maps?q=Chester+City+Centre" }
-        ]
-    }
-  },
-  "faqs": [
-    {
-      "q": "Is BKC a real restaurant that is currently open?",
-      "a": "BKC is a concept/portfolio project and not yet open. Planned locations are Liverpool and Chester."
-    },
-    {
-      "q": "What kind of food does BKC focus on?",
-      "a": "Colombian wood-fired chicken with ají, guacamole, and chimichurri—bringing a Colombian kick to the UK."
-    },
-    {
-      "q": "Where can I see visuals of the concept?",
-      "a": "See the Business page for the storefront, rotisserie, and plated dish visuals."
-    },
-    {
-      "q": "How can I contact you?",
-      "a": "Use the Contact page on this site for professional enquiries."
-    },
-    {
-      "q": "What skills does José highlight?",
-      "a": "A mix of soft skills (communication, teamwork, problem solving) and hard/business-technical skills (web basics, UX thinking, prototyping, Git/GitHub)."
-    }
-  ]
-}
-
-
-
-
-
-
-
-
-
