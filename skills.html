@@ -30,8 +30,7 @@
   <meta name="twitter:image" content="https://tudominio.com/img/og-cover.jpg">
   
   <!-- Main site stylesheet (keep CSS modular and cacheable) -->
-   <link rel="stylesheet" href="css/styles.css?v=deploy-5" type="text/css">
-
+   <link rel="stylesheet" href="css/styles.css?v=deploy-6" type="text/css">
   <!--
   Schema.org (JSON-LD): WebPage + ItemList of Skills
   Helps search/AI understand this is your skills page and what skills you list.
@@ -230,9 +229,7 @@
               </div>
             </li>
           </ul>
-        </details>
-    
-        <!-- Hard / Business-Technical -->
+            <!-- Hard / Business-Technical -->
           <h2 style="color:#0D47A1;">Hard / Business-Technical Skills</h2>
           <ul class="skills-bars">
             <li class="skill-row score-8">
@@ -461,9 +458,34 @@
     </div>
   </footer>
 
+        <!-- ========================================================= -->
+    <!-- BKC AI Assistant: Floating Chat Button + Chat Window      -->
+    <!-- (HTML matches CSS namespace .bkc-ai__*)                   -->
+    <!-- ========================================================= -->
+    <button id="bkc-ai-toggle" class="bkc-ai-btn" aria-controls="bkc-ai" aria-expanded="false" aria-label="Open BKC Assistant">
+      💬
+    </button>
 
-  <!-- JS included for consistency across all pages -->
-  <script src="js/script.js?v=agent-v3"></script>
-</body>
+    <section id="bkc-ai" class="bkc-ai" role="dialog" aria-modal="false" aria-labelledby="bkc-ai-title" hidden>
+      <header class="bkc-ai__header">
+        <h3 id="bkc-ai-title">BKC Assistant</h3>
+        <button id="bkc-ai-close" class="bkc-ai__close" aria-label="Close chat">×</button>
+      </header>
 
+      <div class="bkc-ai__body" id="bkc-ai-body">
+        <p class="bkc-ai__greeting">
+          Hi 👋, I’m your BKC Assistant. Ask me anything about our skills, projects, or business!
+        </p>
+      </div>
+
+      <form class="bkc-ai__input" id="bkc-ai-form" action="javascript:void(0);">
+        <input type="text" id="bkc-ai-user" placeholder="Type your message..." aria-label="Your message" required>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- JS: AI assistant behavior -->
+    <script src="js/script.js?v=agent-v3"></script>
+
+  </body>
 </html>

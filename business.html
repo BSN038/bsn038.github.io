@@ -16,8 +16,7 @@
 
   <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
   <meta property="og:title" content="Business — José Castro Castillo">
-  <meta property="og:description"
-    content="Tool & equipment rental, summer construction projects, and the Best Krazy Chicken (BKC) concept visuals.">
+  <meta property="og:description" content="Tool & equipment rental, summer construction projects, and the Best Krazy Chicken (BKC) concept visuals.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tudominio.com/business.html">
   <meta property="og:image" content="https://tudominio.com/img/og-cover.jpg">
@@ -26,12 +25,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Business — José Castro Castillo">
-  <meta name="twitter:description"
-    content="Tool & equipment rental, summer construction projects, and the BKC concept visuals.">
+  <meta name="twitter:description" content="Tool & equipment rental, summer construction projects, and the BKC concept visuals.">
   <meta name="twitter:image" content="https://tudominio.com/img/og-cover.jpg">
 
   <!-- Main site stylesheet (keep CSS modular and cacheable) -->
-   <link rel="stylesheet" href="css/styles.css?v=deploy-5" type="text/css">
+  <link rel="stylesheet" href="css/styles.css?v=deploy-6" type="text/css"> 
 
   <!--
   Schema.org (JSON-LD): Organization (BKC)
@@ -568,12 +566,37 @@
     </div>
   </footer>
 
-  <!-- =========================
-         SCRIPTS
-         Place JavaScript at the end for faster initial render.
-         The main JS animates the rotisserie if present on the page.
-    ========================== -->
-  <script src="js/script.js?v=agent-v3"></script>
-</body>
+      <!-- ========================================================= -->
+    <!-- BKC AI Assistant: Floating Chat Button + Chat Window      -->
+    <!-- (HTML matches CSS namespace .bkc-ai__*)                   -->
+    <!-- ========================================================= -->
+    <button id="bkc-ai-toggle" class="bkc-ai-btn" aria-controls="bkc-ai" aria-expanded="false" aria-label="Open BKC Assistant">
+      💬
+    </button>
 
+    <section id="bkc-ai" class="bkc-ai" role="dialog" aria-modal="false" aria-labelledby="bkc-ai-title" hidden>
+      <header class="bkc-ai__header">
+        <h3 id="bkc-ai-title">BKC Assistant</h3>
+        <button id="bkc-ai-close" class="bkc-ai__close" aria-label="Close chat">×</button>
+      </header>
+
+      <div class="bkc-ai__body" id="bkc-ai-body">
+        <p class="bkc-ai__greeting">
+          Hi 👋, I’m your BKC Assistant. Ask me anything about our skills, projects, or business!
+        </p>
+      </div>
+
+      <form class="bkc-ai__input" id="bkc-ai-form" action="javascript:void(0);">
+        <input type="text" id="bkc-ai-user" placeholder="Type your message..." aria-label="Your message" required>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- JS: AI assistant behavior -->
+    <script src="js/script.js?v=agent-v3"></script>
+
+  </body>
 </html>
+
+ 
+ 
