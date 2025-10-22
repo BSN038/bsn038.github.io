@@ -327,38 +327,37 @@ Do not put comments inside the JSON; keep them here above the <script>.
     </div>
   </footer>
 
-  <!-- =========================
-         SCRIPTS
-         Place JavaScript at the end for faster initial render
-    ========================== -->
-  <script src="js/script.js"></script>
       <!-- ========================================================= -->
-    <!-- AI Assistant: Floating Chat Button + Chat Window (Phase 1) -->
+    <!-- BKC AI Assistant (clean build)                            -->
+    <!-- - Fresh IDs/classes to avoid collisions                   -->
+    <!-- - Window is hidden by [hidden] attribute                  -->
+    <!-- - Button is separate; JS toggles both states              -->
     <!-- ========================================================= -->
 
-    <!-- Floating chat button (always visible in bottom-right corner) -->
-    <button id="ai-chat-toggle" class="ai-chat-btn" aria-label="Open BKC Assistant">
+    <!-- Floating chat button -->
+    <button id="bkc-ai-toggle" class="bkc-ai-btn" aria-controls="bkc-ai" aria-expanded="false" aria-label="Open BKC Assistant">
       💬
     </button>
 
-    <!-- Hidden chat window (appears when button is clicked) -->
-    <div id="ai-chat-window" class="ai-chat-window" hidden>
-      <header class="ai-chat-header">
-        <h3>BKC Assistant</h3>
-        <button id="ai-chat-close" class="ai-chat-close" aria-label="Close chat">×</button>
+    <!-- Chat window -->
+    <section id="bkc-ai" class="bkc-ai" role="dialog" aria-modal="false" aria-labelledby="bkc-ai-title" hidden>
+      <header class="bkc-ai__header">
+        <h3 id="bkc-ai-title">BKC Assistant</h3>
+        <button id="bkc-ai-close" class="bkc-ai__close" aria-label="Close chat">×</button>
       </header>
 
-      <div class="ai-chat-body">
-        <p class="ai-chat-greeting">
+      <div class="bkc-ai__body" id="bkc-ai-body">
+        <p class="bkc-ai__greeting">
           Hi 👋, I’m your BKC Assistant. Ask me anything about our skills, projects, or business!
         </p>
       </div>
 
-      <form class="ai-chat-input" action="javascript:void(0);">
-        <input type="text" id="ai-user-input" placeholder="Type your message..." aria-label="Your message" required>
+      <form class="bkc-ai__input" id="bkc-ai-form" action="javascript:void(0)">
+        <input type="text" id="bkc-ai-user" placeholder="Type your message..." aria-label="Your message" required>
         <button type="submit">Send</button>
       </form>
-    </div>
+    </section>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

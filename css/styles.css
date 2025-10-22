@@ -2103,40 +2103,38 @@ header {
 }
 
 /* =========================================================
-   AI Assistant (Phase 1): Floating button + chat window
-   - Pure CSS for structure and look; no JS yet
-   - Kept isolated to avoid conflicts with site styles
+   BKC AI Assistant (clean styles)
+   - Isolated namespace: .bkc-ai*
+   - Ensures window sits above button (z-index order)
    ========================================================= */
 
-/* Floating button (bottom-right) */
-.ai-chat-btn {
+/* Floating button */
+.bkc-ai-btn {
   position: fixed;
   right: clamp(14px, 2.2vw, 22px);
   bottom: clamp(14px, 2.2vw, 22px);
-  z-index: 999;
-  /* above page content, below nav overlays if any */
+  z-index: 2000;
   width: 52px;
   height: 52px;
   border: none;
   border-radius: 50%;
   background: #0D47A1;
-  /* brand blue */
   color: #fff;
   font-size: 1.3rem;
-  line-height: 1;
   display: grid;
   place-items: center;
+  line-height: 1;
   box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
   cursor: pointer;
 }
 
-/* Chat window container (hidden by default via [hidden]) */
-.ai-chat-window {
+/* Chat window */
+.bkc-ai {
   position: fixed;
   right: clamp(14px, 2.2vw, 22px);
   bottom: calc(clamp(14px, 2.2vw, 22px) + 56px);
-  /* sits above the floating button */
-  z-index: 998;
+  z-index: 2001;
+  /* above the button */
   width: min(360px, 92vw);
   max-height: min(70vh, 680px);
   display: flex;
@@ -2145,11 +2143,17 @@ header {
   border-radius: 14px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .22);
   overflow: hidden;
-  /* clip rounded corners for header/body */
+  /* clip rounded corners */
+  pointer-events: auto;
+  /* ensure clicks reach the window */
 }
 
-/* Header: title + close */
-.ai-chat-header {
+.bkc-ai[hidden] {
+  display: none !important;
+}
+
+/* Header */
+.bkc-ai__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2159,13 +2163,13 @@ header {
   color: #fff;
 }
 
-.ai-chat-header h3 {
+.bkc-ai__header h3 {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
 }
 
-.ai-chat-close {
+.bkc-ai__close {
   appearance: none;
   border: none;
   background: transparent;
@@ -2175,19 +2179,19 @@ header {
   cursor: pointer;
 }
 
-/* Body: message area */
-.ai-chat-body {
+/* Body */
+.bkc-ai__body {
   padding: .9rem 1rem;
   overflow: auto;
 }
 
-.ai-chat-greeting {
+.bkc-ai__greeting {
   margin: 0;
   color: #333;
 }
 
 /* Input row */
-.ai-chat-input {
+.bkc-ai__input {
   display: flex;
   gap: .5rem;
   padding: .8rem;
@@ -2195,17 +2199,16 @@ header {
   background: #fafafa;
 }
 
-.ai-chat-input input[type="text"] {
+.bkc-ai__input input[type="text"] {
   flex: 1;
   min-width: 0;
-  /* prevent overflow on small screens */
   padding: .55rem .7rem;
   border: 1px solid #d7d7d7;
   border-radius: 10px;
   font: inherit;
 }
 
-.ai-chat-input button[type="submit"] {
+.bkc-ai__input button[type="submit"] {
   padding: .55rem .9rem;
   border: none;
   border-radius: 10px;
@@ -2215,22 +2218,24 @@ header {
   cursor: pointer;
 }
 
-/* Very small phones: slightly tighter layout */
+/* Small phones */
 @media (max-width: 420px) {
-  .ai-chat-btn {
+  .bkc-ai-btn {
     width: 48px;
     height: 48px;
     font-size: 1.1rem;
   }
 
-  .ai-chat-window {
+  .bkc-ai {
     width: min(340px, 94vw);
   }
 
-  .ai-chat-header h3 {
+  .bkc-ai__header h3 {
     font-size: .95rem;
   }
 }
+
+
 
 
 

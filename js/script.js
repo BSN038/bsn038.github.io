@@ -495,6 +495,81 @@ host.setAttribute('data-step', String(current));
   setStep(0);
 })();
 
+/* =========================================================
+   BKC AI Assistant (clean behavior; no AI calls yet)
+   - Open/close logic
+   - ESC to close
+   - Append simple user echo + placeholder reply
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', function () {
+  var win = document.getElementById('bkc-ai');
+  var btn = document.getElementById('bkc-ai-toggle');
+  var btnClose = document.getElementById('bkc-ai-close');
+  var form = document.getElementById('bkc-ai-form');
+  var input = document.getElementById('bkc-ai-user');
+  var body = document.getElementById('bkc-ai-body');
+
+  if (!win || !btn) return;
+
+  function openChat() {
+    win.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    if (input) setTimeout(function(){ input.focus(); }, 0);
+  }
+
+  function closeChat() {
+    win.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  // Open on floating button
+  btn.addEventListener('click', openChat);
+
+  // Close on ×
+  if (btnClose) {
+    btnClose.addEventListener('click', closeChat);
+  }
+
+  // Close on ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !win.hidden) closeChat();
+  });
+
+  // Basic submit (echo + placeholder)
+  if (form && input && body) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = input.value.trim();
+      if (!text) return;
+
+      var p = document.createElement('p');
+      p.textContent = text;
+      p.style.margin = '0 0 .6rem';
+      p.style.padding = '.5rem .7rem';
+      p.style.border = '1px solid #e3e3e3';
+      p.style.borderRadius = '10px';
+      p.style.alignSelf = 'flex-end';
+      p.style.background = '#f5f7ff';
+      body.appendChild(p);
+
+      var a = document.createElement('p');
+      a.textContent = 'Thanks! AI responses are coming in the next step.';
+      a.style.margin = '0 0 .9rem';
+      a.style.padding = '.5rem .7rem';
+      a.style.borderRadius = '10px';
+      a.style.background = '#fafafa';
+      a.style.border = '1px solid #eee';
+      body.appendChild(a);
+
+      body.scrollTop = body.scrollHeight;
+      input.value = '';
+    });
+  }
+});
+
+
+
+
 
 
 
