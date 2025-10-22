@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "site_name": "Best Krazy Chicken (BKC) — José Castro Castillo",
+    "version": "1.0.0",
+    "last_updated": "2025-10-22",
+    "policy": "Answer only using this file; if not covered, say you don’t know and point to the site’s pages."
+  },
+  "sections": {
+    "business": {
+      "summary": "BKC is a concept restaurant project inspired by Colombian wood-fired chicken. The brand emphasizes authentic flavor, simple visual identity (logo with a chicken and flame), and a friendly, family-style experience.",
+      "highlights": [
+        "Concept status: student/portfolio project (not yet open).",
+        "Planned locations: Liverpool city centre and Chester city centre (concept/plan).",
+        "Signature flavors: Colombian wood-fired roast with ají, guacamole, and chimichurri."
+      ],
+      "links": [
+        {
+          "label": "Business page",
+          "url": "/business.html"
+        },
+        {
+          "label": "Storefront visual",
+          "url": "/business.html#storefront"
+        },
+        {
+          "label": "Rotisserie visual",
+          "url": "/business.html#rotisserie"
+        },
+        {
+          "label": "Plated dish visual",
+          "url": "/business.html#plated"
+        }
+      ]
+    },
+    "skills": {
+      "soft": [
+        "Communication and teamwork.",
+        "Problem-solving and critical thinking.",
+        "Time management and reliability."
+      ],
+      "hard": [
+        "Business & technical: web development basics (HTML/CSS/JS), UX thinking, data handling.",
+        "Tooling: Git/GitHub, basic design/editing workflows.",
+        "Prototyping: interactive checkout demo; booking form; order/partner links."
+      ],
+      "links": [
+        {
+          "label": "Skills page",
+          "url": "/skills.html"
+        }
+      ]
+    },
+    "problem_solving": {
+      "summary": "Case study mindset: analyze a restaurant brand scenario (BKC), design clear branding, structure the site, and deliver small interactive demos to showcase usability and business thinking.",
+      "links": [
+        {
+          "label": "Home hero visuals",
+          "url": "/index.html"
+        },
+        {
+          "label": "Business visuals",
+          "url": "/business.html"
+        }
+      ]
+    },
+    "contact": {
+      "summary": "Professional contact through the site’s Contact section.",
+      "links": [
+        {
+          "label": "Contact page",
+          "url": "/contact.html"
+        }
+      ]
+    },
+    "openings": {
+      "summary": "Upcoming Openings (Concept): planning Liverpool and Chester. Not yet open; follow updates on the site.",
+      "map_links": [
+        {
+          "label": "Liverpool city centre (Google Maps)",
+          "url": "https://www.google.com/maps?q=Liverpool+City+Centre"
+        },
+        {
+          "label": "Chester city centre (Google Maps)",
+          "url": "https://www.google.com/maps?q=Chester+City+Centre"
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is BKC a real restaurant that is currently open?",
+      "a": "BKC is a concept/portfolio project and not yet open. Planned locations are Liverpool and Chester."
+    },
+    {
+      "q": "What kind of food does BKC focus on?",
+      "a": "Colombian wood-fired chicken with ají, guacamole, and chimichurri—bringing a Colombian kick to the UK."
+    },
+    {
+      "q": "Where can I see visuals of the concept?",
+      "a": "See the Business page for the storefront, rotisserie, and plated dish visuals."
+    },
+    {
+      "q": "How can I contact you?",
+      "a": "Use the Contact page on this site for professional enquiries."
+    },
+    {
+      "q": "What skills does José highlight?",
+      "a": "A mix of soft skills (communication, teamwork, problem solving) and hard/business-technical skills (web basics, UX thinking, prototyping, Git/GitHub)."
+    }
+  ]
+}
