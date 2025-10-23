@@ -434,7 +434,7 @@ host.setAttribute('data-step', String(current));
     fieldsets[current].querySelector('legend')?.focus?.();
   };
 
-  // Validación ligera del fieldset visible
+  // Validación  fieldset visible
   const validateCurrent = () => {
     const fs = fieldsets[current];
     if (!fs) return true;
@@ -458,7 +458,7 @@ host.setAttribute('data-step', String(current));
     return ok;
   };
 
-  // Eventos de navegación
+  // Events navigation
   btnBack?.addEventListener('click', () => {
     setStep(current - 1);
   });
@@ -471,18 +471,18 @@ host.setAttribute('data-step', String(current));
     setStep(current + 1);
   });
 
-  // Submit/Pago simulado
+  // Submit/Payment prototype
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateCurrent()) {
       showStatus('error', 'Please fix the highlighted fields in this step.');
       return;
     }
-    // Estado cargando
+    // loading state
     btnPay.classList.add('is-loading'); btnPay.disabled = true;
     showStatus('loading', 'Processing payment…');
 
-    // Simulación corta
+    // Simulation
     setTimeout(() => {
       btnPay.classList.remove('is-loading'); btnPay.disabled = false;
       const orderNo = 'BKCD-' + Math.floor(Math.random() * 90000 + 10000);
@@ -566,12 +566,15 @@ document.addEventListener('DOMContentLoaded', function () {
       body.appendChild(typing);
       body.scrollTop = body.scrollHeight;
 
-      // 3) Call the secure proxy
+      // 3) Call the secure proxy (auto-detect environment)
+      const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
+      const endpoint = isLocal ? '/.netlify/functions/ask' : '/api/ask';
+
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 12000);
 
       try {
-        const res = await fetch('/.netlify/functions/ask', {
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text }),
