@@ -567,16 +567,17 @@ document.addEventListener('DOMContentLoaded', function () {
       body.scrollTop = body.scrollHeight;
 
       // 3) Call the secure proxy
-      try {
-        const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), 20000); // 20s timeout
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 12000);
 
-        const res = await fetch('/ask', {
+      try {
+        const res = await fetch('/.netlify/functions/ask', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text }),
           signal: ctrl.signal
         });
+
         clearTimeout(timer);
 
         let reply = 'Sorry, I could not reach the assistant right now.';
@@ -615,6 +616,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.value = '';
         body.scrollTop = body.scrollHeight;
       }
+
     });
   }
 });

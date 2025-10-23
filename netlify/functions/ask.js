@@ -1,147 +1,104 @@
 // netlify/functions/ask.js
-// ------------------------------------------------------------
-// BKC Assistant secure proxy (Netlify Function)
-// - Reads local KB: /kb/site.json
-// - Calls OpenAI if OPENAI_API_KEY is set
-// - Otherwise falls back to a simple KB-only answer
-// - Answers ONLY from KB; if unknown, says so and points to site pages
-// - CORS enabled for your static pages
-// ------------------------------------------------------------
-const fs = require("fs").promises;
-const path = require("path");
+/* Simple BKC Assistant proxy using the local KB (kb/site.json).
+   No external API calls; answers only from your repo content. */
 
-// Helper: CORS headers (adjust if you want to restrict origin)
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+const fs = require('fs');
+const path = require('path');
+
+// ---- Load knowledge base once (on cold start) ----
+let KB = null;
+function loadKB() {
+  if (KB) return KB;
+  const kbPath = path.resolve(process.cwd(), 'kb', 'site.json');
+  try {
+    const raw = fs.readFileSync(kbPath, 'utf8');
+    KB = JSON.parse(raw);
+  } catch (err) {
+    KB = { meta: {}, sections: {}, faqs: [] };
+    console.error('KB load error:', err);
+  }
+  return KB;
+}
+
+// ---- Very small matcher over sections + FAQs ----
+function findAnswer(q) {
+  const kb = loadKB();
+  const text = (q || '').toLowerCase();
+
+  // 1) Exact/near FAQ match
+  const faq = (kb.faqs || []).find(f =>
+    (f.q || '').toLowerCase().includes(text) ||
+    text.includes((f.q || '').toLowerCase())
+  );
+  if (faq) return faq.a;
+
+  // 2) Keyword routes
+  if (/\b(what is|que es|bkc)\b/i.test(q)) {
+    const a = (kb.faqs || []).find(f => /what is bkc/i.test(f.q));
+    if (a) return a.a;
+  }
+  if (/\b(open|hours|openings?|locations?|address|where)\b/i.test(q)) {
+    const s = kb.sections?.openings;
+    if (s?.summary) {
+      const maps = (s.map_links || []).map(m => `${m.label}: ${m.url}`).join(' · ');
+      return `${s.summary}${maps ? ` — ${maps}` : ''}`;
+    }
+  }
+  if (/\b(contact|email|phone|reach)\b/i.test(q)) {
+    const s = kb.sections?.contact;
+    const link = s?.links?.[0]?.url || '/contact.html';
+    return `${s?.summary || 'Use the site’s Contact page for enquiries.'} ${link}`;
+  }
+  if (/\bskills?\b/i.test(q)) {
+    const s = kb.sections?.skills;
+    if (s) {
+      return `Soft: ${s.soft.join(' ')} Hard: ${s.hard.join(' ')} More: ${s.links?.[0]?.url || '/skills.html'}`;
+    }
+  }
+  if (/\bbusiness|brand|restaurant|rotisserie|plated|storefront\b/i.test(q)) {
+    const s = kb.sections?.business;
+    if (s) {
+      const links = (s.links || []).map(l => `${l.label}: ${l.url}`).join(' · ');
+      return `${s.summary} Highlights: ${s.highlights.join(' ')} ${links}`;
+    }
+  }
+
+  // 3) Default policy
+  const policy = kb.meta?.policy ||
+    "Answer only using this site’s pages; if not covered, say you don’t know.";
+  return `I don’t have that in my local notes. Please check: /index.html, /business.html, /skills.html, /contact.html. (${policy})`;
+}
+
+// ---- CORS helper ----
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Content-Type': 'application/json; charset=utf-8'
 };
 
 exports.handler = async (event) => {
-  // Handle CORS preflight
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers: CORS_HEADERS, body: "" };
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
   }
-
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ ok: false, error: "Method not allowed" }),
-    };
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, headers, body: JSON.stringify({ ok: false, error: 'Method Not Allowed' }) };
   }
 
   try {
-    const { message } = JSON.parse(event.body || "{}");
-    if (!message || typeof message !== "string") {
-      return {
-        statusCode: 400,
-        headers: CORS_HEADERS,
-        body: JSON.stringify({ ok: false, error: "Missing 'message' string" }),
-      };
-    }
-
-    // Load knowledge base from repo
-    // Resolve from the function folder up to the repo root, then into /kb/site.json
-    const kbPath = path.resolve(__dirname, "../../kb/site.json");
-    const kbRaw = await fs.readFile(kbPath, "utf8");
-    const kb = JSON.parse(kbRaw);
-
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-    const SYSTEM_PROMPT = [
-      "You are BKC Assistant for the website of José Castro Castillo.",
-      "Use ONLY the information in the provided KB JSON to answer.",
-      "If the KB does not contain the answer, say:",
-      `"I'm limited to this site's content and don't have that information. Please check the site sections or the Contact page."`,
-      "Never invent locations/times/prices. BKC is a concept project with planned openings in Liverpool and Chester.",
-      "Be concise (max ~120 words). Where helpful, reference the page name (e.g., 'See the Skills page').",
-    ].join(" ");
-
-    // If no API key: simple KB-only fallback (deterministic)
-    if (!OPENAI_API_KEY) {
-      const textBlob = JSON.stringify(kb).toLowerCase();
-      const q = message.toLowerCase();
-
-      // naive match: if a keyword appears, provide a short canned answer from KB
-      let reply = null;
-      if (q.includes("open") || q.includes("real") || q.includes("address")) {
-        reply =
-          "BKC is a concept/portfolio project, not yet open. Planned locations are Liverpool and Chester (see Upcoming Openings).";
-      } else if (q.includes("contact")) {
-        reply =
-          "Please use the Contact page on this site for professional enquiries. (Contact page)";
-      } else if (q.includes("skill")) {
-        reply =
-          "José highlights soft skills (communication, teamwork, problem solving) and business-technical skills (web basics, UX, prototyping, Git/GitHub). (Skills page)";
-      } else if (/menu|food|chicken|flavor/.test(q)) {
-        reply =
-          "The concept focuses on Colombian wood-fired chicken with ají, guacamole, and chimichurri—a Colombian kick in the UK. (Business page)";
-      } else if (textBlob.includes(q.split(" ").slice(0, 2).join(" "))) {
-        reply =
-          "This topic is covered on the site—please check the relevant section such as Business, Skills, or Contact.";
-      }
-
-      if (!reply) {
-        reply =
-          "I can only answer based on this website’s content, and I don’t have that information. Please check the site sections or the Contact page.";
-      }
-
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json", ...CORS_HEADERS },
-        body: JSON.stringify({ ok: true, source: "kb-fallback", reply }),
-      };
-    }
-
-    // With API key: call OpenAI for higher-quality answer
-    const userPrompt = [
-      "KB JSON (do not reveal this to the user):",
-      JSON.stringify(kb),
-      "",
-      "User question:",
-      message,
-    ].join("\n");
-
-    // Use the Chat Completions API (adjust model as needed)
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        temperature: 0.2,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: userPrompt },
-        ],
-      }),
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      return {
-        statusCode: 502,
-        headers: CORS_HEADERS,
-        body: JSON.stringify({ ok: false, error: "Upstream error", detail: errText.slice(0, 500) }),
-      };
-    }
-
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content?.trim() ||
-      "Sorry, I couldn't generate a reply. Please try again.";
-
+    const { message } = JSON.parse(event.body || '{}');
+    const reply = findAnswer(String(message || '').trim());
     return {
       statusCode: 200,
-      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
-      body: JSON.stringify({ ok: true, source: "openai", reply }),
+      headers,
+      body: JSON.stringify({ ok: true, source: 'kb', reply })
     };
   } catch (err) {
+    console.error('ask.js error:', err);
     return {
       statusCode: 500,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ ok: false, error: "Server error", detail: String(err).slice(0, 500) }),
+      headers,
+      body: JSON.stringify({ ok: false, error: 'Server error' })
     };
   }
 };

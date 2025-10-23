@@ -75,6 +75,7 @@
     "openings": {
       "summary": "Upcoming Openings (Concept): planning Liverpool and Chester. Not yet open; follow updates on the site.",
       "map_links": [
+        
         {
           "label": "Liverpool city centre (Google Maps)",
           "url": "https://www.google.com/maps?q=Liverpool+City+Centre"
@@ -87,6 +88,10 @@
     }
   },
   "faqs": [
+    {
+      "q": "What is BKC?",
+      "a": "BKC stands for Best Krazy Chicken — a fictional concept restaurant created by José Castro Castillo for a web development project at the University of Salford."
+    },
     {
       "q": "Is BKC a real restaurant that is currently open?",
       "a": "BKC is a concept/portfolio project and not yet open. Planned locations are Liverpool and Chester."
