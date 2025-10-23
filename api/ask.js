@@ -1,6 +1,6 @@
-// api/ask.js  (Vercel Serverless Function)
-import fs from "fs";
-import path from "path";
+// api/ask.js  (Vercel Serverless Function - CommonJS)
+const fs = require("fs");
+const path = require("path");
 
 // --- Load Knowledge Base once ---
 let KB = null;
@@ -20,7 +20,6 @@ function findAnswer(q) {
   const kb = loadKB();
   const text = (q || "").toLowerCase();
 
-  // FAQ-ish match
   const faq = (kb.faqs || []).find(
     (f) =>
       (f.q || "").toLowerCase().includes(text) ||
@@ -65,8 +64,7 @@ function findAnswer(q) {
   return `I don’t have that in my local notes. Please check: /index.html, /business.html, /skills.html, /contact.html. (${policy})`;
 }
 
-export default async function handler(req, res) {
-  // CORS (ok for same-origin too)
+module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -83,4 +81,4 @@ export default async function handler(req, res) {
     console.error("api/ask error:", err);
     return res.status(500).json({ ok: false, error: "Server error" });
   }
-}
+};
