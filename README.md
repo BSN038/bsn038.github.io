@@ -1,80 +1,118 @@
 # **Best Krazy Chicken (BKC) — Personal Website Project**
 
-### **Author:** José Castro Castillo  
+### **Author:** José Efraín Castro Castillo  
 ### **Course:** Business Information Technology — University of Salford  
-### **Module:** Web Application Development  
+### **Module:** Web Application Development (Level 5)  
+### **Lecturer:** Ms. Kate Han  
 ### **Deployment:** [Live Website (Vercel)](https://bsn038-github-io.vercel.app/)  
-### **Repository:** *(Add your GitHub repo link here)*  
+### **Repository:** [GitHub Source Code](https://github.com/BSN038/bsn038.github.io)
 
 ---
 
 ## **Project Overview**
-This website was developed as part of the Web Application Development assessment.  
-It represents the digital presence of **Best Krazy Chicken (BKC)** — a conceptual restaurant brand designed to showcase technical and creative web development skills.  
+This website was developed as part of the *Web Application Development* module assessment.  
+It represents the digital transformation of **Best Krazy Chicken (BKC)** — a fictional Colombian-inspired restaurant brand.  
+The prototype demonstrates a professional approach to web design, combining creativity, functionality, and modern front-end practices.
 
-The goal was to create a **fully responsive**, **accessible**, and **brand-consistent** website that integrates front-end technologies (HTML, CSS, and JavaScript) following professional standards and modern web practices.
+The site was built using **hand-coded HTML5, CSS3, and JavaScript**, with all pages passing **W3C validation**.  
+Deployment and version control were handled via **GitHub** and **Vercel**.
 
 ---
 
 ## **Key Features**
 - Responsive, mobile-first layout using CSS Grid and flexible containers.  
-- Consistent typography and clear color contrast for readability.  
-- Accordion-style restaurant menu to enhance usability and reduce scrolling.  
-- Simulated payment box for credit card checkout (Problem-Solving section).  
-- Optimized images and subtle watermark integration (BKC logo + UK flag).  
-- Use of `<script defer>` for faster load performance.  
-- Metadata and JSON-LD (Schema.org Restaurant) for SEO and discoverability.  
-- Accessible focus states and semantic structure (H1–H3 consistency).  
-- Validation of both HTML and CSS with **no errors** (W3C standards).  
+- Consistent color palette, typography, and accessible navigation.  
+- Accordion-style menu and interactive UI elements for improved UX.  
+- Multi-step checkout simulation with credit card preview (Problem-Solving section).  
+- Optimized images and BKC logo watermark integration.  
+- Accessible focus states and semantic structure for screen readers.  
+- Validation of HTML and CSS (100% W3C compliant).  
+- Integration of a **custom AI Assistant** powered by local JSON data and Netlify Functions.  
+- Fixed and improved **contact form** validation and success message feedback.  
+
+---
+
+## **AI Assistant Integration**
+A new feature — **BKC AI Assistant** — was developed to simulate real-time user interaction.  
+It uses:
+- A local knowledge base (`/kb/site.json`)  
+- A custom Netlify serverless function (`/netlify/functions/ask.js`)  
+- JavaScript integration in `js/script.js` and `index.html`  
+
+This assistant can answer questions about the restaurant concept, skills, and project details directly on the website.
+
+**Note:**  
+Before implementing these advanced features, I consulted my lecturer (Ms. Kate Han), who confirmed that extending the project was acceptable as long as the original five-page structure and learning outcomes were preserved.  
+All additional files were built manually using JavaScript and JSON within the project’s academic framework.
 
 ---
 
 ## **Design Choices**
-The website follows a **clean and structured design**, with a warm green palette inspired by the brand’s pistachio color.  
-Soft contrasts and rounded buttons maintain a friendly, professional atmosphere suitable for a restaurant.  
-All pages share a unified header and navigation bar for consistency, while the layout adapts fluidly to different devices using responsive grid structures.  
-The design prioritizes accessibility, readability, and a natural user flow.
+The design follows a warm, friendly theme inspired by BKC’s Colombian roots.  
+Rounded corners, clear spacing, and color contrast improve usability and readability.  
+A consistent grid-based layout ensures that all five pages maintain visual harmony across desktop and mobile devices.
 
 ---
 
 ## **Technical Summary**
-- **HTML5:** Semantic markup structure and accessibility tags.  
+- **HTML5:** Semantic structure and accessibility attributes.  
 - **CSS3:** Custom variables, responsive grid, and media queries.  
-- **JavaScript (ES6):** Interactive elements including the accordion menu and form enhancements.  
-- **Form Handling:** Implemented via Formspree (no backend required).  
-- **Deployment:** Hosted on **Vercel**, integrated with GitHub for version control.  
+- **JavaScript (ES6):** Interactive logic for menus, animations, and form validation.  
+- **Form Handling:** Managed via Formspree (secure and backend-free).  
+- **Netlify Functions:** Used for serverless AI Assistant communication.  
+- **Deployment:** Hosted on **Vercel**, automatically synced with GitHub.  
 
 ---
 
 ## **Validation Results**
-- **HTML:** 100% valid — No errors or warnings (checked with [W3C Validator](https://validator.w3.org/)).  
-- **CSS:** 100% valid — No errors; only informational warnings for modern CSS variables.  
-  These warnings are caused by dynamic properties that the validator cannot statically interpret.  
-  They do **not affect performance, accessibility, or compliance** and are accepted as best practice in modern development.
+- **HTML:** ✅ Passed with no errors or warnings using [W3C Validator](https://validator.w3.org/).  
+- **CSS:** ✅ Passed with no errors using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
+  Minor warnings only relate to modern CSS variables (acceptable practice).  
+- Screenshots stored under `/docs/validation/` for verification.
 
 ---
 
 ## **Generative AI Usage Statement**
-I used **ChatGPT (OpenAI)** as a learning and support tool during development.  
-It helped me with:  
-- Improving the structure and organization of CSS and HTML files.  
-- Understanding the role of `<script defer>` and JSON-LD for performance and SEO.  
-- Debugging JavaScript logic and accessibility focus states.  
-- Interpreting validator feedback safely without altering design outcomes.  
-- Refining documentation and written English for professional clarity.  
+I used **ChatGPT (OpenAI)** as a personal learning partner and technical assistant throughout this project.  
+It helped me understand web technologies, debug errors efficiently, and implement advanced features such as the BKC AI Assistant and Netlify serverless functions.
 
-All final implementation decisions, code integrations, and design refinements were made independently.
+Before adding new components, I discussed the idea with my lecturer, Ms. Kate Han, who approved the extension as part of advanced experimentation within the same assessment scope.  
+Together with ChatGPT, I successfully created additional files like `ask.js` and `site.json`, ensuring full academic transparency and independent implementation.
+
+ChatGPT assisted me with:
+- Improving the organisation and consistency of my CSS structure.  
+- Understanding the role of `<script defer>` and JSON-LD for performance and SEO.  
+- Checking and fixing heading consistency (H1–H3) across pages.  
+- Interpreting HTML and CSS validator feedback safely.  
+- Receiving guidance on UX, accessibility, and documentation style.
+
+All final content, code, and design decisions were made independently.  
+ChatGPT acted as an **instant personal tutor**, helping me learn faster, debug logically, and make better design decisions.  
+This collaboration demonstrates how human creativity and AI guidance can work together to produce professional-quality results efficiently.
 
 ---
 
 ## **Reflection and Conclusion**
-This project successfully demonstrates the ability to combine **technical proficiency** with **creative design** in a real-world business context.  
-Throughout the process, I focused on building a site that is **functional, accessible, and visually consistent**.  
-Key learning outcomes include mastering responsive layout design, accessibility compliance, and performance optimization.  
+This project demonstrates my ability to design, code, validate, and deploy a professional web prototype from scratch.  
+The process strengthened my understanding of responsive design, semantic structure, accessibility, and client-focused presentation.  
 
-By completing the validation, deployment, and documentation process, this project meets the professional and academic standards expected for a prototype deliverable.
+I spent many hours identifying and resolving technical issues — especially while implementing the AI Assistant and Netlify functions.  
+Through persistence and collaboration with AI, I learned that teamwork between human insight and intelligent guidance leads to faster learning, better debugging, and high-quality output.  
+
+Overall, this project not only meets all academic requirements but also extends them by showcasing innovation, problem-solving, and modern web development practices.
 
 ---
-### HTML Validation
-All pages successfully validated using [W3C Validator](https://validator.w3.org/).  
-✅ No errors or warnings detected (October 2025).
+
+### **Validation Evidence**
+All pages and stylesheets successfully validated (October 2025):  
+- **HTML Validation:** [W3C Markup Validation Service](https://validator.w3.org/)  
+- **CSS Validation:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
+
+✅ Stored in `/docs/validation/` as:                HTML_ValidationScreenshotFinal.png
+CSS_ValidationScreenshotFinal.png
+
+---
+
+### **Live Links**
+- 🌐 **Main Deployment (Vercel):** [https://bsn038-github-io.vercel.app/](https://bsn038-github-io.vercel.app/)  
+- 💻 **GitHub Repository:** [https://github.com/BSN038/bsn038.github.io](https://github.com/BSN038/bsn038.github.io)
