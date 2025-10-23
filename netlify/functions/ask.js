@@ -42,7 +42,8 @@ exports.handler = async (event) => {
     }
 
     // Load knowledge base from repo
-    const kbPath = path.join(process.cwd(), "kb", "site.json");
+    // Resolve from the function folder up to the repo root, then into /kb/site.json
+    const kbPath = path.resolve(__dirname, "../../kb/site.json");
     const kbRaw = await fs.readFile(kbPath, "utf8");
     const kb = JSON.parse(kbRaw);
 
