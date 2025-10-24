@@ -2,15 +2,41 @@
 const fs = require("fs");
 const path = require("path");
 
-// --- Load Knowledge Base once ---
+// --- Load Knowledge Base once (robust path resolution) ---
 let KB = null;
+
+function resolveKBPath() {
+  const candidates = [
+    // When the function code lives in /api, the KB is one level up
+    path.join(__dirname, '..', 'kb', 'site.json'),
+    // When the working dir is the project root
+    path.join(process.cwd(), 'kb', 'site.json'),
+    // Fallback to absolute from root
+    path.resolve('kb', 'site.json')
+  ];
+  for (const p of candidates) {
+    try {
+      if (fs.existsSync(p)) return p;
+    } catch (_) { }
+  }
+  return null;
+}
+
 function loadKB() {
   if (KB) return KB;
-  const kbPath = path.resolve(process.cwd(), "kb", "site.json");
+
+  const kbPath = resolveKBPath();
+  if (!kbPath) {
+    console.error('KB path not found. Tried __dirname/../kb, cwd/kb, and root/kb.');
+    KB = { meta: {}, sections: {}, faqs: [] };
+    return KB;
+  }
+
   try {
-    KB = JSON.parse(fs.readFileSync(kbPath, "utf8"));
+    const raw = fs.readFileSync(kbPath, 'utf8');
+    KB = JSON.parse(raw);
   } catch (err) {
-    console.error("KB load error:", err);
+    console.error('KB load error:', err);
     KB = { meta: {}, sections: {}, faqs: [] };
   }
   return KB;
