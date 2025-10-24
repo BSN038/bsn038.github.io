@@ -496,12 +496,14 @@ host.setAttribute('data-step', String(current));
 })();
 
 /* =========================================================
-   BKC AI Assistant (clean behavior; no AI calls yet)
+   BKC AI Assistant (with welcome message + env auto-detect)
    - Open/close logic
    - ESC to close
-   - Append simple user echo + placeholder reply
+   - Welcome tips (example questions)
+   - Fetches Netlify (local) or Vercel (prod) automatically
    ========================================================= */
 document.addEventListener('DOMContentLoaded', function () {
+  // Elements
   var win = document.getElementById('bkc-ai');
   var btn = document.getElementById('bkc-ai-toggle');
   var btnClose = document.getElementById('bkc-ai-close');
@@ -511,39 +513,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!win || !btn) return;
 
+  // Open/Close
   function openChat() {
     win.hidden = false;
     btn.setAttribute('aria-expanded', 'true');
-    if (input) setTimeout(function(){ input.focus(); }, 0);
+    if (input) setTimeout(function () { input.focus(); }, 0);
   }
-
   function closeChat() {
     win.hidden = true;
     btn.setAttribute('aria-expanded', 'false');
   }
-
-  // Open on floating button
   btn.addEventListener('click', openChat);
-
-  // Close on ×
-  if (btnClose) {
-    btnClose.addEventListener('click', closeChat);
-  }
-
-  // Close on ESC
+  if (btnClose) btnClose.addEventListener('click', closeChat);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !win.hidden) closeChat();
   });
 
-  // Submit: send the message to the Netlify function (/ask)
+  // Welcome message (render once)
+  if (body && !body.dataset.welcome) {
+    var welcome = document.createElement('div');
+    welcome.style.margin = '0 0 .9rem';
+    welcome.style.padding = '.5rem .7rem';
+    welcome.style.borderRadius = '10px';
+    welcome.style.background = '#fafafa';
+    welcome.style.border = '1px solid #eee';
+    welcome.innerHTML = `
+  <strong>Hi! I’m your BKC Assistant 👋</strong>
+  <p>Ask me anything — or try:</p>
+  <ul style="margin:.4rem 0 0 1rem; padding:0; list-style:disc;">
+    <li>What is BKC?</li>
+    <li>Where are you located?</li>
+    <li>What are your opening hours?</li>
+    <li>Who is the owner of this restaurant?</li>
+    <li>Who is José Castro?</li>
+    <li>What professional skills does José Castro have?</li>
+  </ul>
+`;
+    body.appendChild(welcome);
+    body.dataset.welcome = '1';
+  }
+
+  // Submit: send message to serverless endpoint
   if (form && input && body) {
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const text = input.value.trim();
+      var text = (input.value || '').trim();
       if (!text) return;
 
       // 1) Append user bubble
-      const p = document.createElement('p');
+      var p = document.createElement('p');
       p.textContent = text;
       p.style.margin = '0 0 .6rem';
       p.style.padding = '.5rem .7rem';
@@ -555,7 +573,7 @@ document.addEventListener('DOMContentLoaded', function () {
       body.scrollTop = body.scrollHeight;
 
       // 2) Typing indicator
-      const typing = document.createElement('p');
+      var typing = document.createElement('p');
       typing.textContent = 'Assistant is typing…';
       typing.style.margin = '0 0 .9rem';
       typing.style.padding = '.5rem .7rem';
@@ -566,34 +584,33 @@ document.addEventListener('DOMContentLoaded', function () {
       body.appendChild(typing);
       body.scrollTop = body.scrollHeight;
 
-      // 3) Call the secure proxy (auto-detect environment)
-      const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
-      const endpoint = isLocal ? '/.netlify/functions/ask' : '/api/ask';
+      // 3) Pick endpoint: Netlify (local) vs Vercel (prod)
+      var isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
+      var endpoint = isLocal ? '/.netlify/functions/ask' : '/api/ask';
 
-      const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 12000);
+      // 4) Call the endpoint
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, 12000);
 
       try {
-        const res = await fetch(endpoint, {
+        var res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text }),
           signal: ctrl.signal
         });
-
         clearTimeout(timer);
 
-        let reply = 'Sorry, I could not reach the assistant right now.';
-        if (res.ok) {
-          const data = await res.json();
-          // Function returns { ok, source, reply }
+        var reply = 'Sorry, I could not reach the assistant right now.';
+        if (res && res.ok) {
+          var data = await res.json();
           if (data && typeof data.reply === 'string' && data.reply.trim()) {
             reply = data.reply.trim();
           }
         }
 
-        // 4) Replace typing with the assistant reply
-        const a = document.createElement('p');
+        // 5) Replace typing with the assistant reply
+        var a = document.createElement('p');
         a.textContent = reply;
         a.style.margin = '0 0 .9rem';
         a.style.padding = '.5rem .7rem';
@@ -607,19 +624,19 @@ document.addEventListener('DOMContentLoaded', function () {
       } catch (err) {
         // Network/error case
         if (typing.parentNode) typing.parentNode.removeChild(typing);
-        const a = document.createElement('p');
-        a.textContent = 'Network error. Please try again in a moment.';
-        a.style.margin = '0 0 .9rem';
-        a.style.padding = '.5rem .7rem';
-        a.style.borderRadius = '10px';
-        a.style.background = '#fff3f3';
-        a.style.border = '1px solid #ffd6d6';
-        body.appendChild(a);
+        var errP = document.createElement('p');
+        errP.textContent = 'Network error. Please try again in a moment.';
+        errP.style.margin = '0 0 .9rem';
+        errP.style.padding = '.5rem .7rem';
+        errP.style.borderRadius = '10px';
+        errP.style.background = '#fff3f3';
+        errP.style.border = '1px solid #ffd6d6';
+        body.appendChild(errP);
       } finally {
         input.value = '';
         body.scrollTop = body.scrollHeight;
       }
-
     });
   }
 });
+/* =========================== end BKC AI Assistant ========================== */
