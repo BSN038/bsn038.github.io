@@ -90,27 +90,27 @@
   "faqs": [
     {
       "q": "What is BKC?",
-      "a": "BKC stands for Best Krazy Chicken — a fictional concept restaurant created by José Castro Castillo for a web development project at the University of Salford."
+      "a": "BKC stands for Best Krazy Chicken — a fictional Colombian-inspired restaurant brand created by José Castro Castillo for a Web Application Development project at the University of Salford."
     },
     {
-      "q": "Is BKC a real restaurant that is currently open?",
-      "a": "BKC is a concept/portfolio project and not yet open. Planned locations are Liverpool and Chester."
+      "q": "Where are you located?",
+      "a": "This is a prototype project (no physical location). See /business.html#location for the demo section."
     },
     {
-      "q": "What kind of food does BKC focus on?",
-      "a": "Colombian wood-fired chicken with ají, guacamole, and chimichurri—bringing a Colombian kick to the UK."
+      "q": "What are your opening hours?",
+      "a": "Prototype hours: Mon–Fri 10:00–18:00."
     },
     {
-      "q": "Where can I see visuals of the concept?",
-      "a": "See the Business page for the storefront, rotisserie, and plated dish visuals."
+      "q": "Who is the owner of this restaurant?",
+      "a": "The project owner is José Castro Castillo. BKC is a concept used to demonstrate web development skills."
     },
     {
-      "q": "How can I contact you?",
-      "a": "Use the Contact page on this site for professional enquiries."
+      "q": "Who is José Castro?",
+      "a": "José Castro Castillo is a Business Information Technology student at the University of Salford and the developer of this site."
     },
     {
-      "q": "What skills does José highlight?",
-      "a": "A mix of soft skills (communication, teamwork, problem solving) and hard/business-technical skills (web basics, UX thinking, prototyping, Git/GitHub)."
+      "q": "What professional skills does José Castro have?",
+      "a": "Front-end: HTML, CSS, JavaScript. Tooling: Git, GitHub, Netlify, Vercel. Practices: responsive design, accessibility, validation, and basic serverless functions."
     }
   ]
 }
