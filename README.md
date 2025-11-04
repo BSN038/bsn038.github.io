@@ -54,6 +54,16 @@ A consistent grid-based layout ensures that all five pages maintain visual harmo
 
 ---
 
+## 📱 Mobile Accessibility Feature
+
+The website includes a **mobile-friendly bottom navigation bar** designed to support accessibility and usability on small screens.  
+This ensures that users — including those with limited mobility — can easily navigate between key pages using thumb reach.
+
+### Preview (Mobile Device)
+![Mobile bottom navigation accessibility example](/docs/mobile-bottom-nav-accessibility.png)
+
+---
+
 ## **Accessibility Enhancement: Mobile Bottom Navigation**
 
 To improve usability and accessibility — especially for users with motor impairments or limited screen navigation ability — a fixed **bottom navigation bar** was implemented on mobile devices only.
