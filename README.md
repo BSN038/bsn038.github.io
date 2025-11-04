@@ -54,6 +54,16 @@ A consistent grid-based layout ensures that all five pages maintain visual harmo
 
 ---
 
+## **Accessibility Enhancement: Mobile Bottom Navigation**
+
+To improve usability and accessibility — especially for users with motor impairments or limited screen navigation ability — a fixed **bottom navigation bar** was implemented on mobile devices only.
+
+Using CSS media queries, the navigation bar is displayed at the bottom of the viewport when the screen width is below a specific threshold. This design ensures that all key pages remain reachable with minimal finger movement on smartphones.
+
+The buttons are circular, touch-friendly, and have clear text labels and high contrast for better visibility. The layout enhances **thumb reachability**, **screen reader compatibility**, and aligns with **WCAG** and **mobile-first UX principles**.
+
+---
+
 ## **Technical Summary**
 - **HTML5:** Semantic structure and accessibility attributes.  
 - **CSS3:** Custom variables, responsive grid, and media queries.  
