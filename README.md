@@ -60,7 +60,8 @@ The website includes a **mobile-friendly bottom navigation bar** designed to sup
 This ensures that users — including those with limited mobility — can easily navigate between key pages using thumb reach.
 
 ### Preview (Mobile Device)
-![Mobile bottom navigation accessibility example](/docs/mobile-bottom-nav-accessibility.png)
+📱 Mobile Navigation Accessibility (bottom placement for easier thumb reach on small devices):
+![Mobile Accessibility Screenshot](docs/validation/mobile-bottom-nav-accessibility.png)
 
 ---
 
