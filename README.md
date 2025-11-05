@@ -75,6 +75,20 @@ The buttons are circular, touch-friendly, and have clear text labels and high co
 
 ---
 
+## 🔧 Visual & UX Enhancements (Nov 2025)
+
+Several accessibility and design improvements were applied to the **Business** and **Problem Solving** pages to enhance readability, usability, and overall user experience:
+
+- ✅ Added `hr` separators between logical paragraphs to reduce visual fatigue
+- ✅ Introduced emoji-based icons at the start of key points to improve scannability
+- ✅ Improved icon alignment with text for consistent layout flow across viewports
+- ✅ Simplified content into concise, focused paragraphs to improve cognitive load
+- ✅ Ensured mobile responsiveness and semantic HTML throughout all updates
+
+These enhancements reflect a design-thinking approach aimed at creating a clean, engaging, and professional presentation aligned with business and academic goals.
+
+---
+
 ## **Technical Summary**
 - **HTML5:** Semantic structure and accessibility attributes.  
 - **CSS3:** Custom variables, responsive grid, and media queries.  
@@ -124,16 +138,6 @@ I spent many hours identifying and resolving technical issues — especially whi
 Through persistence and collaboration with AI, I learned that teamwork between human insight and intelligent guidance leads to faster learning, better debugging, and high-quality output.  
 
 Overall, this project not only meets all academic requirements but also extends them by showcasing innovation, problem-solving, and modern web development practices.
-
----
-
-### **Validation Evidence**
-All pages and stylesheets successfully validated (October 2025):  
-- **HTML Validation:** [W3C Markup Validation Service](https://validator.w3.org/)  
-- **CSS Validation:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
-
-✅ Stored in `/docs/validation/` as:                HTML_ValidationScreenshotFinal.png
-CSS_ValidationScreenshotFinal.png
 
 ---
 
