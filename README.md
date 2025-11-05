@@ -84,11 +84,15 @@ The buttons are circular, touch-friendly, and have clear text labels and high co
 
 ---
 
-## **Validation Results**
-- **HTML:** ✅ Passed with no errors or warnings using [W3C Validator](https://validator.w3.org/).  
-- **CSS:** ✅ Passed with no errors using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
-  Minor warnings only relate to modern CSS variables (acceptable practice).  
-- Screenshots stored under `/docs/validation/` for verification.
+### **Validation Evidence**
+All pages and stylesheets successfully validated (November 2025):  
+- **HTML Validation:** [W3C Markup Validation Service](https://validator.w3.org/)  
+- **CSS Validation:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
+
+✅ Stored in `/docs/` as:
+
+![HTML Validation Screenshot](/docs/HTML_Validation_Nov2025.png)  
+![CSS Validation Screenshot](/docs/CSS_Validation_Nov2025.png)
 
 ---
 
