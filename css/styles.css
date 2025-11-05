@@ -2235,7 +2235,80 @@ header {
   }
 }
 
+/* ============================
+   🔻 MOBILE NAVIGATION (Fixed Bottom)
+   Style 1: Red background with white text
+   ============================ */
+@media (max-width: 600px) {
+  nav[aria-label="Primary"] {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #ddd;
+    z-index: 2000;
+  }
 
+  nav[aria-label="Primary"] a {
+    flex: 1;
+    text-align: center;
+    background-color: var(--brand-red, #cc0000);
+    color: white;
+    padding: 0.6rem 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  nav[aria-label="Primary"] a:hover,
+  nav[aria-label="Primary"] a:focus {
+    background-color: var(--brand-red-dark, #a30000);
+  }
+
+  /* Extra space so AI button + nav don't overlap content */
+  body {
+    padding-bottom: 100px;
+  }
+
+  /* Move AI button up so it doesn’t block nav */
+  #bkc-ai-toggle {
+    bottom: 90px !important;
+    right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .spice-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .spice-notes,
+  .spice-buttons,
+  .sauce-gallery {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .sauce-gallery img {
+    width: 80px;
+    height: auto;
+    margin: 0 0.5rem;
+  }
+}
 
 
 
