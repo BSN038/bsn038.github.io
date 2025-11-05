@@ -641,4 +641,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 /* =========================== end BKC AI Assistant ========================== */
 
+function toggleTooltip(id) {
+  const all = document.querySelectorAll('.tooltip');
+  const current = document.getElementById(id);
+
+  if (current.style.display === 'block') {
+    // Ya está abierta → cerrarla
+    current.style.display = 'none';
+  } else {
+    // Cerrar todas y abrir solo la actual
+    all.forEach(t => t.style.display = 'none');
+    current.style.display = 'block';
+  }
+}
+
 

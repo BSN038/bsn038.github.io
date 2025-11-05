@@ -226,22 +226,26 @@
           </div>
         
           <!-- Right column: the same three buttons (unchanged) -->
-          <div class="spice-buttons">
-            <label class="spark-item">
-              <input type="radio" name="spice" value="mild">
-              <span class="btn-radio"><span class="sparkle"></span> Mild</span>
-            </label>
-        
-            <label class="spark-item">
-              <input type="radio" name="spice" value="medium">
-              <span class="btn-radio"><span class="sparkle"></span> Medium</span>
-            </label>
-        
-            <label class="spark-item">
-              <input type="radio" name="spice" value="hot">
-              <span class="btn-radio"><span class="sparkle"></span> Hot</span>
-            </label>
-          </div>
+<div class="spice-buttons">
+  <label class="spark-item">
+    <input type="radio" name="spice" value="mild" onclick="toggleTooltip('mild-tooltip')">
+    <span class="btn-radio"><span class="sparkle"></span> Mild</span>
+  </label>
+  <div id="mild-tooltip" class="tooltip">🥑 Avocado, lime, coriander</div>
+
+  <label class="spark-item">
+    <input type="radio" name="spice" value="medium" onclick="toggleTooltip('medium-tooltip')">
+    <span class="btn-radio"><span class="sparkle"></span> Medium</span>
+  </label>
+  <div id="medium-tooltip" class="tooltip">🧄 Garlic, cumin, paprika</div>
+
+  <label class="spark-item">
+    <input type="radio" name="spice" value="hot" onclick="toggleTooltip('hot-tooltip')">
+    <span class="btn-radio"><span class="sparkle"></span> Hot</span>
+  </label>
+  <div id="hot-tooltip" class="tooltip">🌶️ Ají, vinegar, chili oil</div>
+</div>
+
         </fieldset>
       
         <!-- Right side: sauce bottles -->
