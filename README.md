@@ -90,10 +90,9 @@ All pages and stylesheets successfully validated (November 2025):
 - **HTML Validation:** [W3C Markup Validation Service](https://validator.w3.org/)  
 - **CSS Validation:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
 
-✅ Stored in `/docs/` as:
-
-![HTML Validation Screenshot](/docs/HTML_Validation_Nov2025.png)  
-![CSS Validation Screenshot](/docs/CSS_Validation_Nov2025.png)
+✅ Stored in `/docs/validation/` as:
+- HTML_Validation_Nov2025.png  
+- CSS_Validation_Nov2025.png
 
 ---
 
