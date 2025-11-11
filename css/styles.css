@@ -2658,3 +2658,37 @@ form .flame-btn:hover,
   background: linear-gradient(90deg, #ff6d00, #ffca28) !important;
   box-shadow: 0 0 18px rgba(255, 120, 0, 0.8) !important;
 }
+
+/* Checkout stepper style */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.steps li span {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  background: #eee;
+  color: #444;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for inactive steps */
+.steps li span:hover {
+  background: #ffe0b2;
+  color: #d84315;
+}
+
+/* Active (current) step */
+.steps li span[aria-current="step"] {
+  background: linear-gradient(45deg, #ff8a00, #ff3d00);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 61, 0, 0.5);
+}
