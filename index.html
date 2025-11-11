@@ -388,7 +388,30 @@ It began as a university project but has evolved into a real business idea that 
         <button type="submit">Send</button>
       </form>
     </section>
-    
+    <!-- ===========================
+     Floating Feedback Widget
+     =========================== -->
+<div id="bkc-feedback" class="feedback-window" hidden>
+  <button id="feedback-close" class="feedback-close" aria-label="Close feedback form">×</button>
+  <h3>Rate your experience ⭐</h3>
+  <form id="feedback-form" action="https://formspree.io/f/your-form-id" method="POST">
+    <div class="emoji-row">
+      <label><input type="radio" name="rating" value="😀" required> 😀 </label>
+      <label><input type="radio" name="rating" value="🙂"> 🙂 </label>
+      <label><input type="radio" name="rating" value="😐"> 😐 </label>
+      <label><input type="radio" name="rating" value="😞"> 😞 </label>
+      <label><input type="radio" name="rating" value="😡"> 😡 </label>
+    </div>
+    <textarea name="message" placeholder="Tell us how we can improve..." required></textarea>
+    <button type="submit" class="feedback-send">Send Feedback 🚀</button>
+  </form>
+</div>
+
+<!-- Floating feedback button -->
+<button id="feedback-toggle" class="feedback-float" aria-label="Open feedback form">
+  💬
+</button>
+
     <!-- Cache-busting: update the version when you push -->
    <script src="js/script.js?v=agent-v3"></script>
 </body>

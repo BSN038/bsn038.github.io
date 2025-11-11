@@ -2341,3 +2341,277 @@ header {
   font-size: 1.2em;
   line-height: 1.3;
 }
+
+/* =====================================================
+   Floating Feedback Widget (modern glassmorphism style)
+   ===================================================== */
+.feedback-float {
+  position: fixed;
+  bottom: 95px;
+  /* slightly above the AI button */
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0D47A1, #1976D2);
+  color: #fff;
+  border: none;
+  font-size: 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  z-index: 999;
+}
+
+.feedback-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Feedback window (hidden by default) */
+.feedback-window {
+  position: fixed;
+  bottom: 170px;
+  right: 25px;
+  width: 290px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.2rem;
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.feedback-window h3 {
+  margin-top: 0;
+  color: #0D47A1;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.feedback-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.emoji-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.7rem 0;
+}
+
+.emoji-row label {
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: transform 0.2s;
+}
+
+.emoji-row label:hover {
+  transform: scale(1.2);
+}
+
+.feedback-window textarea {
+  width: 100%;
+  height: 75px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  resize: none;
+  font-family: inherit;
+}
+
+.feedback-send {
+  width: 100%;
+  background: linear-gradient(135deg, #1976D2, #42A5F5);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-send:hover {
+  background: linear-gradient(135deg, #1565C0, #1E88E5);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   BKC Passport – Loyalty Sign-up Section
+   ============================================ */
+.bkc-passport {
+  margin-top: 2rem;
+  background: #fff9f0;
+  /* warm neutral tone */
+  border: 1px solid #f1e2b8;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.bkc-passport p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.passport-qr {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Floating label input style */
+.bkc-passport form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.bkc-passport label {
+  position: relative;
+  width: 90%;
+  max-width: 360px;
+}
+
+.bkc-passport input {
+  width: 100%;
+  padding: 0.8rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.bkc-passport input:focus {
+  border-color: #ff9800;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+}
+
+.bkc-passport label span {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: #888;
+  font-size: 0.9rem;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.bkc-passport input:focus+span,
+.bkc-passport input:not(:placeholder-shown)+span {
+  top: -10px;
+  left: 5px;
+  font-size: 0.8rem;
+  color: #ff9800;
+  background: #fff9f0;
+  padding: 0 4px;
+}
+
+/* Flame button style */
+.flame-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff5722, #ff9800, #ffc107);
+  background-size: 300% 300%;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+  animation: flameGlow 3s ease infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flame-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+}
+
+@keyframes flameGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ============================
+   🔥 Flame Navigation Buttons
+   ============================ */
+nav a {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(90deg, #b71c1c, #ff5722);
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Flame hover */
+nav a::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 87, 34, 0.7), transparent 70%);
+  transform: scale(0);
+  transition: transform 0.5s ease-out;
+  z-index: 0;
+}
+
+nav a:hover::before {
+  transform: scale(1);
+}
+
+nav a:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #ff5722, #b71c1c);
+  box-shadow: 0 0 10px #ff7043, 0 0 20px #ff5722;
+  transform: translateY(-2px);
+}
+
+/* Ensure text stays above effect */
+nav a span {
+  position: relative;
+  z-index: 1;
+}

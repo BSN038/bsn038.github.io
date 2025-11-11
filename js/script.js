@@ -655,4 +655,70 @@ function toggleTooltip(id) {
   }
 }
 
+/* =====================================================
+   Floating Feedback Widget Logic
+   ===================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+  const fbWindow = document.getElementById('bkc-feedback');
+  const fbToggle = document.getElementById('feedback-toggle');
+  const fbClose = document.getElementById('feedback-close');
+  const fbForm = document.getElementById('feedback-form');
+
+  if (!fbWindow || !fbToggle) return;
+
+  // Open feedback window
+  fbToggle.addEventListener('click', () => {
+    fbWindow.hidden = false;
+    fbToggle.setAttribute('aria-expanded', 'true');
+  });
+
+  // Close feedback window
+  if (fbClose) {
+    fbClose.addEventListener('click', () => {
+      fbWindow.hidden = true;
+      fbToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Close when pressing ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !fbWindow.hidden) {
+      fbWindow.hidden = true;
+      fbToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Handle form submit
+  if (fbForm) {
+    fbForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(fbForm);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        const res = await fetch(fbForm.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: json
+        });
+
+        if (res.ok) {
+          fbForm.innerHTML = `
+            <p style="text-align:center;color:#0D47A1;font-weight:bold;">
+              ✅ Thank you for your feedback!
+            </p>
+          `;
+          setTimeout(() => { fbWindow.hidden = true; }, 2000);
+        } else {
+          alert("There was an issue sending your feedback.");
+        }
+      } catch (err) {
+        alert("Network error, please try again later.");
+      }
+    });
+  }
+});
+
+
 
