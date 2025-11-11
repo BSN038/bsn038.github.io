@@ -313,7 +313,8 @@
         <textarea id="message" name="message" rows="5" required autocomplete="off"></textarea>
 
         <!-- Consider progressive enhancement: if JS is available, you could validate and/or send via a service -->
-        <button type="submit">Send</button>
+        <button type="submit" class="flame-btn">🔥 Send</button>
+
       </form>
       <!-- Optional tip (non-blocking): for production, a server endpoint or a form service (e.g., Netlify Forms) is more reliable than mailto:. -->
     </section>
@@ -396,7 +397,6 @@
           <p id="ship-address-err" class="field-error" role="alert" hidden>Please enter shipping address.</p>
         </div>
       </div>
-    </div>
   </fieldset>
   
   <!-- Payment step: hidden until Next (structure only) -->
@@ -455,10 +455,10 @@
 
     <!-- Actions: keep inside the form to stay inside the card -->
   <div class="wizard-actions">
-    <button type="button" class="btn btn-secondary" disabled>Back</button>
+    <button type="button" class="flame-btn" disabled>🔥 Back</button>
     <div style="display:flex; gap:.5rem;">
-      <button type="button" class="btn">Next</button>
-      <button type="submit" class="btn btn--hot" hidden>Pay Now</button>
+      <button type="button" id="next-step" class="flame-btn">🔥 Next</button>
+      <button type="submit" id="pay-now" class="flame-btn">🔥 Pay Now</button>
     </div>
   </div>
         
