@@ -432,87 +432,89 @@
       </div>
     </section>
     <!-- ==================== START: Booking Form ==================== -->
-    <section id="booking" class="card" aria-labelledby="booking-title">
-      <!-- inside the form or its card container -->
-     <h2 id="booking-title" style="color:#0D47A1;">Book a Table</h2>
-     <form style="background: url('img/Logo1KBC.png') no-repeat right 8px top 8px / 80px auto; padding-top: 110px;"></form>
+<section id="booking" class="card" aria-labelledby="booking-title">
+  <h2 id="booking-title" style="color:#0D47A1;">Book a Table</h2>
+
+  <form id="booking-form" class="form" action="https://formspree.io/f/xeorplrw" method="POST" novalidate>
+
+    <!-- Name -->
+    <div class="form-row">
+      <label for="bk-name">Name</label>
+      <input id="bk-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required
+        pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{1,48}$" aria-describedby="bk-name-hint bk-name-error">
+      <p id="bk-name-hint" class="hint">Letters, spaces, hyphens, or apostrophes only. No numbers.</p>
+      <p id="bk-name-error" class="field-error" aria-live="polite"></p>
+    </div>
+
+    <!-- Email -->
+    <div class="form-row">
+      <label for="bk-email">Email</label>
+      <input id="bk-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-row">
+      <label for="bk-phone">Phone</label>
+      <input id="bk-phone" name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900123">
+    </div>
+
+    <!-- Date / Time -->
+    <div class="form-grid">
+      <div class="form-row">
+        <label for="bk-date">Date</label>
+        <input id="bk-date" name="date" type="date" required>
+      </div>
+      <div class="form-row">
+        <label for="bk-time">Time</label>
+        <input id="bk-time" name="time" type="time" required>
+      </div>
+    </div>
+
+    <!-- Party size -->
+    <div class="form-row">
+      <label for="bk-size">Party size</label>
+      <select id="bk-size" name="party_size" required>
+        <option value="" selected disabled>Choose…</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8+</option>
+      </select>
+    </div>
+
+    <!-- Notes -->
+    <div class="form-row">
+      <label for="bk-notes">Notes (optional)</label>
+      <textarea id="bk-notes" name="notes" rows="3" placeholder="Allergies, seating preference, occasion…"></textarea>
+    </div>
+
+    <!-- Terms -->
+    <div class="form-row checkbox">
+      <label for="bk-terms" id="bk-terms-label">
+        <input id="bk-terms" name="terms" type="checkbox" value="yes" required aria-describedby="bk-terms-help">
+        <span>I accept the <a href="terms.html">Terms &amp; Conditions</a>.</span>
+      </label>
+      <small id="bk-terms-help">Required to complete the booking.</small>
+    </div>
+
+    <!-- Submit -->
+    <div class="form-actions">
+      <button type="submit" class="flame-btn">🔥 Book Now</button>
+    </div>
+
+    <!-- Confirmation message placed right below the button -->
+    <div id="booking-status" class="status is-hidden" role="status" aria-live="polite">
+      ✅ Your request was sent successfully! We’ll get back to you shortly.
+    </div>
+
+  </form>
+</section>
+<!-- ==================== END: Booking Form ==================== -->
     
-      <!-- Status (success / error) accesible -->
-      <div id="booking-status" class="status is-hidden" role="status" aria-live="polite"></div>
-    
-      <form id="booking-form" class="form" action="https://formspree.io/f/xeorplrw" method="POST" novalidate>
-        <!-- Name (validatión: without numbers) -->
-        <div class="form-row">
-          <label for="bk-name">Name</label>
-          <input id="bk-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required
-            pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{1,48}$" aria-describedby="bk-name-hint bk-name-error">
-          <p id="bk-name-hint" class="hint">Letters, spaces, hyphens, or apostrophes only. No numbers.</p>
-          <p id="bk-name-error" class="field-error" aria-live="polite"></p>
-        </div>
-    
-        <!-- Email -->
-        <div class="form-row">
-          <label for="bk-email">Email</label>
-          <input id="bk-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-        </div>
-    
-        <!-- Phone -->
-        <div class="form-row">
-          <label for="bk-phone">Phone</label>
-          <input id="bk-phone" name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900123">
-        </div>
-    
-        <!-- Date / Time -->
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="bk-date">Date</label>
-            <input id="bk-date" name="date" type="date" required>
-          </div>
-          <div class="form-row">
-            <label for="bk-time">Time</label>
-            <input id="bk-time" name="time" type="time" required>
-          </div>
-        </div>
-    
-        <!-- Party size -->
-        <div class="form-row">
-          <label for="bk-size">Party size</label>
-          <select id="bk-size" name="party_size" required>
-            <option value="" selected disabled>Choose…</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8+</option>
-          </select>
-        </div>
-    
-        <!-- Notes -->
-        <div class="form-row">
-          <label for="bk-notes">Notes (optional)</label>
-          <textarea id="bk-notes" name="notes" rows="3" placeholder="Allergies, seating preference, occasion…"></textarea>
-        </div>
-    
-        <!-- Terms -->
-                <div class="form-row checkbox">
-                  <!-- Consistent checkbox: single label wraps input + text, explicit id/for, SR helper -->
-                  <label for="bk-terms" id="bk-terms-label">
-                    <input id="bk-terms" name="terms" type="checkbox" value="yes" required aria-describedby="bk-terms-help">
-                    <span>I accept the <a href="terms.html">Terms &amp; Conditions</a>.</span>
-                  </label>
-                  <small id="bk-terms-help">Required to complete the booking.</small>
-                </div>  
-        <!-- Submit -->
-        <div class="form-actions">
-          <button type="submit" class="btn">Book Now</button>
-        </div>
-      </form>
-    </section>
-    
-    <!-- ==================== END: Booking Form ====================== -->
      <!-- Order Online Section -->
 <section class="card">
   <h2 style="color:#0D47A1;">Order Online (Delivery Partners)</h2>

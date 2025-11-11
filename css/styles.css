@@ -2615,3 +2615,46 @@ nav a span {
   position: relative;
   z-index: 1;
 }
+
+/* ==============================
+   🔥 FLAME BUTTON STYLE (for CTA cards)
+   ============================== */
+.flame-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff0000, #ff9800);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  text-transform: capitalize;
+  box-shadow: 0 0 12px rgba(255, 90, 0, 0.5);
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  font-size: 1rem;
+}
+
+.flame-btn:hover {
+  background: linear-gradient(90deg, #ff6d00, #ffca28);
+  box-shadow: 0 0 18px rgba(255, 120, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.flame-btn:active {
+  transform: scale(0.97);
+}
+
+/* Force flame color inside forms too */
+form .flame-btn,
+.form-actions .flame-btn {
+  background: linear-gradient(90deg, #ff0000, #ff9800) !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(255, 90, 0, 0.5) !important;
+}
+
+form .flame-btn:hover,
+.form-actions .flame-btn:hover {
+  background: linear-gradient(90deg, #ff6d00, #ffca28) !important;
+  box-shadow: 0 0 18px rgba(255, 120, 0, 0.8) !important;
+}
