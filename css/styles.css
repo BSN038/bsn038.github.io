@@ -2347,7 +2347,7 @@ header {
    ===================================================== */
 .feedback-float {
   position: fixed;
-  bottom: 95px;
+  bottom: 150px;
   /* slightly above the AI button */
   right: 20px;
   width: 55px;
@@ -2692,3 +2692,4 @@ form .flame-btn:hover,
   font-weight: 600;
   box-shadow: 0 0 10px rgba(255, 61, 0, 0.5);
 }
+
