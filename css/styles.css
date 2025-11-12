@@ -2805,7 +2805,7 @@ header .brand h1 {
 
 .feedback-bubble {
   position: fixed;
-  bottom: 120px;
+  bottom: 150px;
   right: 20px;
   background: var(--brand-blue, #007bff);
   color: white;
