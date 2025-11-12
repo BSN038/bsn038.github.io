@@ -2823,5 +2823,113 @@ header .brand h1 {
   transform: scale(1.1);
 }
 
+/* ===============================
+   BKC Flame Passport – Contact Page
+   =============================== */
+.flame-passport {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.passport-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.passport-title {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #B71C1C;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.stamps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.stamp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f3f3f3 url("../img/logo-bkc.png") center/65% no-repeat;
+  border: 2px solid #ddd;
+  transition: 0.3s;
+}
+
+.stamp.active {
+  background-color: #ff5722;
+  border-color: #b71c1c;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.7);
+}
+
+#code-input {
+  width: 80%;
+  padding: 8px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+#redeem-btn {
+  background: #ff7043;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#redeem-btn:hover {
+  background: #ff5722;
+}
+
+#passport-status {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #B71C1C;
+}
+
+.passport-message h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #0D47A1;
+  margin-bottom: 12px;
+}
+
+.passport-message p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #B71C1C;
+  /* description in brand red */
+  text-shadow: none;
+}
+
+.passport-message p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.passport-message .signature {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
 
 

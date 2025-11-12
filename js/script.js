@@ -720,3 +720,52 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/* ===========================
+   BKC Flame Passport Logic
+   =========================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const stamps = document.querySelectorAll('.stamp');
+  const input = document.getElementById('code-input');
+  const btn = document.getElementById('redeem-btn');
+  const status = document.getElementById('passport-status');
+
+  // Load progress from localStorage
+  const progress = JSON.parse(localStorage.getItem('bkc_stamps')) || [];
+  progress.forEach(id => {
+    const el = document.querySelector(`.stamp[data-id="${id}"]`);
+    if (el) el.classList.add('active');
+  });
+
+  const validCodes = ['BKC1', 'BKC2', 'BKC3', 'BKC4', 'BKC5', 'BKC6', 'BKC7', 'BKC8', 'BKC9', 'BKC10', 'BKC11', 'BKC12'];
+
+  btn.addEventListener('click', () => {
+    const code = input.value.trim().toUpperCase();
+    input.value = '';
+    if (!code) return;
+
+    if (!validCodes.includes(code)) {
+      status.textContent = '❌ Invalid code.';
+      return;
+    }
+
+    const used = progress.includes(code.replace('BKC', ''));
+    if (used) {
+      status.textContent = '⚠️ Code already used.';
+      return;
+    }
+
+    const id = code.replace('BKC', '');
+    const stamp = document.querySelector(`.stamp[data-id="${id}"]`);
+    if (stamp) {
+      stamp.classList.add('active');
+      progress.push(id);
+      localStorage.setItem('bkc_stamps', JSON.stringify(progress));
+      status.textContent = '✅ Stamp unlocked!';
+    }
+
+    if (progress.length === 12) {
+      status.textContent = '🎉 All 12 flames collected! Enjoy your Full Chicken!';
+    }
+  });
+});
+
