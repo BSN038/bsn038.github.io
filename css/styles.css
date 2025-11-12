@@ -2796,5 +2796,32 @@ header .brand h1 {
   filter: brightness(1.4) contrast(1.1);
 }
 
+.feedback-status {
+  margin-top: 8px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #555;
+}
+
+.feedback-bubble {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  background: var(--brand-blue, #007bff);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.feedback-bubble:hover {
+  transform: scale(1.1);
+}
+
 
 

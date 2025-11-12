@@ -328,11 +328,33 @@
         <button type="submit">Send</button>
       </form>
     </section>
+    <!-- ===========================
+     Floating Feedback Widget
+     =========================== -->
+<div id="bkc-feedback" class="feedback-window" hidden>
+  <button id="feedback-close" class="feedback-close" aria-label="Close feedback form">×</button>
+  <h3>Rate your experience ⭐</h3>
+  <form id="feedback-form" action="https://formspree.io/f/mdkykkol" method="POST">
+    <div class="emoji-row">
+      <label><input type="radio" name="rating" value="😀" required> 😀 </label>
+      <label><input type="radio" name="rating" value="🙂"> 🙂 </label>
+      <label><input type="radio" name="rating" value="😐"> 😐 </label>
+      <label><input type="radio" name="rating" value="😞"> 😞 </label>
+      <label><input type="radio" name="rating" value="😡"> 😡 </label>
+    </div>
+    <textarea name="message" placeholder="Tell us how we can improve..." required></textarea>
+    <button type="submit" class="feedback-send">Send Feedback 🚀</button>
+    <p id="feedback-status" class="feedback-status"></p>
+  </form>
+</div>
 
-    <!-- JS: AI assistant behavior -->
-    <script src="js/script.js?v=agent-v3"></script>
+<!-- Floating Feedback Button -->
+<button id="feedback-toggle" class="feedback-bubble" aria-label="Open feedback">💬</button>
 
-  </body>
+<!-- JS: AI assistant behavior -->
+<script src="js/script.js?v=agent-v3"></script>
+</body>
 </html>
+
 
   
