@@ -558,12 +558,34 @@
       </form>
     </section>
     <!-- Background Audio for problem page -->
- <audio id="bkc-sound" loop preload="auto">
-  <source src="img/problem-ambient.mp3" type="audio/mpeg">
-</audio>
-<button id="sound-toggle" aria-label="Toggle sound" class="sound-btn">🔊</button>
+    <audio id="bkc-sound" loop preload="auto">
+    <source src="img/problem-ambient.mp3" type="audio/mpeg">
+    </audio>
+    <button id="sound-toggle" aria-label="Toggle sound" class="sound-btn">🔊</button>
+
     <!-- JS: AI assistant behavior -->
     <script src="js/script.js?v=agent-v3"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bkc-sound");
+  const toggle = document.getElementById("sound-toggle");
 
+  if (!audio || !toggle) return;
+
+  // Overwrite global handlers only on this page
+  toggle.onclick = () => {
+    if (audio.paused) {
+      audio.play().then(() => {
+        toggle.textContent = "🔇";
+      }).catch(err => {
+        console.warn("Could not play:", err);
+      });
+    } else {
+      audio.pause();
+      toggle.textContent = "🔊";
+    }
+  };
+});
+</script>
   </body>
 </html>
