@@ -2989,4 +2989,16 @@ header .brand h1 {
   }
 }
 
+.sound-btn {
+  position: fixed;
+  bottom: 320px;
+  /* adjust for spacing from your feedback bubbles */
+  right: 25px;
+  font-size: 1.4rem;
+  background: #1a1f71;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 

@@ -769,3 +769,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// ================================
+// Ambient Sound Toggle (fire-loop)
+// ================================
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('bkc-sound');
+  const toggle = document.getElementById('sound-toggle');
+  if (!video || !toggle) return;
+
+  let playing = false;
+
+  // Hide video visually but keep sound available
+  video.style.position = "absolute";
+  video.style.width = "1px";
+  video.style.height = "1px";
+  video.style.opacity = "0";
+
+  toggle.addEventListener('click', () => {
+    if (!playing) {
+      video.play();
+      playing = true;
+      toggle.textContent = '🔇';
+    } else {
+      video.pause();
+      playing = false;
+      toggle.textContent = '🔊';
+    }
+  });
+});
+
+
