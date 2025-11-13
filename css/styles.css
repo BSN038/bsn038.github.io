@@ -3014,6 +3014,17 @@ header .brand h1 {
   }
 }
 
+/* Feedback bubble styling ONLY on Contact page */
+.contact-page #feedback-toggle {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 25px !important;
+  background-color: #004AAD !important;
+  /* same dark blue as AI bubble */
+}
+
+
+
 
 
 
