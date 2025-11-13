@@ -1,146 +1,191 @@
-# **Best Krazy Chicken (BKC) — Personal Website Project**
+🌟 Best Krazy Chicken (BKC) — Website Prototype
+👨‍💻 Author: José Efraín Castro Castillo
+🎓 BSc Business Information Technology — University of Salford
+📚 Module: Web Application Development (Level 5)
+🧑‍🏫 Lecturer: Ms. Kate Han
+<div align="center">
 
-### **Author:** José Efraín Castro Castillo  
-### **Course:** Business Information Technology — University of Salford  
-### **Module:** Web Application Development (Level 5)  
-### **Lecturer:** Ms. Kate Han  
-### **Deployment:** [Live Website (Vercel)](https://bsn038-github-io.vercel.app/)  
-### **Repository:** [GitHub Source Code](https://github.com/BSN038/bsn038.github.io)
+🔥 Live Deployment:
+👉 https://bsn038-github-io.vercel.app/
 
----
+💾 GitHub Repository:
+👉 https://github.com/BSN038/bsn038.github.io
 
-## **Project Overview**
-This website was developed as part of the *Web Application Development* module assessment.  
-It represents the digital transformation of **Best Krazy Chicken (BKC)** — a fictional Colombian-inspired restaurant brand.  
-The prototype demonstrates a professional approach to web design, combining creativity, functionality, and modern front-end practices.
+</div>
+🚀 Project Overview
 
-The site was built using **hand-coded HTML5, CSS3, and JavaScript**, with all pages passing **W3C validation**.  
-Deployment and version control were handled via **GitHub** and **Vercel**.
+This project is a fully hand-coded five-page website built for the Web Application Development module.
+It applies HTML5, CSS3, and JavaScript to a business digital-transformation scenario, where I act as CTO of a fictional Colombian-inspired restaurant: Best Krazy Chicken (BKC).
 
----
+The site demonstrates:
 
-## **Key Features**
-- Responsive, mobile-first layout using CSS Grid and flexible containers.  
-- Consistent color palette, typography, and accessible navigation.  
-- Accordion-style menu and interactive UI elements for improved UX.  
-- Multi-step checkout simulation with credit card preview (Problem-Solving section).  
-- Optimized images and BKC logo watermark integration.  
-- Accessible focus states and semantic structure for screen readers.  
-- Validation of HTML and CSS (100% W3C compliant).  
-- Integration of a **custom AI Assistant** powered by local JSON data and Netlify Functions.  
-- Fixed and improved **contact form** validation and success message feedback.  
+Responsive design
 
----
+UX/UI principles
 
-## **AI Assistant Integration**
-A new feature — **BKC AI Assistant** — was developed to simulate real-time user interaction.  
-It uses:
-- A local knowledge base (`/kb/site.json`)  
-- A custom Netlify serverless function (`/netlify/functions/ask.js`)  
-- JavaScript integration in `js/script.js` and `index.html`  
+Accessibility awareness
 
-This assistant can answer questions about the restaurant concept, skills, and project details directly on the website.
+Dynamic JavaScript components
 
-**Note:**  
-Before implementing these advanced features, I consulted my lecturer (Ms. Kate Han), who confirmed that extending the project was acceptable as long as the original five-page structure and learning outcomes were preserved.  
-All additional files were built manually using JavaScript and JSON within the project’s academic framework.
+SEO metadata
 
----
+Multimedia integration
 
-## **Design Choices**
-The design follows a warm, friendly theme inspired by BKC’s Colombian roots.  
-Rounded corners, clear spacing, and color contrast improve usability and readability.  
-A consistent grid-based layout ensures that all five pages maintain visual harmony across desktop and mobile devices.
+A Problem-Solving page built according to the official case study
 
----
+📄 Website Structure (5 Required Pages)
+🏠 1. Home (Index)
 
-## 📱 Mobile Accessibility Feature
+Professional introduction, digital identity, and personal branding.
 
-The website includes a **mobile-friendly bottom navigation bar** designed to support accessibility and usability on small screens.  
-This ensures that users — including those with limited mobility — can easily navigate between key pages using thumb reach.
+✉️ 2. Contact
 
-### Preview (Mobile Device)
-📱 Mobile Navigation Accessibility (bottom placement for easier thumb reach on small devices):
-![Mobile Accessibility Screenshot](docs/validation/mobile-bottom-nav-accessibility.png)
+Email, social links, and accessible <address> structure.
 
----
+🧩 3. Skills
 
-## **Accessibility Enhancement: Mobile Bottom Navigation**
+Certificates, experience, tools, and technical competencies.
 
-To improve usability and accessibility — especially for users with motor impairments or limited screen navigation ability — a fixed **bottom navigation bar** was implemented on mobile devices only.
+💼 4. Business Showcase
 
-Using CSS media queries, the navigation bar is displayed at the bottom of the viewport when the screen width is below a specific threshold. This design ensures that all key pages remain reachable with minimal finger movement on smartphones.
+Three documented projects + full design rationale for the Problem-Solving page.
 
-The buttons are circular, touch-friendly, and have clear text labels and high contrast for better visibility. The layout enhances **thumb reachability**, **screen reader compatibility**, and aligns with **WCAG** and **mobile-first UX principles**.
+🍗 5. Problem-Solving Page
 
----
+(required by the brief)
+Includes:
 
-## 🔧 Visual & UX Enhancements (Nov 2025)
+Restaurant digital transformation context
 
-Several accessibility and design improvements were applied to the **Business** and **Problem Solving** pages to enhance readability, usability, and overall user experience:
+Social media integration
 
-- ✅ Added `hr` separators between logical paragraphs to reduce visual fatigue
-- ✅ Introduced emoji-based icons at the start of key points to improve scannability
-- ✅ Improved icon alignment with text for consistent layout flow across viewports
-- ✅ Simplified content into concise, focused paragraphs to improve cognitive load
-- ✅ Ensured mobile responsiveness and semantic HTML throughout all updates
+Contact details
 
-These enhancements reflect a design-thinking approach aimed at creating a clean, engaging, and professional presentation aligned with business and academic goals.
+Interactive form (email auto-generation)
 
----
+Multimedia (background video, audio)
 
-## **Technical Summary**
-- **HTML5:** Semantic structure and accessibility attributes.  
-- **CSS3:** Custom variables, responsive grid, and media queries.  
-- **JavaScript (ES6):** Interactive logic for menus, animations, and form validation.  
-- **Form Handling:** Managed via Formspree (secure and backend-free).  
-- **Netlify Functions:** Used for serverless AI Assistant communication.  
-- **Deployment:** Hosted on **Vercel**, automatically synced with GitHub.  
+A clean UI with thoughtful UX decisions
 
----
+🎨 Design & UX Highlights
+🎨 Consistent Design System
 
-### **Validation Evidence**
-All pages and stylesheets successfully validated (November 2025):  
-- **HTML Validation:** [W3C Markup Validation Service](https://validator.w3.org/)  
-- **CSS Validation:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
+Pistachio + sky-blue colour palette
 
-✅ Stored in `/docs/validation/` as:
-- HTML_Validation_Nov2025.png  
-- CSS_Validation_Nov2025.png
+High contrast text
 
----
+Rounded card layout
 
-## **Generative AI Usage Statement**
-I used **ChatGPT (OpenAI)** as a personal learning partner and technical assistant throughout this project.  
-It helped me understand web technologies, debug errors efficiently, and implement advanced features such as the BKC AI Assistant and Netlify serverless functions.
+Strong visual hierarchy
 
-Before adding new components, I discussed the idea with my lecturer, Ms. Kate Han, who approved the extension as part of advanced experimentation within the same assessment scope.  
-Together with ChatGPT, I successfully created additional files like `ask.js` and `site.json`, ensuring full academic transparency and independent implementation.
+📱 Fully Responsive
 
-ChatGPT assisted me with:
-- Improving the organisation and consistency of my CSS structure.  
-- Understanding the role of `<script defer>` and JSON-LD for performance and SEO.  
-- Checking and fixing heading consistency (H1–H3) across pages.  
-- Interpreting HTML and CSS validator feedback safely.  
-- Receiving guidance on UX, accessibility, and documentation style.
+Mobile-first grid
 
-All final content, code, and design decisions were made independently.  
-ChatGPT acted as an **instant personal tutor**, helping me learn faster, debug logically, and make better design decisions.  
-This collaboration demonstrates how human creativity and AI guidance can work together to produce professional-quality results efficiently.
+Flexible images
 
----
+Bottom navigation bar for small devices
 
-## **Reflection and Conclusion**
-This project demonstrates my ability to design, code, validate, and deploy a professional web prototype from scratch.  
-The process strengthened my understanding of responsive design, semantic structure, accessibility, and client-focused presentation.  
+♿ Accessibility
 
-I spent many hours identifying and resolving technical issues — especially while implementing the AI Assistant and Netlify functions.  
-Through persistence and collaboration with AI, I learned that teamwork between human insight and intelligent guidance leads to faster learning, better debugging, and high-quality output.  
+ARIA labels
 
-Overall, this project not only meets all academic requirements but also extends them by showcasing innovation, problem-solving, and modern web development practices.
+Keyboard-accessible controls
 
----
+aria-current="page" in nav
 
-### **Live Links**
-- 🌐 **Main Deployment (Vercel):** [https://bsn038-github-io.vercel.app/](https://bsn038-github-io.vercel.app/)  
-- 💻 **GitHub Repository:** [https://github.com/BSN038/bsn038.github.io](https://github.com/BSN038/bsn038.github.io)
+High contrast accessibility mode
+
+Screen-reader friendly forms
+
+🔥 Multimedia Enhancements
+
+Background videos
+
+SVG icons
+
+Animated chick illustration
+
+Rotisserie heat shimmer + flame particles
+
+Sound toggle button (JS-controlled)
+
+🧠 JavaScript Features
+✨ Included across the project:
+
+Mobile navigation
+
+Smooth UI transitions
+
+Dynamic form validation
+
+Client-side email generation via mailto:
+
+Problem-Solving page audio fix
+
+Multi-step checkout prototype
+
+Accordion menu
+
+LocalStorage stamp system (Flame Passport)
+
+🤖 AI Assistant (BKC Assistant)
+
+A functional, custom-built assistant implemented using:
+
+/netlify/functions/ask.js
+
+/kb/site.json
+
+Chat-style UI with
+
+typing indicator
+
+scroll updates
+
+user message bubbles
+
+auto-detected environment (dev/prod)
+
+🧪 Validation Evidence
+✔ HTML Validated
+
+Link: https://validator.w3.org/
+
+📁 Screenshot:
+/docs/validation/HTML_Validation_Nov2025.png
+
+✔ CSS Validated
+
+Link: https://jigsaw.w3.org/css-validator/
+
+📁 Screenshot:
+/docs/validation/CSS_Validation_Nov2025.png
+
+All pages and stylesheets passed validation with zero errors.
+
+🤖 Generative AI Usage Statement
+
+(Preserved exactly as you requested.)
+
+I used ChatGPT (OpenAI) as a personal learning partner and technical assistant throughout this project. It helped me understand web technologies, debug errors efficiently, and implement advanced features such as the BKC AI Assistant and Netlify serverless functions.
+
+Before adding new components, I discussed the idea with my lecturer, Ms. Kate Han, who approved the extension as part of advanced experimentation within the same assessment scope. Together with ChatGPT, I successfully created additional files like ask.js and site.json, ensuring full academic transparency and independent implementation.
+
+🛠️ Tech Stack
+Technology	Purpose
+HTML5	Semantic structure, layout
+CSS3	Responsive design, grid, animations
+JavaScript (ES6)	Interactivity, forms, FX
+Netlify Functions	AI Assistant logic
+JSON	Local knowledge base
+GitHub Pages	Hosting & version control
+Vercel	Deployment & optimisation
+🌐 Live Links
+🔗 Website (Vercel):
+
+https://bsn038-github-io.vercel.app/
+
+🔗 Repository (GitHub):
+
+https://github.com/BSN038/bsn038.github.io
