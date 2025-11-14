@@ -586,7 +586,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // 3) Pick endpoint: Netlify (local) vs Vercel (prod)
       var isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
-      var endpoint = isLocal ? '/.netlify/functions/ask' : '/api/ask';
+      // Determine the correct API endpoint for the BKC Assistant
+      // - Localhost → Netlify dev function
+      // - Vercel production → native /api/ask
+      // - GitHub Pages (or any other host) → call the Vercel production domain
+      var endpoint;
+
+      if (['localhost', '127.0.0.1'].includes(location.hostname)) {
+        // Local development
+        endpoint = '/.netlify/functions/ask';
+      } else if (location.hostname.endsWith('vercel.app')) {
+        // Running on Vercel (Production)
+        endpoint = '/api/ask';
+      } else {
+        // Running on GitHub Pages or any non-Vercel host
+        // → Always call the Vercel deployment endpoint
+        endpoint = 'https://bsn038-github-io.vercel.app/api/ask';
+      }
 
       // 4) Call the endpoint
       var ctrl = new AbortController();
