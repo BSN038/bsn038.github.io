@@ -3023,6 +3023,99 @@ header .brand h1 {
   /* same dark blue as AI bubble */
 }
 
+/* ============================
+   SUPER PREMIUM PRIVACY CARD
+   ============================ */
+
+/* Base */
+
+.privacy-card {
+  position: relative;
+  /* top | right/left | bottom  (bottom un poco menor) */
+  padding: 1.4rem 1.6rem 1.0rem;
+  border-left: 6px solid #0D47A1;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  animation: privacy-border-fade 0.5s ease-out forwards;
+}
+
+/* Two-column layout */
+.privacy-layout {
+  display: grid;
+  grid-template-columns: 70px auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+/* Icon column */
+.privacy-icon svg {
+  width: 48px;
+  height: 48px;
+  color: #0D47A1;
+  opacity: 0.95;
+}
+
+/* Text column */
+.privacy-text h2 {
+  color: #0D47A1;
+  margin-bottom: 0.3rem;
+  font-size: 1.4rem;
+}
+
+.privacy-underline {
+  width: 60px;
+  height: 3px;
+  background: #0D47A1;
+  border-radius: 3px;
+  margin-bottom: 0.8rem;
+}
+
+/* Watermark */
+.privacy-watermark {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  opacity: 0.06;
+  /* ultra suave */
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+}
+
+.privacy-watermark svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Entrance animation */
+@keyframes privacy-border-fade {
+  0% {
+    border-left-color: rgba(13, 71, 161, 0);
+  }
+
+  100% {
+    border-left-color: #0D47A1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .privacy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-icon {
+    display: none;
+    /* Ocultar en móviles para mejor lectura */
+  }
+
+  .privacy-text h2 {
+    margin-top: 0.5rem;
+  }
+}
+
+
+
 
 
 
